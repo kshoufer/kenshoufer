@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<!--[if IE 6]>
+<html id="ie6" lang="en-US" prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb#">
+<![endif]-->
+<!--[if IE 7]>
+<html id="ie7" lang="en-US" prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb#">
+<![endif]-->
+<!--[if IE 8]>
+<html id="ie8" lang="en-US" prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb#">
+<![endif]-->
+<!--[if !(IE 6) | !(IE 7) | !(IE 8)  ]><!-->
+<html lang="en-US" prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb#">
+<!--<![endif]-->
+<head>
+	<meta charset="UTF-8" />
+	<title>Creating a Browser Test Environment - Ken Shoufer</title>
+			
+	
+	<link rel="pingback" href="http://ken-shoufer.com/xmlrpc.php" />
+
+	                
+	<!--[if lt IE 9]>
+	<script src="http://ken-shoufer.com/wp-content/themes/Divi/js/html5.js" type="text/javascript"></script>
+	<![endif]-->
+
+	<script type="text/javascript">
+		document.documentElement.className = 'js';
+	</script>
+
+	
+<!-- This site is optimized with the Yoast WordPress SEO plugin v1.5.2.5 - http://yoast.com/wordpress/seo/ -->
+<link rel="canonical" href="http://ken-shoufer.com/creating-a-browser-test-environment/" />
+<link rel="publisher" href="https://plus.google.com/+KenShoufer/posts"/>
+<meta property="og:locale" content="en_US" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Creating a Browser Test Environment - Ken Shoufer" />
+<meta property="og:description" content="A big part of creating a test environment is configurin &hellip;" />
+<meta property="og:url" content="http://ken-shoufer.com/creating-a-browser-test-environment/" />
+<meta property="og:site_name" content="Ken Shoufer" />
+<meta property="article:publisher" content="https://www.facebook.com/ken.shoufer" />
+<meta property="article:section" content="Uncategorized" />
+<meta property="article:published_time" content="2013-11-23T23:45:10+00:00" />
+<meta property="article:modified_time" content="2013-11-25T00:47:13+00:00" />
+<meta property="og:updated_time" content="2013-11-25T00:47:13+00:00" />
+<meta property="fb:admins" content="588684353" />
+<meta property="og:image" content="http://ken-shoufer.com/wp-content/uploads/2013/11/create-ff-profile-step1-300x166.jpg" />
+<meta property="og:image" content="http://ken-shoufer.com/wp-content/uploads/2013/11/create-ff-profile-step2-300x231.jpg" />
+<meta property="og:image" content="http://ken-shoufer.com/wp-content/uploads/2013/11/create-ff-profile-step3-213x300.jpg" />
+<meta property="og:image" content="http://ken-shoufer.com/wp-content/uploads/2013/11/clear-ff-step1-300x224.jpg" />
+<meta property="og:image" content="http://ken-shoufer.com/wp-content/uploads/2013/11/clear-ff-step2-300x224.jpg" />
+<meta property="og:image" content="http://ken-shoufer.com/wp-content/uploads/2013/11/clear-ff-step3-300x224.jpg" />
+<meta property="og:image" content="http://ken-shoufer.com/wp-content/uploads/2013/11/clear-ff-step4-300x224.jpg" />
+<meta property="og:image" content="http://ken-shoufer.com/wp-content/uploads/2013/11/clear-ff-step5a-300x179.jpg" />
+<meta property="og:image" content="http://ken-shoufer.com/wp-content/uploads/2013/11/clear-ff-step5b-267x300.jpg" />
+<meta property="og:image" content="http://ken-shoufer.com/wp-content/uploads/2013/11/create-chrome-profile-step1-300x170.png" />
+<meta property="og:image" content="http://ken-shoufer.com/wp-content/uploads/2013/11/create-chrome-profile-step2-300x243.png" />
+<meta property="og:image" content="http://ken-shoufer.com/wp-content/uploads/2013/11/create-chrome-profile-step3-300x123.png" />
+<meta property="og:image" content="http://ken-shoufer.com/wp-content/uploads/2013/11/clear-chrome-step12-300x292.jpg" />
+<meta property="og:image" content="http://ken-shoufer.com/wp-content/uploads/2013/11/clear-chrome-step2-300x292.jpg" />
+<meta property="og:image" content="http://ken-shoufer.com/wp-content/uploads/2013/11/clear-chrome-step3-300x227.jpg" />
+<meta property="og:image" content="http://ken-shoufer.com/wp-content/uploads/2013/11/clear-chrome-step4-300x227.jpg" />
+<meta property="og:image" content="http://ken-shoufer.com/wp-content/uploads/2013/11/create-ie-profile-step1-300x230.png" />
+<meta property="og:image" content="http://ken-shoufer.com/wp-content/uploads/2013/11/clear-ie9-10-step1-300x224.jpg" />
+<meta property="og:image" content="http://ken-shoufer.com/wp-content/uploads/2013/11/clear-ie9-10-step2-300x224.jpg" />
+<meta property="og:image" content="http://ken-shoufer.com/wp-content/uploads/2013/11/clear-ie9-10-step3-300x224.jpg" />
+<meta property="og:image" content="http://ken-shoufer.com/wp-content/uploads/2013/11/clear-ie9-10-step4-300x224.jpg" />
+<meta property="og:image" content="http://ken-shoufer.com/wp-content/uploads/2013/11/clear-safari-step1-199x300.png" />
+<meta property="og:image" content="http://ken-shoufer.com/wp-content/uploads/2013/11/clear-safari-step2-201x300.png" />
+<meta property="og:image" content="http://ken-shoufer.com/wp-content/uploads/2013/11/clear-safari-step3-199x300.png" />
+<!-- / Yoast WordPress SEO plugin. -->
+
+<link rel="alternate" type="application/rss+xml" title="Ken Shoufer &raquo; Feed" href="http://ken-shoufer.com/feed/" />
+<link rel="alternate" type="application/rss+xml" title="Ken Shoufer &raquo; Comments Feed" href="http://ken-shoufer.com/comments/feed/" />
+
+            <script type="text/javascript">//<![CDATA[
+            // Google Analytics for WordPress by Yoast v4.3.5 | http://yoast.com/wordpress/google-analytics/
+            var _gaq = _gaq || [];
+            _gaq.push(['_setAccount', 'UA-47278068-1']);
+				            _gaq.push(['_trackPageview']);
+            (function () {
+                var ga = document.createElement('script');
+                ga.type = 'text/javascript';
+                ga.async = true;
+                ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+
+                var s = document.getElementsByTagName('script')[0];
+                s.parentNode.insertBefore(ga, s);
+            })();
+            //]]></script>
+			<link rel="alternate" type="application/rss+xml" title="Ken Shoufer &raquo; Creating a Browser Test Environment Comments Feed" href="http://ken-shoufer.com/creating-a-browser-test-environment/feed/" />
+<meta content="Divi Child v." name="generator"/><link rel='stylesheet' id='divi-fonts-css'  href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,800italic,400,300,700,800|Raleway:400,200,100,500,700,800,900&#038;subset=latin,latin-ext' type='text/css' media='all' />
+<link rel='stylesheet' id='divi-style-css'  href='http://ken-shoufer.com/wp-content/themes/Divi-Child/style.css?ver=3.8.1' type='text/css' media='all' />
+<link rel='stylesheet' id='slb_core-css'  href='http://ken-shoufer.com/wp-content/plugins/simple-lightbox/client/css/app.css?ver=2.2.2' type='text/css' media='all' />
+<link rel='stylesheet' id='et-shortcodes-css-css'  href='http://ken-shoufer.com/wp-content/themes/Divi/epanel/shortcodes/css/shortcodes.css?ver=3.0' type='text/css' media='all' />
+<link rel='stylesheet' id='et-shortcodes-responsive-css-css'  href='http://ken-shoufer.com/wp-content/themes/Divi/epanel/shortcodes/css/shortcodes_responsive.css?ver=3.0' type='text/css' media='all' />
+<script type='text/javascript' src='http://ken-shoufer.com/wp-includes/js/jquery/jquery.js?ver=1.10.2'></script>
+<script type='text/javascript' src='http://ken-shoufer.com/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.2.1'></script>
+<script type='text/javascript' src='http://ken-shoufer.com/wp-includes/js/comment-reply.min.js?ver=3.8.1'></script>
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://ken-shoufer.com/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://ken-shoufer.com/wp-includes/wlwmanifest.xml" /> 
+<meta name="generator" content="WordPress 3.8.1" />
+<link rel='shortlink' href='http://ken-shoufer.com/?p=361' />
+<!-- <meta name="vfb" version="2.8" /> -->
+<style>.gist table { margin-bottom: 0; }</style><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />	<style>
+		a { color: #7EBEC5; }
+
+		body { color: #666666; }
+
+		.et_pb_counter_amount, .et_pb_featured_table .et_pb_pricing_heading, .et_pb_pricing_table_button, .comment-reply-link, .form-submit input { background-color: #7EBEC5; }
+
+		.woocommerce a.button.alt, .woocommerce-page a.button.alt, .woocommerce button.button.alt, .woocommerce-page button.button.alt, .woocommerce input.button.alt, .woocommerce-page input.button.alt, .woocommerce #respond input#submit.alt, .woocommerce-page #respond input#submit.alt, .woocommerce #content input.button.alt, .woocommerce-page #content input.button.alt, .woocommerce a.button, .woocommerce-page a.button, .woocommerce button.button, .woocommerce-page button.button, .woocommerce input.button, .woocommerce-page input.button, .woocommerce #respond input#submit, .woocommerce-page #respond input#submit, .woocommerce #content input.button, .woocommerce-page #content input.button, .woocommerce-message, .woocommerce-error, .woocommerce-info { background: #7EBEC5 !important; }
+
+		#et_search_icon:hover, .mobile_menu_bar:before, .footer-widget h4, .et-social-icon a:hover, .et_pb_sum, .et_pb_pricing li a, .et_overlay:before, .entry-summary p.price ins, .woocommerce div.product span.price, .woocommerce-page div.product span.price, .woocommerce #content div.product span.price, .woocommerce-page #content div.product span.price, .woocommerce div.product p.price, .woocommerce-page div.product p.price, .woocommerce #content div.product p.price, .woocommerce-page #content div.product p.price { color: #7EBEC5 !important; }
+
+		.woocommerce .star-rating span:before, .woocommerce-page .star-rating span:before { color: #7EBEC5 !important; }
+
+		.et-search-form, .nav li ul, .et_mobile_menu, .footer-widget li:before, .et_pb_pricing li:before { border-color: #7EBEC5; }
+
+		#main-footer { background-color: #2e2e2e; }
+
+		#top-menu a { color: #666666; }
+
+		#top-menu li.current-menu-ancestor > a, #top-menu li.current-menu-item > a { color: #7CBEC6; }
+
+		</style>
+<link rel="shortcut icon" href="http://ken-shoufer.com/wp-content/uploads/2014/01/favicon1.ico" />	<style type="text/css">.recentcomments a{display:inline !important;padding:0 !important;margin:0 !important;}</style>
+<style type="text/css" id="custom-background-css">
+body.custom-background { background-image: url('http://ken-shoufer.com/wp-content/uploads/2014/01/pw_maze_white_@2X.png'); background-repeat: repeat; background-position: top left; background-attachment: scroll; }
+</style>
+</head>
+<body class="single single-post postid-361 single-format-standard custom-background et_fixed_nav et_right_sidebar ie et_includes_sidebar">
+	<header id="main-header">
+		<div class="container clearfix">
+					<a href="http://ken-shoufer.com/">
+				<img src="http://ken-shoufer.com/wp-content/uploads/2014/01/logo1a.png" alt="Ken Shoufer" id="logo" />
+			</a>
+                        			<a href="http://ken-shoufer.com/">
+				<img src="http://ken-shoufer.com/wp-content/images/logo_mobile.png" alt="Ken Shoufer" id="logo_mobile" />
+			</a>
+
+
+			<div id="et-top-navigation">
+				<nav id="top-menu">
+				<ul id="top-menu" class="nav"><li id="menu-item-519" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-519"><a href="http://ken-shoufer.com/" >Home</a></li>
+<li id="menu-item-48" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-48"><a href="http://ken-shoufer.com/portfolio/" >Portfolio</a></li>
+<li id="menu-item-24" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-24"><a href="http://ken-shoufer.com/contact/" >Contact</a></li>
+<li id="menu-item-589" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-589"><a href="http://ken-shoufer.com/basic-website-package/" >Website Package</a></li>
+<li id="menu-item-873" class="menu-item menu-item-type-post_type menu-item-object-page current_page_parent menu-item-873"><a href="http://ken-shoufer.com/blog/" >Blog</a></li>
+</ul>				</nav>
+
+				<div id="et_top_search">
+					<span id="et_search_icon"></span>
+					<form role="search" method="get" class="et-search-form et-hidden" action="http://ken-shoufer.com/">
+					<input type="search" class="et-search-field" placeholder="Search &hellip;" value="" name="s" title="Search for:" />					</form>
+				</div>
+
+				<div id="et_mobile_nav_menu"><a href="#" class="mobile_nav closed"><span class="mobile_menu_bar"></span></a></div>			</div> <!-- #et-top-navigation -->
+		</div> <!-- .container -->
+	</header> <!-- #main-header -->
+<div id="main-content">
+	<div class="container">
+		<div id="content-area" class="clearfix">
+			<div id="left-area">
+							
+				<article id="post-361" class="post-361 post type-post status-publish format-standard hentry category-uncategorized et_pb_post">
+					<h1>Creating a Browser Test Environment</h1>
+
+				<p class="post-meta"> by <a href="http://ken-shoufer.com/author/admin/" title="Posts by admin" rel="author">admin</a> | Nov 23, 2013 | <a href="http://ken-shoufer.com/category/uncategorized/" title="View all posts in Uncategorized" rel="category tag">Uncategorized</a> | <span class="comments-number"><a href="http://ken-shoufer.com/creating-a-browser-test-environment/#respond">0 comments</a></span></p>
+					<div class="entry-post-content">
+					<p>A big part of creating a test environment is configuring your browsers to refresh ALL the new content you created (PHP, CSS, HTML, Javascript, etc.). This is easier said then done. The 4 major browsers (Firefox, Chrome, Internet Explorer and Safari) have different ways to clear their cache. Most browsers except Safari allow the developer to create a different profile to save development settings.<span id="more-361"></span></p>
+<p>&nbsp;</p>
+<p><strong>Mozilla Firefox</strong></p>
+<p>Create a developers profile:</p>
+<p>Firefox has built-in support for multiple profiles, but this feature is a bit hidden. To access the Firefox Profile Manager, you’ll first need to close all Firefox windows.</p>
+<p>Step 1</p>
+<p>With Firefox closed, press the Windows key to open the Start menu (or Start screen on Windows 8), type the following line, and press Enter: firefox.exe -p</p>
+<div id="attachment_366" style="width: 310px" class="wp-caption aligncenter"><a href="http://ken-shoufer.com/wp-content/uploads/2013/11/create-ff-profile-step1.jpg" data-slb-group="361" data-slb-active="1" data-slb-internal="0"><img class="size-medium wp-image-366" alt="create firfox profile step1" src="http://ken-shoufer.com/wp-content/uploads/2013/11/create-ff-profile-step1-300x166.jpg" width="300" height="166" /></a><p class="wp-caption-text">create firfox profile step1</p></div>
+<p>&nbsp;</p>
+<p>Step 2</p>
+<p>The Profile Manager will open. Use the Create Profile button to create new browser profiles. If you would like to be prompted to choose a profile every time you start Firefox, uncheck the<em> Don’t ask at startup</em> option.</p>
+<p>&nbsp;</p>
+<div id="attachment_367" style="width: 310px" class="wp-caption aligncenter"><a href="http://ken-shoufer.com/wp-content/uploads/2013/11/create-ff-profile-step2.jpg" data-slb-group="361" data-slb-active="1" data-slb-internal="0"><img class="size-medium wp-image-367" alt="create firefox profile step2" src="http://ken-shoufer.com/wp-content/uploads/2013/11/create-ff-profile-step2-300x231.jpg" width="300" height="231" /></a><p class="wp-caption-text">create firefox profile step2</p></div>
+<p>Step 3</p>
+<p>Firefox only allows you to run a single browser profile at a time by default. To have multiple Firefox profiles running at the same time, you’ll need to launch Firefox with the -no-remote switch. For example, to launch Firefox’s Profile Manager with the -no-remote switch, use the following command: firefox.exe –p -no-remote</p>
+<p>&nbsp;</p>
+<div id="attachment_368" style="width: 223px" class="wp-caption aligncenter"><a href="http://ken-shoufer.com/wp-content/uploads/2013/11/create-ff-profile-step3.jpg" data-slb-group="361" data-slb-active="1" data-slb-internal="0"><img class="size-medium wp-image-368" alt="create firfox profile step3" src="http://ken-shoufer.com/wp-content/uploads/2013/11/create-ff-profile-step3-213x300.jpg" width="213" height="300" /></a><p class="wp-caption-text">create firefox profile step3</p></div>
+<p>You’ll need to use the -no-remote option to launch each Firefox instance. (If Firefox is already running, close it completely and launch it with -no-remote.) You can add the -no-remote option to your Firefox shortcuts to make this easier.</p>
+<p>&nbsp;</p>
+<p>To easily switch between multiple Firefox profiles, you may want to install the ProfileSwitcher extension.</p>
+<p>&nbsp;</p>
+<p>Clear the cache:</p>
+<p>Step 1</p>
+<p>On a PC, click the &#8220;Firefox&#8221; menu in the top left corner. Next, select the right arrow next to &#8220;History &gt;&#8221;, and click &#8220;Clear Recent History&#8221;</p>
+<div id="attachment_369" style="width: 310px" class="wp-caption aligncenter"><a href="http://ken-shoufer.com/wp-content/uploads/2013/11/clear-ff-step1.jpg" data-slb-group="361" data-slb-active="1" data-slb-internal="0"><img class="size-medium wp-image-369" alt="clear firefox step1" src="http://ken-shoufer.com/wp-content/uploads/2013/11/clear-ff-step1-300x224.jpg" width="300" height="224" /></a><p class="wp-caption-text">clear firefox step 1</p></div>
+<p>&nbsp;</p>
+<p>Step 2</p>
+<p>Make sure &#8220;Details&#8221; is expanded, then select &#8220;Cache&#8221; from the list. Uncheck everything else.</p>
+<p>&nbsp;</p>
+<div id="attachment_370" style="width: 310px" class="wp-caption aligncenter"><a href="http://ken-shoufer.com/wp-content/uploads/2013/11/clear-ff-step2.jpg" data-slb-group="361" data-slb-active="1" data-slb-internal="0"><img class="size-medium wp-image-370" alt="clear firefox step2" src="http://ken-shoufer.com/wp-content/uploads/2013/11/clear-ff-step2-300x224.jpg" width="300" height="224" /></a><p class="wp-caption-text">clear firefox step 2</p></div>
+<p>Step 3</p>
+<p>In the &#8220;Time Range to Clear&#8221; drop down, select &#8220;Everything&#8221;.</p>
+<p>&nbsp;</p>
+<div id="attachment_372" style="width: 310px" class="wp-caption aligncenter"><a href="http://ken-shoufer.com/wp-content/uploads/2013/11/clear-ff-step3.jpg" data-slb-group="361" data-slb-active="1" data-slb-internal="0"><img class="size-medium wp-image-372" alt="clear firefox step3" src="http://ken-shoufer.com/wp-content/uploads/2013/11/clear-ff-step3-300x224.jpg" width="300" height="224" /></a><p class="wp-caption-text">clear firefox step 3</p></div>
+<p>Step 4</p>
+<p>Select &#8220;Clear Now&#8221;. Your computer will work for a moment, and the process will be complete. You&#8217;ve successfully cleared Firefox&#8217;s Cache!</p>
+<p>&nbsp;</p>
+<div id="attachment_371" style="width: 310px" class="wp-caption aligncenter"><a href="http://ken-shoufer.com/wp-content/uploads/2013/11/clear-ff-step4.jpg" data-slb-group="361" data-slb-active="1" data-slb-internal="0"><img class="size-medium wp-image-371" alt="clear firefox step4" src="http://ken-shoufer.com/wp-content/uploads/2013/11/clear-ff-step4-300x224.jpg" width="300" height="224" /></a><p class="wp-caption-text">clear firefox step 4</p></div>
+<p>Step 5</p>
+<p>On a PC, click the &#8220;Firefox&#8221; menu in the top left corner. Next, select the right arrow next to &#8220;Options &gt;&#8221;, and click &#8220;Options&#8221;.</p>
+<p>&nbsp;</p>
+<div id="attachment_373" style="width: 310px" class="wp-caption aligncenter"><a href="http://ken-shoufer.com/wp-content/uploads/2013/11/clear-ff-step5a.jpg" data-slb-group="361" data-slb-active="1" data-slb-internal="0"><img class="size-medium wp-image-373" alt="clear firefox step5a" src="http://ken-shoufer.com/wp-content/uploads/2013/11/clear-ff-step5a-300x179.jpg" width="300" height="179" /></a><p class="wp-caption-text">clear firefox step 5a</p></div>
+<p>&nbsp;</p>
+<div id="attachment_374" style="width: 277px" class="wp-caption aligncenter"><a href="http://ken-shoufer.com/wp-content/uploads/2013/11/clear-ff-step5b.jpg" data-slb-group="361" data-slb-active="1" data-slb-internal="0"><img class="size-medium wp-image-374" alt="clear firefox step5b" src="http://ken-shoufer.com/wp-content/uploads/2013/11/clear-ff-step5b-267x300.jpg" width="267" height="300" /></a><p class="wp-caption-text">clear firefox step 5b</p></div>
+<p>&nbsp;</p>
+<p>Step 6</p>
+<p>In the “Options” menu select the “Privacy” tab and select “Never remember history” next to “Firefox will:”. Click OK.</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p><strong>Google Chrome:</strong></p>
+<p>Create a developers profile:</p>
+<p>Step 1</p>
+<p>To create additional browser profiles, open the Settings page (click the menu button and select Settings), and then click Add new user under Users.</p>
+<p>&nbsp;</p>
+<div id="attachment_383" style="width: 310px" class="wp-caption aligncenter"><a href="http://ken-shoufer.com/wp-content/uploads/2013/11/create-chrome-profile-step1.png" data-slb-group="361" data-slb-active="1" data-slb-internal="0"><img class="size-medium wp-image-383" alt="create chrome profile step 1" src="http://ken-shoufer.com/wp-content/uploads/2013/11/create-chrome-profile-step1-300x170.png" width="300" height="170" /></a><p class="wp-caption-text">create chrome profile step 1</p></div>
+<p>&nbsp;</p>
+<p>Step 2</p>
+<p>Select a user icon and provide a name. In addition to their own bookmarks, history, and other settings, each user has their own Google Sync settings and can be logged into their own Google accounts.</p>
+<div id="attachment_384" style="width: 310px" class="wp-caption aligncenter"><a href="http://ken-shoufer.com/wp-content/uploads/2013/11/create-chrome-profile-step2.png" data-slb-group="361" data-slb-active="1" data-slb-internal="0"><img class="size-medium wp-image-384" alt="create chrome profile step 2" src="http://ken-shoufer.com/wp-content/uploads/2013/11/create-chrome-profile-step2-300x243.png" width="300" height="243" /></a><p class="wp-caption-text">create chrome profile step 2</p></div>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>Step 3</p>
+<p>You can then switch between profiles by clicking the icon at the top-left corner of your browser window.</p>
+<p>&nbsp;</p>
+<div id="attachment_385" style="width: 310px" class="wp-caption aligncenter"><a href="http://ken-shoufer.com/wp-content/uploads/2013/11/create-chrome-profile-step3.png" data-slb-group="361" data-slb-active="1" data-slb-internal="0"><img class="size-medium wp-image-385" alt="create chrome profile step 3" src="http://ken-shoufer.com/wp-content/uploads/2013/11/create-chrome-profile-step3-300x123.png" width="300" height="123" /></a><p class="wp-caption-text">create chrome profile step 3</p></div>
+<p>&nbsp;</p>
+<p>Clear the cache:</p>
+<p>Step 1</p>
+<p>Open the settings on Chrome. Click the menu icon in the upper right corner of the browser to the right. Click settings on the bottom of the menu. A faster way to get there is to press Control+Shift+Delete on a PC, or Shift+Command+Delete on a Mac.</p>
+<p>&nbsp;</p>
+<p><a href="http://ken-shoufer.com/wp-content/uploads/2013/11/clear-chrome-step12.jpg" data-slb-group="361" data-slb-active="1" data-slb-internal="0"><img class="aligncenter size-medium wp-image-395" alt="clear-chrome-step1" src="http://ken-shoufer.com/wp-content/uploads/2013/11/clear-chrome-step12-300x292.jpg" width="300" height="292" /></a></p>
+<p>Step 2</p>
+<p>From settings, click &#8220;Show advanced settings&#8230;&#8221;. It&#8217;s located at the very bottom of the settings section.</p>
+<p>&nbsp;</p>
+<div id="attachment_396" style="width: 310px" class="wp-caption aligncenter"><a href="http://ken-shoufer.com/wp-content/uploads/2013/11/clear-chrome-step2.jpg" data-slb-group="361" data-slb-active="1" data-slb-internal="0"><img class="size-medium wp-image-396" alt="clear chrome step 2" src="http://ken-shoufer.com/wp-content/uploads/2013/11/clear-chrome-step2-300x292.jpg" width="300" height="292" /></a><p class="wp-caption-text">clear chrome step 2</p></div>
+<p>&nbsp;</p>
+<p>Step 3</p>
+<p>Scroll to the privacy section and click &#8220;Clear browsing data&#8221;.</p>
+<p>&nbsp;</p>
+<div id="attachment_397" style="width: 310px" class="wp-caption aligncenter"><a href="http://ken-shoufer.com/wp-content/uploads/2013/11/clear-chrome-step3.jpg" data-slb-group="361" data-slb-active="1" data-slb-internal="0"><img class="size-medium wp-image-397" alt="clear chrome step 3" src="http://ken-shoufer.com/wp-content/uploads/2013/11/clear-chrome-step3-300x227.jpg" width="300" height="227" /></a><p class="wp-caption-text">clear chrome step 3</p></div>
+<p>&nbsp;</p>
+<p>Step 4</p>
+<p>Select &#8220;Empty the cache&#8221;. Uncheck all other options to avoid deleting browser history, cookies and other things you may wish to retain. Change &#8220;Obliterate the following items from&#8221; to &#8220;the beginning of time&#8221;.</p>
+<p>&nbsp;</p>
+<div id="attachment_398" style="width: 310px" class="wp-caption aligncenter"><a href="http://ken-shoufer.com/wp-content/uploads/2013/11/clear-chrome-step4.jpg" data-slb-group="361" data-slb-active="1" data-slb-internal="0"><img class="size-medium wp-image-398" alt="clear chrome step 4" src="http://ken-shoufer.com/wp-content/uploads/2013/11/clear-chrome-step4-300x227.jpg" width="300" height="227" /></a><p class="wp-caption-text">clear chrome step 4</p></div>
+<p>&nbsp;</p>
+<p>Step 5</p>
+<p>Press &#8220;Clear browsing data&#8221;. You are done!</p>
+<p>&nbsp;</p>
+<p><strong>Microsoft Internet Explorer:</strong></p>
+<p>Create a developers profile:</p>
+<p>Internet Explorer doesn’t allow you to use separate browser profiles. However, it does have a feature that can be used to create browser windows with their own separate cookies.</p>
+<p>To use this feature, press the Alt key to reveal the hidden menu bar, click File, and select New Session.</p>
+<p>&nbsp;</p>
+<p>The new browser window will share your favorites, history, and other settings, but it will have its own separate cookies. This means you can use this feature to log into multiple accounts on the same website, just as the profile features allow you to in Chrome and Firefox.</p>
+<div id="attachment_389" style="width: 310px" class="wp-caption aligncenter"><a href="http://ken-shoufer.com/wp-content/uploads/2013/11/create-ie-profile-step1.png" data-slb-group="361" data-slb-active="1" data-slb-internal="0"><img class="size-medium wp-image-389" alt="create ie profile step 1" src="http://ken-shoufer.com/wp-content/uploads/2013/11/create-ie-profile-step1-300x230.png" width="300" height="230" /></a><p class="wp-caption-text">create ie profile step 1</p></div>
+<p>&nbsp;</p>
+<p>Internet Explorer doesn’t appear to like the “Runas” tool built into Windows, which allows you to run a program as another Windows user account and see it on your desktop. If completely separate IE profiles are important to you, you could create a new Windows user account and switch between them.</p>
+<p>&nbsp;</p>
+<p>Clear Cache:</p>
+<p>IE 9 and 10</p>
+<p>Step 1</p>
+<p>Once your browser is open, click the gear icon at the top right to open the Settings menu. Then, select Safety and Delete Browsing History&#8230;.Or, alternately, you may simply press Ctrl+Shift+Delete to open the Delete Browsing History window.</p>
+<p>&nbsp;</p>
+<div id="attachment_402" style="width: 310px" class="wp-caption aligncenter"><a href="http://ken-shoufer.com/wp-content/uploads/2013/11/clear-ie9-10-step1.jpg" data-slb-group="361" data-slb-active="1" data-slb-internal="0"><img class="size-medium wp-image-402" alt="clear ie9&amp;10 step 1" src="http://ken-shoufer.com/wp-content/uploads/2013/11/clear-ie9-10-step1-300x224.jpg" width="300" height="224" /></a><p class="wp-caption-text">clear ie9&amp;10 step 1</p></div>
+<p>&nbsp;</p>
+<p>Step 2</p>
+<p>Select Temporary Internet Files. You will also need to uncheck all of the other boxes, especially Preserve Favorites website data. This option makes the window also delete objects from websites in your Favorites folder, which is necessary to completely clear your cache.</p>
+<div id="attachment_404" style="width: 310px" class="wp-caption aligncenter"><a href="http://ken-shoufer.com/wp-content/uploads/2013/11/clear-ie9-10-step2.jpg" data-slb-group="361" data-slb-active="1" data-slb-internal="0"><img class="size-medium wp-image-404" alt="clear ie9&amp;10 step 2" src="http://ken-shoufer.com/wp-content/uploads/2013/11/clear-ie9-10-step2-300x224.jpg" width="300" height="224" /></a><p class="wp-caption-text">clear ie9&amp;10 step 2</p></div>
+<p>&nbsp;</p>
+<p>Step 3</p>
+<p>Click the Delete button near the bottom of the window to perform the operations (i.e. clear your cache by deleting temporary files).</p>
+<div id="attachment_405" style="width: 310px" class="wp-caption aligncenter"><a href="http://ken-shoufer.com/wp-content/uploads/2013/11/clear-ie9-10-step3.jpg" data-slb-group="361" data-slb-active="1" data-slb-internal="0"><img class="size-medium wp-image-405" alt="clear ie9&amp;10 step 3" src="http://ken-shoufer.com/wp-content/uploads/2013/11/clear-ie9-10-step3-300x224.jpg" width="300" height="224" /></a><p class="wp-caption-text">clear ie9&amp;10 step 3</p></div>
+<p>&nbsp;</p>
+<p>Step 4</p>
+<p>Your computer will work for a moment, and then the process will be complete. You&#8217;ve successfully cleared Internet Explorer 9&#8242;s Cache!</p>
+<div id="attachment_406" style="width: 310px" class="wp-caption aligncenter"><a href="http://ken-shoufer.com/wp-content/uploads/2013/11/clear-ie9-10-step4.jpg" data-slb-group="361" data-slb-active="1" data-slb-internal="0"><img class="size-medium wp-image-406" alt="clear ie9&amp;10 step 4" src="http://ken-shoufer.com/wp-content/uploads/2013/11/clear-ie9-10-step4-300x224.jpg" width="300" height="224" /></a><p class="wp-caption-text">clear ie9&amp;10 step 4</p></div>
+<p>&nbsp;</p>
+<p><strong>Apple Safari:</strong></p>
+<p>Create a developers profile:</p>
+<p>Safari doesn’t appear to support multiple profiles. The closest you can get is having several user accounts and using fast user switching to switch between them, as each user has their own Safari profile.</p>
+<p>&nbsp;</p>
+<p>Clear Cache:</p>
+<p>Step 1</p>
+<p>Click on Settings from the home page.</p>
+<p>&nbsp;</p>
+<div id="attachment_408" style="width: 209px" class="wp-caption aligncenter"><a href="http://ken-shoufer.com/wp-content/uploads/2013/11/clear-safari-step1.png" data-slb-group="361" data-slb-active="1" data-slb-internal="0"><img class="size-medium wp-image-408" alt="clear safari step 1" src="http://ken-shoufer.com/wp-content/uploads/2013/11/clear-safari-step1-199x300.png" width="199" height="300" /></a><p class="wp-caption-text">clear safari step 1</p></div>
+<p>Step 2</p>
+<p>Scroll down until you see &#8220;Safari.&#8221; Click on it to bring up the option page.</p>
+<div id="attachment_409" style="width: 211px" class="wp-caption aligncenter"><a href="http://ken-shoufer.com/wp-content/uploads/2013/11/clear-safari-step2.png" data-slb-group="361" data-slb-active="1" data-slb-internal="0"><img class="size-medium wp-image-409" alt="clear safari step 2" src="http://ken-shoufer.com/wp-content/uploads/2013/11/clear-safari-step2-201x300.png" width="201" height="300" /></a><p class="wp-caption-text">clear safari step 2</p></div>
+<p>&nbsp;</p>
+<p>Step 3</p>
+<p>Click &#8220;Clear Cookies and Data.&#8221;A popup box will appear. Click &#8220;Clear Cookies and Data&#8221; again to confirm your choice.</p>
+<p>&nbsp;</p>
+<div id="attachment_410" style="width: 209px" class="wp-caption aligncenter"><a href="http://ken-shoufer.com/wp-content/uploads/2013/11/clear-safari-step3.png" data-slb-group="361" data-slb-active="1" data-slb-internal="0"><img class="size-medium wp-image-410" alt="clear safari step 3" src="http://ken-shoufer.com/wp-content/uploads/2013/11/clear-safari-step3-199x300.png" width="199" height="300" /></a><p class="wp-caption-text">clear safari step 3</p></div>
+<p>&nbsp;</p>
+					</div> <!-- .entry-content -->
+
+					
+					<!-- You can start editing here. -->
+
+<section id="comment-wrap">
+		   <div id="comment-section" class="nocomments">
+		  			 <!-- If comments are open, but there are no comments. -->
+
+		  	   </div>
+												<div id="respond" class="comment-respond">
+				<h3 id="reply-title" class="comment-reply-title"><span>Submit a Comment</span> <small><a rel="nofollow" id="cancel-comment-reply-link" href="/creating-a-browser-test-environment/#respond" style="display:none;">Cancel reply</a></small></h3>
+									<form action="http://ken-shoufer.com/wp-comments-post.php" method="post" id="commentform" class="comment-form">
+																			<p class="comment-notes">Your email address will not be published. Required fields are marked <span class="required">*</span></p>							<p class="comment-form-author"><label for="author">Name <span class="required">*</span></label> <input id="author" name="author" type="text" value="" size="30" aria-required='true' /></p>
+<p class="comment-form-email"><label for="email">Email <span class="required">*</span></label> <input id="email" name="email" type="text" value="" size="30" aria-required='true' /></p>
+<p class="comment-form-url"><label for="url">Website</label> <input id="url" name="url" type="text" value="" size="30" /></p>
+												<p class="comment-form-comment"><label for="comment">Comment</label> <textarea id="comment" name="comment" cols="45" rows="8" aria-required="true"></textarea></p>						<p class="form-allowed-tags">You may use these <abbr title="HyperText Markup Language">HTML</abbr> tags and attributes:  <code>&lt;a href=&quot;&quot; title=&quot;&quot;&gt; &lt;abbr title=&quot;&quot;&gt; &lt;acronym title=&quot;&quot;&gt; &lt;b&gt; &lt;blockquote cite=&quot;&quot;&gt; &lt;cite&gt; &lt;code&gt; &lt;del datetime=&quot;&quot;&gt; &lt;em&gt; &lt;i&gt; &lt;q cite=&quot;&quot;&gt; &lt;strike&gt; &lt;strong&gt; </code></p>						<p class="form-submit">
+							<input name="submit" type="submit" id="submit" value="Submit Comment" />
+							<input type='hidden' name='comment_post_ID' value='361' id='comment_post_ID' />
+<input type='hidden' name='comment_parent' id='comment_parent' value='0' />
+						</p>
+						<p style="display: none;"><input type="hidden" id="akismet_comment_nonce" name="akismet_comment_nonce" value="06f68512f8" /></p>					</form>
+							</div><!-- #respond -->
+			        <script type="text/javascript">
+            jQuery(document).ready(function () {
+                jQuery('#commentform').submit(function () {
+                    _gaq.push(
+                            ['_setAccount', 'UA-47278068-1'],
+                            ['_trackEvent', 'comment', 'submit']
+                    );
+                });
+            });
+        </script>
+			</section>				</article> <!-- .et_pb_post -->
+
+										</div> <!-- #left-area -->
+
+				<div id="sidebar">
+		<div id="aboutmewidget-2" class="et_pb_widget widget_aboutmewidget"><h4 class="widgettitle">Contact Information:</h4>		<div class="clearfix">
+			<img src="" id="about-image" alt="" />
+			<h3>Ken Shoufer</h3><br />
+<h4>Redondo Beach, Ca</h4><br />
+<h4>Phone: (424) 254-8481</h4>		</div> <!-- end about me section -->
+	</div> <!-- end .et_pb_widget --><div id="search-2" class="et_pb_widget widget_search"><form role="search" method="get" id="searchform" class="searchform" action="http://ken-shoufer.com/">
+				<div>
+					<label class="screen-reader-text" for="s">Search for:</label>
+					<input type="text" value="" name="s" id="s" />
+					<input type="submit" id="searchsubmit" value="Search" />
+				</div>
+			</form></div> <!-- end .et_pb_widget --><div id="nav_menu-2" class="et_pb_widget widget_nav_menu"><div class="menu-menu-1-container"><ul id="menu-menu-1" class="menu"><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-519"><a href="http://ken-shoufer.com/" >Home</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-48"><a href="http://ken-shoufer.com/portfolio/" >Portfolio</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-24"><a href="http://ken-shoufer.com/contact/" >Contact</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-589"><a href="http://ken-shoufer.com/basic-website-package/" >Website Package</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page current_page_parent menu-item-873"><a href="http://ken-shoufer.com/blog/" >Blog</a></li>
+</ul></div></div> <!-- end .et_pb_widget -->		<div id="recent-posts-2" class="et_pb_widget widget_recent_entries">		<h4 class="widgettitle">Recent Posts</h4>		<ul>
+					<li>
+				<a href="http://ken-shoufer.com/ajax-live-search/">Ajax Live Search</a>
+						</li>
+					<li>
+				<a href="http://ken-shoufer.com/ajax-basics/">Ajax Basics</a>
+						</li>
+					<li>
+				<a href="http://ken-shoufer.com/updating-wordpress/">Updating WordPress</a>
+						</li>
+					<li>
+				<a href="http://ken-shoufer.com/customize-soliloquy-caption/">Customize the Soliloquy Caption</a>
+						</li>
+					<li>
+				<a href="http://ken-shoufer.com/animated-image-box/">Animated Image Box</a>
+						</li>
+				</ul>
+		</div> <!-- end .et_pb_widget --><div id="recent-comments-2" class="et_pb_widget widget_recent_comments"><h4 class="widgettitle">Recent Comments</h4><ul id="recentcomments"></ul></div> <!-- end .et_pb_widget --><div id="archives-2" class="et_pb_widget widget_archive"><h4 class="widgettitle">Archives</h4>		<ul>
+			<li><a href='http://ken-shoufer.com/2014/02/'>February 2014</a></li>
+	<li><a href='http://ken-shoufer.com/2013/12/'>December 2013</a></li>
+	<li><a href='http://ken-shoufer.com/2013/11/'>November 2013</a></li>
+	<li><a href='http://ken-shoufer.com/2013/08/'>August 2013</a></li>
+		</ul>
+</div> <!-- end .et_pb_widget --><div id="categories-2" class="et_pb_widget widget_categories"><h4 class="widgettitle">Categories</h4>		<ul>
+	<li class="cat-item cat-item-1"><a href="http://ken-shoufer.com/category/uncategorized/" title="View all posts filed under Uncategorized">Uncategorized</a>
+</li>
+	<li class="cat-item cat-item-2"><a href="http://ken-shoufer.com/category/web-design/" title="View all posts filed under web design">web design</a>
+</li>
+	<li class="cat-item cat-item-8"><a href="http://ken-shoufer.com/category/web-development/" title="View all posts filed under web development">web development</a>
+</li>
+		</ul>
+</div> <!-- end .et_pb_widget --><div id="tag_cloud-2" class="et_pb_widget widget_tag_cloud"><h4 class="widgettitle">Tags</h4><div class="tagcloud"><a href='http://ken-shoufer.com/tag/net/' class='tag-link-17' title='17 topics' style='font-size: 22pt;'>.net</a>
+<a href='http://ken-shoufer.com/tag/ado/' class='tag-link-18' title='1 topic' style='font-size: 8pt;'>ado</a>
+<a href='http://ken-shoufer.com/tag/ajax/' class='tag-link-65' title='3 topics' style='font-size: 12.375pt;'>ajax</a>
+<a href='http://ken-shoufer.com/tag/apache/' class='tag-link-37' title='1 topic' style='font-size: 8pt;'>apache</a>
+<a href='http://ken-shoufer.com/tag/array/' class='tag-link-22' title='1 topic' style='font-size: 8pt;'>array</a>
+<a href='http://ken-shoufer.com/tag/asp-net/' class='tag-link-16' title='14 topics' style='font-size: 20.833333333333pt;'>asp.net</a>
+<a href='http://ken-shoufer.com/tag/attribute/' class='tag-link-32' title='1 topic' style='font-size: 8pt;'>attribute</a>
+<a href='http://ken-shoufer.com/tag/c/' class='tag-link-19' title='14 topics' style='font-size: 20.833333333333pt;'>c#</a>
+<a href='http://ken-shoufer.com/tag/child/' class='tag-link-29' title='2 topics' style='font-size: 10.625pt;'>child</a>
+<a href='http://ken-shoufer.com/tag/css/' class='tag-link-3' title='9 topics' style='font-size: 18.208333333333pt;'>CSS</a>
+<a href='http://ken-shoufer.com/tag/database/' class='tag-link-20' title='9 topics' style='font-size: 18.208333333333pt;'>database</a>
+<a href='http://ken-shoufer.com/tag/directory/' class='tag-link-43' title='2 topics' style='font-size: 10.625pt;'>directory</a>
+<a href='http://ken-shoufer.com/tag/foreach/' class='tag-link-33' title='1 topic' style='font-size: 8pt;'>foreach</a>
+<a href='http://ken-shoufer.com/tag/formview/' class='tag-link-35' title='1 topic' style='font-size: 8pt;'>formview</a>
+<a href='http://ken-shoufer.com/tag/google-map/' class='tag-link-12' title='3 topics' style='font-size: 12.375pt;'>google map</a>
+<a href='http://ken-shoufer.com/tag/gps/' class='tag-link-15' title='3 topics' style='font-size: 12.375pt;'>gps</a>
+<a href='http://ken-shoufer.com/tag/graphics/' class='tag-link-9' title='3 topics' style='font-size: 12.375pt;'>graphics</a>
+<a href='http://ken-shoufer.com/tag/gridview/' class='tag-link-36' title='3 topics' style='font-size: 12.375pt;'>gridview</a>
+<a href='http://ken-shoufer.com/tag/html/' class='tag-link-4' title='13 topics' style='font-size: 20.395833333333pt;'>HTML</a>
+<a href='http://ken-shoufer.com/tag/iis/' class='tag-link-44' title='1 topic' style='font-size: 8pt;'>IIS</a>
+<a href='http://ken-shoufer.com/tag/javascript/' class='tag-link-52' title='2 topics' style='font-size: 10.625pt;'>javascript</a>
+<a href='http://ken-shoufer.com/tag/jquery/' class='tag-link-5' title='6 topics' style='font-size: 16.020833333333pt;'>jQuery</a>
+<a href='http://ken-shoufer.com/tag/link/' class='tag-link-6' title='1 topic' style='font-size: 8pt;'>link</a>
+<a href='http://ken-shoufer.com/tag/list/' class='tag-link-34' title='1 topic' style='font-size: 8pt;'>list</a>
+<a href='http://ken-shoufer.com/tag/localhost/' class='tag-link-39' title='1 topic' style='font-size: 8pt;'>localhost</a>
+<a href='http://ken-shoufer.com/tag/oledb/' class='tag-link-21' title='1 topic' style='font-size: 8pt;'>OleDb</a>
+<a href='http://ken-shoufer.com/tag/overlay/' class='tag-link-13' title='1 topic' style='font-size: 8pt;'>overlay</a>
+<a href='http://ken-shoufer.com/tag/path/' class='tag-link-14' title='2 topics' style='font-size: 10.625pt;'>path</a>
+<a href='http://ken-shoufer.com/tag/photoshop/' class='tag-link-10' title='1 topic' style='font-size: 8pt;'>photoshop</a>
+<a href='http://ken-shoufer.com/tag/php/' class='tag-link-48' title='2 topics' style='font-size: 10.625pt;'>php</a>
+<a href='http://ken-shoufer.com/tag/port/' class='tag-link-40' title='1 topic' style='font-size: 8pt;'>port</a>
+<a href='http://ken-shoufer.com/tag/server/' class='tag-link-41' title='1 topic' style='font-size: 8pt;'>server</a>
+<a href='http://ken-shoufer.com/tag/session/' class='tag-link-23' title='1 topic' style='font-size: 8pt;'>session</a>
+<a href='http://ken-shoufer.com/tag/sibling/' class='tag-link-31' title='1 topic' style='font-size: 8pt;'>sibling</a>
+<a href='http://ken-shoufer.com/tag/sql-server/' class='tag-link-30' title='8 topics' style='font-size: 17.479166666667pt;'>SQL Server</a>
+<a href='http://ken-shoufer.com/tag/troubleshooting/' class='tag-link-42' title='1 topic' style='font-size: 8pt;'>troubleshooting</a>
+<a href='http://ken-shoufer.com/tag/validation/' class='tag-link-26' title='1 topic' style='font-size: 8pt;'>validation</a>
+<a href='http://ken-shoufer.com/tag/visual-studio/' class='tag-link-24' title='15 topics' style='font-size: 21.125pt;'>visual studio</a>
+<a href='http://ken-shoufer.com/tag/wamp/' class='tag-link-38' title='1 topic' style='font-size: 8pt;'>wamp</a>
+<a href='http://ken-shoufer.com/tag/web-development/' class='tag-link-8' title='3 topics' style='font-size: 12.375pt;'>web development</a>
+<a href='http://ken-shoufer.com/tag/website/' class='tag-link-57' title='2 topics' style='font-size: 10.625pt;'>website</a>
+<a href='http://ken-shoufer.com/tag/winform/' class='tag-link-28' title='10 topics' style='font-size: 18.791666666667pt;'>WinForm</a>
+<a href='http://ken-shoufer.com/tag/wordpress/' class='tag-link-50' title='3 topics' style='font-size: 12.375pt;'>wordpress</a>
+<a href='http://ken-shoufer.com/tag/xml/' class='tag-link-25' title='2 topics' style='font-size: 10.625pt;'>xml</a>
+<a href='http://ken-shoufer.com/tag/xsl/' class='tag-link-27' title='1 topic' style='font-size: 8pt;'>xsl</a></div>
+</div> <!-- end .et_pb_widget -->	</div> <!-- end #sidebar -->
+		</div> <!-- #content-area -->
+	</div> <!-- .container -->
+</div> <!-- #main-content -->
+
+	<footer id="main-footer">
+		
+		<div id="footer-bottom">
+			<div class="container clearfix">
+				<ul id="et-social-icons">
+									<li class="et-social-icon et-social-facebook">
+						<a href="https://www.facebook.com/pages/Ken-Shoufer-Web-Design/213440018858038">
+							<span>Facebook</span>
+						</a>
+					</li>
+																	<li class="et-social-icon et-social-google">
+						<a href="http://google.com/+KenShoufer">
+							<span>Google</span>
+						</a>
+					</li>
+												</ul>
+
+				<p id="footer-info">Designed by <a href="http://ken-shoufer.com" title="Ken Shoufer Web Designs">Ken Shoufer Web Designs</a></p>
+			</div>	<!-- .container -->
+		</div>
+	</footer> <!-- #main-footer -->
+
+	<script type='text/javascript' src='http://ken-shoufer.com/wp-content/themes/Divi/js/jquery.fitvids.js?ver=1.0'></script>
+<script type='text/javascript' src='http://ken-shoufer.com/wp-content/themes/Divi/js/waypoints.min.js?ver=1.0'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var et_custom = {"ajaxurl":"http:\/\/ken-shoufer.com\/wp-admin\/admin-ajax.php","et_load_nonce":"530a86f8b8","subscription_failed":"Please, check the fields below to make sure you entered the correct information.","fill":"Fill","field":"field","invalid":"Invalid email","captcha":"Captcha"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='http://ken-shoufer.com/wp-content/themes/Divi/js/custom.js?ver=1.0'></script>
+<script type='text/javascript' src='http://ken-shoufer.com/wp-content/plugins/simple-lightbox/client/js/dev/lib.core.js?ver=2.2.2'></script>
+<script type='text/javascript' src='http://ken-shoufer.com/wp-content/plugins/simple-lightbox/client/js/dev/lib.view.js?ver=2.2.2'></script>
+<script type='text/javascript' src='http://ken-shoufer.com/wp-content/plugins/simple-lightbox/themes/baseline/client.js?ver=2.2.2'></script>
+<script type='text/javascript' src='http://ken-shoufer.com/wp-content/plugins/simple-lightbox/themes/default/client.js?ver=2.2.2'></script>
+<script type='text/javascript' src='http://ken-shoufer.com/wp-content/plugins/simple-lightbox/template-tags/item/tag.item.js?ver=2.2.2'></script>
+<script type='text/javascript' src='http://ken-shoufer.com/wp-content/plugins/simple-lightbox/template-tags/ui/tag.ui.js?ver=2.2.2'></script>
+<script type='text/javascript' src='http://ken-shoufer.com/wp-content/plugins/simple-lightbox/content-handlers/image/handler.image.js?ver=2.2.2'></script>
+<script type="text/javascript" id="slb_footer">/* <![CDATA[ */if ( jQuery ){(function($){$(document).ready(function(){if ( (typeof SLB != 'undefined') && (typeof SLB.View != 'undefined') && (typeof SLB.View.init != 'undefined') ) { SLB.View.init({"ui_autofit":true,"ui_animate":true,"slideshow_autostart":true,"slideshow_duration":"6","group_loop":true,"ui_overlay_opacity":"0.8","theme_default":"slb_default","ui_labels":{"loading":"Loading","close":"Close","nav_next":"Next","nav_prev":"Previous","slideshow_start":"Start slideshow","slideshow_stop":"Stop slideshow","group_status":"Item %current% of %total%"}}); }
+if ( (typeof SLB != 'undefined') && (typeof SLB.View != 'undefined') && (typeof SLB.View.assets != 'undefined') ) { {$.extend(SLB.View.assets, {"http:\/\/ken-shoufer.com\/wp-content\/uploads\/2013\/11\/clear-chrome-step12.jpg":{"id":395,"_entries":[],"type":"image","source":"http:\/\/ken-shoufer.com\/wp-content\/uploads\/2013\/11\/clear-chrome-step12.jpg","internal":true,"sizes":{"thumbnail":{"file":"clear-chrome-step12-150x150.jpg","width":150,"height":150,"mime-type":"image\/jpeg"},"medium":{"file":"clear-chrome-step12-300x292.jpg","width":300,"height":292,"mime-type":"image\/jpeg"},"wzslider-thumbnail":{"file":"clear-chrome-step12-56x55.jpg","width":56,"height":55,"mime-type":"image\/jpeg"},"recent-widget":{"file":"clear-chrome-step12-75x50.jpg","width":75,"height":50,"mime-type":"image\/jpeg"},"original":{"file":"2013\/11\/clear-chrome-step12.jpg","width":538,"height":524}},"image_meta":{"aperture":0,"credit":"","camera":"","caption":"","created_timestamp":0,"copyright":"","focal_length":0,"iso":0,"shutter_speed":0,"title":""},"description":"","title":"clear-chrome-step1","caption":""},"http:\/\/ken-shoufer.com\/wp-content\/uploads\/2013\/11\/create-ff-profile-step1.jpg":{"id":366,"_entries":[],"type":"image","source":"http:\/\/ken-shoufer.com\/wp-content\/uploads\/2013\/11\/create-ff-profile-step1.jpg","internal":true,"sizes":{"thumbnail":{"file":"create-ff-profile-step1-150x150.jpg","width":150,"height":150,"mime-type":"image\/jpeg"},"medium":{"file":"create-ff-profile-step1-300x166.jpg","width":300,"height":166,"mime-type":"image\/jpeg"},"wzslider-thumbnail":{"file":"create-ff-profile-step1-99x55.jpg","width":99,"height":55,"mime-type":"image\/jpeg"},"recent-widget":{"file":"create-ff-profile-step1-75x50.jpg","width":75,"height":50,"mime-type":"image\/jpeg"},"original":{"file":"2013\/11\/create-ff-profile-step1.jpg","width":1000,"height":555}},"image_meta":{"aperture":0,"credit":"","camera":"","caption":"","created_timestamp":0,"copyright":"","focal_length":0,"iso":0,"shutter_speed":0,"title":""},"description":"","title":"create firfox profile step1","caption":"create firfox profile step1"},"http:\/\/ken-shoufer.com\/wp-content\/uploads\/2013\/11\/create-ff-profile-step2.jpg":{"id":367,"_entries":[],"type":"image","source":"http:\/\/ken-shoufer.com\/wp-content\/uploads\/2013\/11\/create-ff-profile-step2.jpg","internal":true,"sizes":{"thumbnail":{"file":"create-ff-profile-step2-150x150.jpg","width":150,"height":150,"mime-type":"image\/jpeg"},"medium":{"file":"create-ff-profile-step2-300x231.jpg","width":300,"height":231,"mime-type":"image\/jpeg"},"wzslider-thumbnail":{"file":"create-ff-profile-step2-71x55.jpg","width":71,"height":55,"mime-type":"image\/jpeg"},"recent-widget":{"file":"create-ff-profile-step2-75x50.jpg","width":75,"height":50,"mime-type":"image\/jpeg"},"original":{"file":"2013\/11\/create-ff-profile-step2.jpg","width":1000,"height":771}},"image_meta":{"aperture":0,"credit":"","camera":"","caption":"","created_timestamp":0,"copyright":"","focal_length":0,"iso":0,"shutter_speed":0,"title":""},"description":"","title":"create firefox profile step2","caption":"create firefox profile step2"},"http:\/\/ken-shoufer.com\/wp-content\/uploads\/2013\/11\/create-ff-profile-step3.jpg":{"id":368,"_entries":[],"type":"image","source":"http:\/\/ken-shoufer.com\/wp-content\/uploads\/2013\/11\/create-ff-profile-step3.jpg","internal":true,"sizes":{"thumbnail":{"file":"create-ff-profile-step3-150x150.jpg","width":150,"height":150,"mime-type":"image\/jpeg"},"medium":{"file":"create-ff-profile-step3-213x300.jpg","width":213,"height":300,"mime-type":"image\/jpeg"},"wzslider-thumbnail":{"file":"create-ff-profile-step3-39x55.jpg","width":39,"height":55,"mime-type":"image\/jpeg"},"recent-widget":{"file":"create-ff-profile-step3-75x50.jpg","width":75,"height":50,"mime-type":"image\/jpeg"},"original":{"file":"2013\/11\/create-ff-profile-step3.jpg","width":711,"height":1000}},"image_meta":{"aperture":0,"credit":"","camera":"","caption":"","created_timestamp":0,"copyright":"","focal_length":0,"iso":0,"shutter_speed":0,"title":""},"description":"","title":"create firfox profile step3","caption":"create firfox profile step3"},"http:\/\/ken-shoufer.com\/wp-content\/uploads\/2013\/11\/clear-ff-step1.jpg":{"id":369,"_entries":[],"type":"image","source":"http:\/\/ken-shoufer.com\/wp-content\/uploads\/2013\/11\/clear-ff-step1.jpg","internal":true,"sizes":{"thumbnail":{"file":"clear-ff-step1-150x150.jpg","width":150,"height":150,"mime-type":"image\/jpeg"},"medium":{"file":"clear-ff-step1-300x224.jpg","width":300,"height":224,"mime-type":"image\/jpeg"},"wzslider-thumbnail":{"file":"clear-ff-step1-73x55.jpg","width":73,"height":55,"mime-type":"image\/jpeg"},"recent-widget":{"file":"clear-ff-step1-75x50.jpg","width":75,"height":50,"mime-type":"image\/jpeg"},"original":{"file":"2013\/11\/clear-ff-step1.jpg","width":551,"height":413}},"image_meta":{"aperture":0,"credit":"","camera":"","caption":"","created_timestamp":0,"copyright":"","focal_length":0,"iso":0,"shutter_speed":0,"title":""},"description":"","title":"clear firefox step1","caption":"clear firefox step1"},"http:\/\/ken-shoufer.com\/wp-content\/uploads\/2013\/11\/clear-ff-step2.jpg":{"id":370,"_entries":[],"type":"image","source":"http:\/\/ken-shoufer.com\/wp-content\/uploads\/2013\/11\/clear-ff-step2.jpg","internal":true,"sizes":{"thumbnail":{"file":"clear-ff-step2-150x150.jpg","width":150,"height":150,"mime-type":"image\/jpeg"},"medium":{"file":"clear-ff-step2-300x224.jpg","width":300,"height":224,"mime-type":"image\/jpeg"},"wzslider-thumbnail":{"file":"clear-ff-step2-73x55.jpg","width":73,"height":55,"mime-type":"image\/jpeg"},"recent-widget":{"file":"clear-ff-step2-75x50.jpg","width":75,"height":50,"mime-type":"image\/jpeg"},"original":{"file":"2013\/11\/clear-ff-step2.jpg","width":551,"height":413}},"image_meta":{"aperture":0,"credit":"","camera":"","caption":"","created_timestamp":0,"copyright":"","focal_length":0,"iso":0,"shutter_speed":0,"title":""},"description":"","title":"clear firefox step2","caption":"clear firefox step2"},"http:\/\/ken-shoufer.com\/wp-content\/uploads\/2013\/11\/clear-ff-step3.jpg":{"id":372,"_entries":[],"type":"image","source":"http:\/\/ken-shoufer.com\/wp-content\/uploads\/2013\/11\/clear-ff-step3.jpg","internal":true,"sizes":{"thumbnail":{"file":"clear-ff-step3-150x150.jpg","width":150,"height":150,"mime-type":"image\/jpeg"},"medium":{"file":"clear-ff-step3-300x224.jpg","width":300,"height":224,"mime-type":"image\/jpeg"},"wzslider-thumbnail":{"file":"clear-ff-step3-73x55.jpg","width":73,"height":55,"mime-type":"image\/jpeg"},"recent-widget":{"file":"clear-ff-step3-75x50.jpg","width":75,"height":50,"mime-type":"image\/jpeg"},"original":{"file":"2013\/11\/clear-ff-step3.jpg","width":551,"height":413}},"image_meta":{"aperture":0,"credit":"","camera":"","caption":"","created_timestamp":0,"copyright":"","focal_length":0,"iso":0,"shutter_speed":0,"title":""},"description":"","title":"clear firefox step3","caption":"clear firefox step3"},"http:\/\/ken-shoufer.com\/wp-content\/uploads\/2013\/11\/clear-ff-step4.jpg":{"id":371,"_entries":[],"type":"image","source":"http:\/\/ken-shoufer.com\/wp-content\/uploads\/2013\/11\/clear-ff-step4.jpg","internal":true,"sizes":{"thumbnail":{"file":"clear-ff-step4-150x150.jpg","width":150,"height":150,"mime-type":"image\/jpeg"},"medium":{"file":"clear-ff-step4-300x224.jpg","width":300,"height":224,"mime-type":"image\/jpeg"},"wzslider-thumbnail":{"file":"clear-ff-step4-73x55.jpg","width":73,"height":55,"mime-type":"image\/jpeg"},"recent-widget":{"file":"clear-ff-step4-75x50.jpg","width":75,"height":50,"mime-type":"image\/jpeg"},"original":{"file":"2013\/11\/clear-ff-step4.jpg","width":551,"height":413}},"image_meta":{"aperture":0,"credit":"","camera":"","caption":"","created_timestamp":0,"copyright":"","focal_length":0,"iso":0,"shutter_speed":0,"title":""},"description":"","title":"clear firefox step4","caption":"clear firefox step4"},"http:\/\/ken-shoufer.com\/wp-content\/uploads\/2013\/11\/clear-ff-step5a.jpg":{"id":373,"_entries":[],"type":"image","source":"http:\/\/ken-shoufer.com\/wp-content\/uploads\/2013\/11\/clear-ff-step5a.jpg","internal":true,"sizes":{"thumbnail":{"file":"clear-ff-step5a-150x150.jpg","width":150,"height":150,"mime-type":"image\/jpeg"},"medium":{"file":"clear-ff-step5a-300x179.jpg","width":300,"height":179,"mime-type":"image\/jpeg"},"wzslider-thumbnail":{"file":"clear-ff-step5a-91x55.jpg","width":91,"height":55,"mime-type":"image\/jpeg"},"recent-widget":{"file":"clear-ff-step5a-75x50.jpg","width":75,"height":50,"mime-type":"image\/jpeg"},"original":{"file":"2013\/11\/clear-ff-step5a.jpg","width":1000,"height":599}},"image_meta":{"aperture":0,"credit":"","camera":"","caption":"","created_timestamp":0,"copyright":"","focal_length":0,"iso":0,"shutter_speed":0,"title":""},"description":"","title":"clear firefox step5a","caption":"clear firefox step5a"},"http:\/\/ken-shoufer.com\/wp-content\/uploads\/2013\/11\/clear-ff-step5b.jpg":{"id":374,"_entries":[],"type":"image","source":"http:\/\/ken-shoufer.com\/wp-content\/uploads\/2013\/11\/clear-ff-step5b.jpg","internal":true,"sizes":{"thumbnail":{"file":"clear-ff-step5b-150x150.jpg","width":150,"height":150,"mime-type":"image\/jpeg"},"medium":{"file":"clear-ff-step5b-267x300.jpg","width":267,"height":300,"mime-type":"image\/jpeg"},"wzslider-thumbnail":{"file":"clear-ff-step5b-49x55.jpg","width":49,"height":55,"mime-type":"image\/jpeg"},"recent-widget":{"file":"clear-ff-step5b-75x50.jpg","width":75,"height":50,"mime-type":"image\/jpeg"},"original":{"file":"2013\/11\/clear-ff-step5b.jpg","width":666,"height":746}},"image_meta":{"aperture":0,"credit":"","camera":"","caption":"","created_timestamp":0,"copyright":"","focal_length":0,"iso":0,"shutter_speed":0,"title":""},"description":"","title":"clear firefox step5b","caption":"clear firefox step5b"},"http:\/\/ken-shoufer.com\/wp-content\/uploads\/2013\/11\/create-chrome-profile-step1.png":{"id":383,"_entries":[],"type":"image","source":"http:\/\/ken-shoufer.com\/wp-content\/uploads\/2013\/11\/create-chrome-profile-step1.png","internal":true,"sizes":{"thumbnail":{"file":"create-chrome-profile-step1-150x150.png","width":150,"height":150,"mime-type":"image\/png"},"medium":{"file":"create-chrome-profile-step1-300x170.png","width":300,"height":170,"mime-type":"image\/png"},"wzslider-thumbnail":{"file":"create-chrome-profile-step1-96x55.png","width":96,"height":55,"mime-type":"image\/png"},"recent-widget":{"file":"create-chrome-profile-step1-75x50.png","width":75,"height":50,"mime-type":"image\/png"},"original":{"file":"2013\/11\/create-chrome-profile-step1.png","width":650,"height":369}},"image_meta":{"aperture":0,"credit":"","camera":"","caption":"","created_timestamp":0,"copyright":"","focal_length":0,"iso":0,"shutter_speed":0,"title":""},"description":"","title":"create chrome profile step 1","caption":"create chrome profile step 1"},"http:\/\/ken-shoufer.com\/wp-content\/uploads\/2013\/11\/create-chrome-profile-step2.png":{"id":384,"_entries":[],"type":"image","source":"http:\/\/ken-shoufer.com\/wp-content\/uploads\/2013\/11\/create-chrome-profile-step2.png","internal":true,"sizes":{"thumbnail":{"file":"create-chrome-profile-step2-150x150.png","width":150,"height":150,"mime-type":"image\/png"},"medium":{"file":"create-chrome-profile-step2-300x243.png","width":300,"height":243,"mime-type":"image\/png"},"wzslider-thumbnail":{"file":"create-chrome-profile-step2-67x55.png","width":67,"height":55,"mime-type":"image\/png"},"recent-widget":{"file":"create-chrome-profile-step2-75x50.png","width":75,"height":50,"mime-type":"image\/png"},"original":{"file":"2013\/11\/create-chrome-profile-step2.png","width":650,"height":528}},"image_meta":{"aperture":0,"credit":"","camera":"","caption":"","created_timestamp":0,"copyright":"","focal_length":0,"iso":0,"shutter_speed":0,"title":""},"description":"","title":"create chrome profile step 2","caption":"create chrome profile step 2"},"http:\/\/ken-shoufer.com\/wp-content\/uploads\/2013\/11\/create-chrome-profile-step3.png":{"id":385,"_entries":[],"type":"image","source":"http:\/\/ken-shoufer.com\/wp-content\/uploads\/2013\/11\/create-chrome-profile-step3.png","internal":true,"sizes":{"thumbnail":{"file":"create-chrome-profile-step3-150x150.png","width":150,"height":150,"mime-type":"image\/png"},"medium":{"file":"create-chrome-profile-step3-300x123.png","width":300,"height":123,"mime-type":"image\/png"},"wzslider-thumbnail":{"file":"create-chrome-profile-step3-133x55.png","width":133,"height":55,"mime-type":"image\/png"},"recent-widget":{"file":"create-chrome-profile-step3-75x50.png","width":75,"height":50,"mime-type":"image\/png"},"original":{"file":"2013\/11\/create-chrome-profile-step3.png","width":650,"height":268}},"image_meta":{"aperture":0,"credit":"","camera":"","caption":"","created_timestamp":0,"copyright":"","focal_length":0,"iso":0,"shutter_speed":0,"title":""},"description":"","title":"create chrome profile step 3","caption":"create chrome profile step 3"},"http:\/\/ken-shoufer.com\/wp-content\/uploads\/2013\/11\/clear-chrome-step2.jpg":{"id":396,"_entries":[],"type":"image","source":"http:\/\/ken-shoufer.com\/wp-content\/uploads\/2013\/11\/clear-chrome-step2.jpg","internal":true,"sizes":{"thumbnail":{"file":"clear-chrome-step2-150x150.jpg","width":150,"height":150,"mime-type":"image\/jpeg"},"medium":{"file":"clear-chrome-step2-300x292.jpg","width":300,"height":292,"mime-type":"image\/jpeg"},"wzslider-thumbnail":{"file":"clear-chrome-step2-56x55.jpg","width":56,"height":55,"mime-type":"image\/jpeg"},"recent-widget":{"file":"clear-chrome-step2-75x50.jpg","width":75,"height":50,"mime-type":"image\/jpeg"},"original":{"file":"2013\/11\/clear-chrome-step2.jpg","width":538,"height":524}},"image_meta":{"aperture":0,"credit":"","camera":"","caption":"","created_timestamp":0,"copyright":"","focal_length":0,"iso":0,"shutter_speed":0,"title":""},"description":"","title":"clear chrome step 2","caption":"clear chrome step 2"},"http:\/\/ken-shoufer.com\/wp-content\/uploads\/2013\/11\/clear-chrome-step3.jpg":{"id":397,"_entries":[],"type":"image","source":"http:\/\/ken-shoufer.com\/wp-content\/uploads\/2013\/11\/clear-chrome-step3.jpg","internal":true,"sizes":{"thumbnail":{"file":"clear-chrome-step3-150x150.jpg","width":150,"height":150,"mime-type":"image\/jpeg"},"medium":{"file":"clear-chrome-step3-300x227.jpg","width":300,"height":227,"mime-type":"image\/jpeg"},"wzslider-thumbnail":{"file":"clear-chrome-step3-72x55.jpg","width":72,"height":55,"mime-type":"image\/jpeg"},"recent-widget":{"file":"clear-chrome-step3-75x50.jpg","width":75,"height":50,"mime-type":"image\/jpeg"},"original":{"file":"2013\/11\/clear-chrome-step3.jpg","width":629,"height":477}},"image_meta":{"aperture":0,"credit":"","camera":"","caption":"","created_timestamp":0,"copyright":"","focal_length":0,"iso":0,"shutter_speed":0,"title":""},"description":"","title":"clear chrome step 3","caption":"clear chrome step 3"},"http:\/\/ken-shoufer.com\/wp-content\/uploads\/2013\/11\/clear-chrome-step4.jpg":{"id":398,"_entries":[],"type":"image","source":"http:\/\/ken-shoufer.com\/wp-content\/uploads\/2013\/11\/clear-chrome-step4.jpg","internal":true,"sizes":{"thumbnail":{"file":"clear-chrome-step4-150x150.jpg","width":150,"height":150,"mime-type":"image\/jpeg"},"medium":{"file":"clear-chrome-step4-300x227.jpg","width":300,"height":227,"mime-type":"image\/jpeg"},"wzslider-thumbnail":{"file":"clear-chrome-step4-72x55.jpg","width":72,"height":55,"mime-type":"image\/jpeg"},"recent-widget":{"file":"clear-chrome-step4-75x50.jpg","width":75,"height":50,"mime-type":"image\/jpeg"},"original":{"file":"2013\/11\/clear-chrome-step4.jpg","width":670,"height":508}},"image_meta":{"aperture":0,"credit":"","camera":"","caption":"","created_timestamp":0,"copyright":"","focal_length":0,"iso":0,"shutter_speed":0,"title":""},"description":"","title":"clear chrome step 4","caption":"clear chrome step 4"},"http:\/\/ken-shoufer.com\/wp-content\/uploads\/2013\/11\/create-ie-profile-step1.png":{"id":389,"_entries":[],"type":"image","source":"http:\/\/ken-shoufer.com\/wp-content\/uploads\/2013\/11\/create-ie-profile-step1.png","internal":true,"sizes":{"thumbnail":{"file":"create-ie-profile-step1-150x150.png","width":150,"height":150,"mime-type":"image\/png"},"medium":{"file":"create-ie-profile-step1-300x230.png","width":300,"height":230,"mime-type":"image\/png"},"wzslider-thumbnail":{"file":"create-ie-profile-step1-71x55.png","width":71,"height":55,"mime-type":"image\/png"},"recent-widget":{"file":"create-ie-profile-step1-75x50.png","width":75,"height":50,"mime-type":"image\/png"},"original":{"file":"2013\/11\/create-ie-profile-step1.png","width":650,"height":500}},"image_meta":{"aperture":0,"credit":"","camera":"","caption":"","created_timestamp":0,"copyright":"","focal_length":0,"iso":0,"shutter_speed":0,"title":""},"description":"","title":"create ie profile step 1","caption":"create ie profile step 1"},"http:\/\/ken-shoufer.com\/wp-content\/uploads\/2013\/11\/clear-ie9-10-step1.jpg":{"id":402,"_entries":[],"type":"image","source":"http:\/\/ken-shoufer.com\/wp-content\/uploads\/2013\/11\/clear-ie9-10-step1.jpg","internal":true,"sizes":{"thumbnail":{"file":"clear-ie9-10-step1-150x150.jpg","width":150,"height":150,"mime-type":"image\/jpeg"},"medium":{"file":"clear-ie9-10-step1-300x224.jpg","width":300,"height":224,"mime-type":"image\/jpeg"},"wzslider-thumbnail":{"file":"clear-ie9-10-step1-73x55.jpg","width":73,"height":55,"mime-type":"image\/jpeg"},"recent-widget":{"file":"clear-ie9-10-step1-75x50.jpg","width":75,"height":50,"mime-type":"image\/jpeg"},"original":{"file":"2013\/11\/clear-ie9-10-step1.jpg","width":551,"height":413}},"image_meta":{"aperture":0,"credit":"","camera":"","caption":"","created_timestamp":0,"copyright":"","focal_length":0,"iso":0,"shutter_speed":0,"title":""},"description":"","title":"clear ie9&10 step 1","caption":"clear ie9&10 step 1"},"http:\/\/ken-shoufer.com\/wp-content\/uploads\/2013\/11\/clear-ie9-10-step2.jpg":{"id":404,"_entries":[],"type":"image","source":"http:\/\/ken-shoufer.com\/wp-content\/uploads\/2013\/11\/clear-ie9-10-step2.jpg","internal":true,"sizes":{"thumbnail":{"file":"clear-ie9-10-step2-150x150.jpg","width":150,"height":150,"mime-type":"image\/jpeg"},"medium":{"file":"clear-ie9-10-step2-300x224.jpg","width":300,"height":224,"mime-type":"image\/jpeg"},"wzslider-thumbnail":{"file":"clear-ie9-10-step2-73x55.jpg","width":73,"height":55,"mime-type":"image\/jpeg"},"recent-widget":{"file":"clear-ie9-10-step2-75x50.jpg","width":75,"height":50,"mime-type":"image\/jpeg"},"original":{"file":"2013\/11\/clear-ie9-10-step2.jpg","width":551,"height":413}},"image_meta":{"aperture":0,"credit":"","camera":"","caption":"","created_timestamp":0,"copyright":"","focal_length":0,"iso":0,"shutter_speed":0,"title":""},"description":"","title":"clear ie9&10 step 2","caption":"clear ie9&10 step 2"},"http:\/\/ken-shoufer.com\/wp-content\/uploads\/2013\/11\/clear-ie9-10-step3.jpg":{"id":405,"_entries":[],"type":"image","source":"http:\/\/ken-shoufer.com\/wp-content\/uploads\/2013\/11\/clear-ie9-10-step3.jpg","internal":true,"sizes":{"thumbnail":{"file":"clear-ie9-10-step3-150x150.jpg","width":150,"height":150,"mime-type":"image\/jpeg"},"medium":{"file":"clear-ie9-10-step3-300x224.jpg","width":300,"height":224,"mime-type":"image\/jpeg"},"wzslider-thumbnail":{"file":"clear-ie9-10-step3-73x55.jpg","width":73,"height":55,"mime-type":"image\/jpeg"},"recent-widget":{"file":"clear-ie9-10-step3-75x50.jpg","width":75,"height":50,"mime-type":"image\/jpeg"},"original":{"file":"2013\/11\/clear-ie9-10-step3.jpg","width":551,"height":413}},"image_meta":{"aperture":0,"credit":"","camera":"","caption":"","created_timestamp":0,"copyright":"","focal_length":0,"iso":0,"shutter_speed":0,"title":""},"description":"","title":"clear ie9&10 step 3","caption":"clear ie9&10 step 3"},"http:\/\/ken-shoufer.com\/wp-content\/uploads\/2013\/11\/clear-ie9-10-step4.jpg":{"id":406,"_entries":[],"type":"image","source":"http:\/\/ken-shoufer.com\/wp-content\/uploads\/2013\/11\/clear-ie9-10-step4.jpg","internal":true,"sizes":{"thumbnail":{"file":"clear-ie9-10-step4-150x150.jpg","width":150,"height":150,"mime-type":"image\/jpeg"},"medium":{"file":"clear-ie9-10-step4-300x224.jpg","width":300,"height":224,"mime-type":"image\/jpeg"},"wzslider-thumbnail":{"file":"clear-ie9-10-step4-73x55.jpg","width":73,"height":55,"mime-type":"image\/jpeg"},"recent-widget":{"file":"clear-ie9-10-step4-75x50.jpg","width":75,"height":50,"mime-type":"image\/jpeg"},"original":{"file":"2013\/11\/clear-ie9-10-step4.jpg","width":551,"height":413}},"image_meta":{"aperture":0,"credit":"","camera":"","caption":"","created_timestamp":0,"copyright":"","focal_length":0,"iso":0,"shutter_speed":0,"title":""},"description":"","title":"clear ie9&10 step 4","caption":"clear ie9&10 step 4"},"http:\/\/ken-shoufer.com\/wp-content\/uploads\/2013\/11\/clear-safari-step1.png":{"id":408,"_entries":[],"type":"image","source":"http:\/\/ken-shoufer.com\/wp-content\/uploads\/2013\/11\/clear-safari-step1.png","internal":true,"sizes":{"thumbnail":{"file":"clear-safari-step1-150x150.png","width":150,"height":150,"mime-type":"image\/png"},"medium":{"file":"clear-safari-step1-199x300.png","width":199,"height":300,"mime-type":"image\/png"},"wzslider-thumbnail":{"file":"clear-safari-step1-36x55.png","width":36,"height":55,"mime-type":"image\/png"},"recent-widget":{"file":"clear-safari-step1-75x50.png","width":75,"height":50,"mime-type":"image\/png"},"original":{"file":"2013\/11\/clear-safari-step1.png","width":365,"height":550}},"image_meta":{"aperture":0,"credit":"","camera":"","caption":"","created_timestamp":0,"copyright":"","focal_length":0,"iso":0,"shutter_speed":0,"title":""},"description":"","title":"clear safari step 1","caption":"clear safari step 1"},"http:\/\/ken-shoufer.com\/wp-content\/uploads\/2013\/11\/clear-safari-step2.png":{"id":409,"_entries":[],"type":"image","source":"http:\/\/ken-shoufer.com\/wp-content\/uploads\/2013\/11\/clear-safari-step2.png","internal":true,"sizes":{"thumbnail":{"file":"clear-safari-step2-150x150.png","width":150,"height":150,"mime-type":"image\/png"},"medium":{"file":"clear-safari-step2-201x300.png","width":201,"height":300,"mime-type":"image\/png"},"wzslider-thumbnail":{"file":"clear-safari-step2-36x55.png","width":36,"height":55,"mime-type":"image\/png"},"recent-widget":{"file":"clear-safari-step2-75x50.png","width":75,"height":50,"mime-type":"image\/png"},"original":{"file":"2013\/11\/clear-safari-step2.png","width":369,"height":550}},"image_meta":{"aperture":0,"credit":"","camera":"","caption":"","created_timestamp":0,"copyright":"","focal_length":0,"iso":0,"shutter_speed":0,"title":""},"description":"","title":"clear safari step 2","caption":"clear safari step 2"},"http:\/\/ken-shoufer.com\/wp-content\/uploads\/2013\/11\/clear-safari-step3.png":{"id":410,"_entries":[],"type":"image","source":"http:\/\/ken-shoufer.com\/wp-content\/uploads\/2013\/11\/clear-safari-step3.png","internal":true,"sizes":{"thumbnail":{"file":"clear-safari-step3-150x150.png","width":150,"height":150,"mime-type":"image\/png"},"medium":{"file":"clear-safari-step3-199x300.png","width":199,"height":300,"mime-type":"image\/png"},"wzslider-thumbnail":{"file":"clear-safari-step3-36x55.png","width":36,"height":55,"mime-type":"image\/png"},"recent-widget":{"file":"clear-safari-step3-75x50.png","width":75,"height":50,"mime-type":"image\/png"},"original":{"file":"2013\/11\/clear-safari-step3.png","width":365,"height":549}},"image_meta":{"aperture":0,"credit":"","camera":"","caption":"","created_timestamp":0,"copyright":"","focal_length":0,"iso":0,"shutter_speed":0,"title":""},"description":"","title":"clear safari step 3","caption":"clear safari step 3"}});} }
+/* THM */
+if ( (typeof SLB != 'undefined') && (typeof SLB.View != 'undefined') && (typeof SLB.View.extend_theme != 'undefined') ) { SLB.View.extend_theme('slb_baseline',{"name":"Baseline","parent":"","styles":[{"handle":"base","uri":"http:\/\/ken-shoufer.com\/wp-content\/plugins\/simple-lightbox\/themes\/baseline\/css\/style.css","deps":[]}],"layout_raw":"<div class=\"slb_container\"><div class=\"slb_content\">{{item.content}}<div class=\"slb_nav\"><span class=\"slb_prev\">{{ui.nav_prev}}<\/span><span class=\"slb_next\">{{ui.nav_next}}<\/span><\/div><div class=\"slb_controls\"><span class=\"slb_close\">{{ui.close}}<\/span><span class=\"slb_slideshow\">{{ui.slideshow_control}}<\/span><\/div><div class=\"slb_loading\">{{ui.loading}}<\/div><\/div><div class=\"slb_details\"><div class=\"inner\"><div class=\"slb_data\"><div class=\"slb_data_content\"><span class=\"slb_data_title\">{{item.title}}<\/span><span class=\"slb_group_status\">{{ui.group_status}}<\/span><div class=\"slb_data_desc\">{{item.description}}<\/div><\/div><\/div><div class=\"slb_nav\"><span class=\"slb_prev\">{{ui.nav_prev}}<\/span><span class=\"slb_next\">{{ui.nav_next}}<\/span><\/div><\/div><\/div><\/div>"}); }if ( (typeof SLB != 'undefined') && (typeof SLB.View != 'undefined') && (typeof SLB.View.extend_theme != 'undefined') ) { SLB.View.extend_theme('slb_default',{"name":"Default (Light)","parent":"slb_baseline","styles":[{"handle":"font","uri":"http:\/\/fonts.googleapis.com\/css?family=Yanone+Kaffeesatz","deps":[]},{"handle":"base","uri":"http:\/\/ken-shoufer.com\/wp-content\/plugins\/simple-lightbox\/themes\/default\/css\/style.css","deps":[]}]}); }})})(jQuery);}/* ]]> */</script>
+<script type="text/javascript" id="slb_context">/* <![CDATA[ */if ( jQuery ){(function($){$(document).ready(function(){if ( (typeof SLB != 'undefined') ) { {$.extend(SLB, {"context":["public","user_guest"]});} }})})(jQuery);}/* ]]> */</script>
+</body>
+</html>
+<!-- Dynamic page generated in 1.338 seconds. -->
+<!-- Cached page generated by WP-Super-Cache on 2014-03-30 01:24:13 -->
+
+<!-- Compression = gzip -->
+<!-- super cache -->

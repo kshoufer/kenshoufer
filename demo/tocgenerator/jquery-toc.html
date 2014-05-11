@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+      	<meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width" />
+        <meta name="description" content="Generate TOC from H2 tags">
+        <meta name="author" content="Ken Shoufer">        
+
+        <title>TOC Generator</title>
+        <script type="text/javascript" src="jquery-2.0.3.min.js"></script>
+        <script type="text/javascript">
+            $("document").ready(function() {
+                buildBookmarks('h2', 'header');
+            });
+            
+            function buildBookmarks(strWhichTag, strBookMarkNode) {
+                var intAnchorCount = 1;
+                var objList = $("<ul id='bookmarksList'>");
+                $(strWhichTag).not("#header").each(function() {
+                    $(this).html("<a name='bookmark" + intAnchorCount + "'></a>" + $(this).html());
+                    objList.append($("<li><a href='#bookmark" + intAnchorCount++ + "'>" + 
+                        $(this).text() + "</a></li>"));
+                }); 
+                
+                $("#" + strBookMarkNode).append(objList);
+                }
+        </script>
+    </head>
+    <body>
+
+    <div id="wrapper" style="max-width: 1000px; margin: auto;">        
+
+        <div>
+            <h2 id="header">TOC Should Show Up Below</h2>
+        </div>
+
+        <div>
+            <h2>Paragraph1</h2>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque vel mi fringilla, accumsan justo at, dapibus lorem. Quisque diam lectus, viverra et mauris vitae, dignissim pharetra augue. Sed quis ornare lectus. Aenean vel lobortis leo. Maecenas vitae nulla id metus egestas egestas. Curabitur eros lectus, venenatis quis arcu non, lacinia porttitor nunc. Praesent sollicitudin orci ligula, nec sagittis libero pellentesque in. Maecenas vel euismod nunc. Vivamus porttitor massa tristique laoreet pellentesque. Ut in sapien vel urna scelerisque posuere vel id neque. Etiam nisi quam, ullamcorper id felis scelerisque, blandit eleifend dolor. 
+            </p>
+        </div>
+
+        <div>
+            <h2>Paragraph2</h2>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque vel mi fringilla, accumsan justo at, dapibus lorem. Quisque diam lectus, viverra et mauris vitae, dignissim pharetra augue. Sed quis ornare lectus. Aenean vel lobortis leo. Maecenas vitae nulla id metus egestas egestas. Curabitur eros lectus, venenatis quis arcu non, lacinia porttitor nunc. Praesent sollicitudin orci ligula, nec sagittis libero pellentesque in. Maecenas vel euismod nunc. Vivamus porttitor massa tristique laoreet pellentesque. Ut in sapien vel urna scelerisque posuere vel id neque. Etiam nisi quam, ullamcorper id felis scelerisque, blandit eleifend dolor. 
+            </p>
+        </div>
+
+        <div>
+            <h2>Paragraph3</h2>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque vel mi fringilla, accumsan justo at, dapibus lorem. Quisque diam lectus, viverra et mauris vitae, dignissim pharetra augue. Sed quis ornare lectus. Aenean vel lobortis leo. Maecenas vitae nulla id metus egestas egestas. Curabitur eros lectus, venenatis quis arcu non, lacinia porttitor nunc. Praesent sollicitudin orci ligula, nec sagittis libero pellentesque in. Maecenas vel euismod nunc. Vivamus porttitor massa tristique laoreet pellentesque. Ut in sapien vel urna scelerisque posuere vel id neque. Etiam nisi quam, ullamcorper id felis scelerisque, blandit eleifend dolor. 
+            </p>
+        </div>
+
+        <div>
+            <h2>Paragraph4</h2>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque vel mi fringilla, accumsan justo at, dapibus lorem. Quisque diam lectus, viverra et mauris vitae, dignissim pharetra augue. Sed quis ornare lectus. Aenean vel lobortis leo. Maecenas vitae nulla id metus egestas egestas. Curabitur eros lectus, venenatis quis arcu non, lacinia porttitor nunc. Praesent sollicitudin orci ligula, nec sagittis libero pellentesque in. Maecenas vel euismod nunc. Vivamus porttitor massa tristique laoreet pellentesque. Ut in sapien vel urna scelerisque posuere vel id neque. Etiam nisi quam, ullamcorper id felis scelerisque, blandit eleifend dolor. 
+            </p>
+        </div>
+
+        <div>
+            <h2>Paragraph5</h2>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque vel mi fringilla, accumsan justo at, dapibus lorem. Quisque diam lectus, viverra et mauris vitae, dignissim pharetra augue. Sed quis ornare lectus. Aenean vel lobortis leo. Maecenas vitae nulla id metus egestas egestas. Curabitur eros lectus, venenatis quis arcu non, lacinia porttitor nunc. Praesent sollicitudin orci ligula, nec sagittis libero pellentesque in. Maecenas vel euismod nunc. Vivamus porttitor massa tristique laoreet pellentesque. Ut in sapien vel urna scelerisque posuere vel id neque. Etiam nisi quam, ullamcorper id felis scelerisque, blandit eleifend dolor. 
+            </p>
+        </div>
+    
+        <div>
+            <h3>Misc Text</h2>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque vel mi fringilla, accumsan justo at, dapibus lorem. Quisque diam lectus, viverra et mauris vitae, dignissim pharetra augue. Sed quis ornare lectus. Aenean vel lobortis leo. Maecenas vitae nulla id metus egestas egestas. Curabitur eros lectus, venenatis quis arcu non, lacinia porttitor nunc. Praesent sollicitudin orci ligula, nec sagittis libero pellentesque in. Maecenas vel euismod nunc. Vivamus porttitor massa tristique laoreet pellentesque. Ut in sapien vel urna scelerisque posuere vel id neque. Etiam nisi quam, ullamcorper id felis scelerisque, blandit eleifend dolor. 
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque vel mi fringilla, accumsan justo at, dapibus lorem. Quisque diam lectus, viverra et mauris vitae, dignissim pharetra augue. Sed quis ornare lectus. Aenean vel lobortis leo. Maecenas vitae nulla id metus egestas egestas. Curabitur eros lectus, venenatis quis arcu non, lacinia porttitor nunc. Praesent sollicitudin orci ligula, nec sagittis libero pellentesque in. Maecenas vel euismod nunc. Vivamus porttitor massa tristique laoreet pellentesque. Ut in sapien vel urna scelerisque posuere vel id neque. Etiam nisi quam, ullamcorper id felis scelerisque, blandit eleifend dolor. 
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque vel mi fringilla, accumsan justo at, dapibus lorem. Quisque diam lectus, viverra et mauris vitae, dignissim pharetra augue. Sed quis ornare lectus. Aenean vel lobortis leo. Maecenas vitae nulla id metus egestas egestas. Curabitur eros lectus, venenatis quis arcu non, lacinia porttitor nunc. Praesent sollicitudin orci ligula, nec sagittis libero pellentesque in. Maecenas vel euismod nunc. Vivamus porttitor massa tristique laoreet pellentesque. Ut in sapien vel urna scelerisque posuere vel id neque. Etiam nisi quam, ullamcorper id felis scelerisque, blandit eleifend dolor. 
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque vel mi fringilla, accumsan justo at, dapibus lorem. Quisque diam lectus, viverra et mauris vitae, dignissim pharetra augue. Sed quis ornare lectus. Aenean vel lobortis leo. Maecenas vitae nulla id metus egestas egestas. Curabitur eros lectus, venenatis quis arcu non, lacinia porttitor nunc. Praesent sollicitudin orci ligula, nec sagittis libero pellentesque in. Maecenas vel euismod nunc. Vivamus porttitor massa tristique laoreet pellentesque. Ut in sapien vel urna scelerisque posuere vel id neque. Etiam nisi quam, ullamcorper id felis scelerisque, blandit eleifend dolor. 
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque vel mi fringilla, accumsan justo at, dapibus lorem. Quisque diam lectus, viverra et mauris vitae, dignissim pharetra augue. Sed quis ornare lectus. Aenean vel lobortis leo. Maecenas vitae nulla id metus egestas egestas. Curabitur eros lectus, venenatis quis arcu non, lacinia porttitor nunc. Praesent sollicitudin orci ligula, nec sagittis libero pellentesque in. Maecenas vel euismod nunc. Vivamus porttitor massa tristique laoreet pellentesque. Ut in sapien vel urna scelerisque posuere vel id neque. Etiam nisi quam, ullamcorper id felis scelerisque, blandit eleifend dolor. 
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque vel mi fringilla, accumsan justo at, dapibus lorem. Quisque diam lectus, viverra et mauris vitae, dignissim pharetra augue. Sed quis ornare lectus. Aenean vel lobortis leo. Maecenas vitae nulla id metus egestas egestas. Curabitur eros lectus, venenatis quis arcu non, lacinia porttitor nunc. Praesent sollicitudin orci ligula, nec sagittis libero pellentesque in. Maecenas vel euismod nunc. Vivamus porttitor massa tristique laoreet pellentesque. Ut in sapien vel urna scelerisque posuere vel id neque. Etiam nisi quam, ullamcorper id felis scelerisque, blandit eleifend dolor. 
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque vel mi fringilla, accumsan justo at, dapibus lorem. Quisque diam lectus, viverra et mauris vitae, dignissim pharetra augue. Sed quis ornare lectus. Aenean vel lobortis leo. Maecenas vitae nulla id metus egestas egestas. Curabitur eros lectus, venenatis quis arcu non, lacinia porttitor nunc. Praesent sollicitudin orci ligula, nec sagittis libero pellentesque in. Maecenas vel euismod nunc. Vivamus porttitor massa tristique laoreet pellentesque. Ut in sapien vel urna scelerisque posuere vel id neque. Etiam nisi quam, ullamcorper id felis scelerisque, blandit eleifend dolor. 
+            </p>
+        </div>
+    </div><!--end wrapper-->
+    
+    </body>
+</html>

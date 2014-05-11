@@ -1,0 +1,85 @@
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>CAPTCHA Demo</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <style>
+            
+            .mainForm {
+            background-color: #FFFFFF;
+            }
+
+            .mainFormError {
+            background-color: #FADADD;
+            }
+
+            #hpot {
+            display: none;
+            }
+        </style>
+        <script>
+            function validateField(fieldId, fieldType, required)
+            {
+              fieldObj = document.getElementById(fieldId);
+
+                   if(fieldType == 'text'  ||  fieldType == 'textarea'  )
+                    {	
+                     if(required == 1 && fieldObj.value == '')
+                      {
+                        fieldObj.setAttribute("class","mainFormError");
+                        fieldObj.setAttribute("className","mainFormError");
+                        fieldObj.focus();
+                        return false;					
+                      }
+                      else
+                      {
+                        fieldObj.setAttribute("class","mainForm");
+                        fieldObj.setAttribute("className","mainForm");
+                        fieldObj.focus();
+                      }
+                    if(fieldId == 'hpot' && fieldObj.value != '')
+                    {	
+                        return false;					
+                    }
+                }
+                    
+            }//end of validationField
+
+            function validatePage1()             
+            {                 
+              retVal = true;
+              if (validateField('name','text',1) == false)  
+                    retVal=false;             
+              if (validateField('email','text',1) == false)  
+                    retVal=false; 
+              if (validateField('hpot','text',0) == false)  
+                    retVal=false; 
+
+              if(retVal == false) {                     
+                    alert('Please correct the errors.\nFields marked with an asterisk (*) are required');                     
+                    return false;
+              }
+              else {
+                    alert("Thank you for your submission!\nYour report will be available after review.");
+              }                 
+              return retVal;
+              
+            }//end of validatePage1
+        </script>
+    </head>
+    <body>
+        <div>
+            <form action="submit.html" enctype="multipart/form-data" method="post" onsubmit="return validatePage1();">
+              <input class="mainForm" type="text" id="name" name="name" />
+              <input class="mainForm" type="text" id="email" name="email" />
+              <input class="mainForm" value="" type="text" id="hpot" name="hpot" />
+              <textarea class="mainForm" id="message" name="message"></textarea>
+              <input type="submit" value="Send" />
+            </form>
+        </div>
+    </body>
+</html>
