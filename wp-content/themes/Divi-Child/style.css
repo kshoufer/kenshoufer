@@ -141,10 +141,12 @@ a {
 
 .mobile_menu_bar:before {
     content: "b";
-
-#et-social-icons a {
-    color: #FF0000;
 }
+
+#main-content {
+    margin-top: 50px !important;
+}
+
 
 
 }/****end max-width: 479px****/
