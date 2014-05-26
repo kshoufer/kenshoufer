@@ -136,7 +136,15 @@ a {
 }
 
 #et_mobile_nav_menu {
-    margin: -40px 0 0 0;
+    margin-top: -40px !important;
 }
+
+.mobile_menu_bar:before {
+    content: "b";
+
+#et-social-icons a {
+    color: #FF0000;
+}
+
 
 }/****end max-width: 479px****/
