@@ -10,8 +10,18 @@ Template: Divi
     color: #fff;
 }
 
-.et-social-icon a {
+
+#et-social-icons {
+    text-align: right;
+}
+
+
+#et-social-icons a {
     color: #fff;
+}
+
+.et-social-icon span {
+    display: inline;
 }
 
 a {
