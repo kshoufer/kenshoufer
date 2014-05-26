@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Divi 1.0\n"
-"POT-Creation-Date: 2014-02-26 22:34+0400\n"
-"PO-Revision-Date: 2014-02-26 22:35+0400\n"
+"POT-Creation-Date: 2014-05-21 17:40+0400\n"
+"PO-Revision-Date: 2014-05-21 17:40+0400\n"
 "Last-Translator: \n"
 "Language-Team: Ann\n"
 "Language: ru_RU\n"
@@ -26,7 +26,7 @@ msgstr ""
 msgid "0 Comments"
 msgstr "Нет комментариев"
 
-#: ../comments.php:13 ../functions.php:194
+#: ../comments.php:13 ../functions.php:222
 msgid "1 Comment"
 msgstr "Один комментарий"
 
@@ -59,23 +59,7 @@ msgstr "Оставить комментарий"
 msgid "Leave a Reply to %s"
 msgstr "Оставить комментарий к %s"
 
-#: ../footer.php:10
-msgid "Facebook"
-msgstr ""
-
-#: ../footer.php:17
-msgid "Twitter"
-msgstr ""
-
-#: ../footer.php:24
-msgid "Google"
-msgstr ""
-
-#: ../footer.php:36
-msgid "RSS"
-msgstr ""
-
-#: ../footer.php:42
+#: ../footer.php:35
 #, fuzzy, php-format
 msgid "Designed by %1$s | Powered by %2$s"
 msgstr "Designed by %1$s | Powered by %2$s"
@@ -84,64 +68,77 @@ msgstr "Designed by %1$s | Powered by %2$s"
 msgid "Primary Menu"
 msgstr ""
 
-#: ../functions.php:63 ../functions.php:69
+#: ../functions.php:31
+msgid "Secondary Menu"
+msgstr ""
+
+#: ../functions.php:32
+msgid "Footer Menu"
+msgstr ""
+
+#: ../functions.php:69
 msgid "on"
 msgstr " "
 
-#: ../functions.php:120
+#: ../functions.php:126
 #, fuzzy
 msgid ""
 "Please, check the fields below to make sure you entered the correct "
 "information."
 msgstr "Больше информации"
 
-#: ../functions.php:121
+#: ../functions.php:127
 msgid "Fill"
 msgstr ""
 
-#: ../functions.php:122
+#: ../functions.php:128
 msgid "field"
 msgstr ""
 
-#: ../functions.php:123
+#: ../functions.php:129
 msgid "Invalid email"
 msgstr ""
 
-#: ../functions.php:124
+#: ../functions.php:130
 msgid "Captcha"
 msgstr ""
 
-#: ../functions.php:173
+#: ../functions.php:157
+#, fuzzy
+msgid "Select Page"
+msgstr "Редактировать страницу"
+
+#: ../functions.php:201
 #, php-format
 msgid "Posts by %s"
 msgstr "Опубликовано %s"
 
-#: ../functions.php:190
+#: ../functions.php:218
 msgid "% Comments"
 msgstr "% Коммент."
 
-#: ../functions.php:192
+#: ../functions.php:220
 msgid "No Comments"
 msgstr "Нет Комментариев"
 
-#: ../functions.php:207
+#: ../functions.php:235
 msgid "by"
 msgstr " "
 
-#: ../functions.php:223 ../functions.php:224 ../functions.php:225
-#: ../functions.php:226
+#: ../functions.php:251 ../functions.php:252 ../functions.php:253
+#: ../functions.php:254
 msgid "ET Settings"
 msgstr ""
 
-#: ../functions.php:232
+#: ../functions.php:260
 msgid "Projects"
 msgstr ""
 
-#: ../functions.php:233
+#: ../functions.php:261
 msgid "Project"
 msgstr ""
 
-#: ../functions.php:234 ../functions.php:316
+#: ../functions.php:262 ../functions.php:344
 #, fuzzy
 msgid "Add New"
 msgstr ""
@@ -152,7 +149,7 @@ msgstr ""
 "elegantthemes.com/members-area/documentation.html#update\" target=\"_blank"
 "\">re-install it</a> in order to update it to the latest version.</em>"
 
-#: ../functions.php:235
+#: ../functions.php:263
 #, fuzzy
 msgid "Add New Project"
 msgstr ""
@@ -163,12 +160,12 @@ msgstr ""
 "elegantthemes.com/members-area/documentation.html#update\" target=\"_blank"
 "\">re-install it</a> in order to update it to the latest version.</em>"
 
-#: ../functions.php:236
+#: ../functions.php:264
 #, fuzzy
 msgid "Edit Project"
 msgstr "(Ред.)"
 
-#: ../functions.php:237
+#: ../functions.php:265
 #, fuzzy
 msgid "New Project"
 msgstr ""
@@ -179,61 +176,61 @@ msgstr ""
 "elegantthemes.com/members-area/documentation.html#update\" target=\"_blank"
 "\">re-install it</a> in order to update it to the latest version.</em>"
 
-#: ../functions.php:238
+#: ../functions.php:266
 msgid "All Projects"
 msgstr ""
 
-#: ../functions.php:239
+#: ../functions.php:267
 #, fuzzy
 msgid "View Project"
 msgstr ""
 "Эта страница защищена паролем. Введите пароль для просмотра комментариев."
 
-#: ../functions.php:240
+#: ../functions.php:268
 #, fuzzy
 msgid "Search Projects"
 msgstr "Искать"
 
-#: ../functions.php:241 ../functions.php:323
+#: ../functions.php:269 ../functions.php:351
 msgid "Nothing found"
 msgstr "Ничего не найдено"
 
-#: ../functions.php:242 ../functions.php:324
+#: ../functions.php:270 ../functions.php:352
 #, fuzzy
 msgid "Nothing found in Trash"
 msgstr "Ничего не найдено"
 
-#: ../functions.php:269 ../functions.php:279 ../epanel/options_divi.php:264
+#: ../functions.php:297 ../functions.php:307 ../epanel/options_divi.php:276
 msgid "Categories"
 msgstr ""
 
-#: ../functions.php:270
+#: ../functions.php:298
 msgid "Category"
 msgstr ""
 
-#: ../functions.php:271
+#: ../functions.php:299
 #, fuzzy
 msgid "Search Categories"
 msgstr "Искать"
 
-#: ../functions.php:272
+#: ../functions.php:300
 msgid "All Categories"
 msgstr ""
 
-#: ../functions.php:273
+#: ../functions.php:301
 msgid "Parent Category"
 msgstr ""
 
-#: ../functions.php:274
+#: ../functions.php:302
 msgid "Parent Category:"
 msgstr ""
 
-#: ../functions.php:275
+#: ../functions.php:303
 #, fuzzy
 msgid "Edit Category"
 msgstr "(Ред.)"
 
-#: ../functions.php:276
+#: ../functions.php:304
 #, fuzzy
 msgid "Update Category"
 msgstr ""
@@ -244,7 +241,7 @@ msgstr ""
 "elegantthemes.com/members-area/documentation.html#update\" target=\"_blank"
 "\">re-install it</a> in order to update it to the latest version.</em>"
 
-#: ../functions.php:277
+#: ../functions.php:305
 #, fuzzy
 msgid "Add New Category"
 msgstr ""
@@ -255,42 +252,42 @@ msgstr ""
 "elegantthemes.com/members-area/documentation.html#update\" target=\"_blank"
 "\">re-install it</a> in order to update it to the latest version.</em>"
 
-#: ../functions.php:278
+#: ../functions.php:306
 #, fuzzy
 msgid "New Category Name"
 msgstr "Имя"
 
-#: ../functions.php:291 ../functions.php:301
+#: ../functions.php:319 ../functions.php:329
 msgid "Tags"
 msgstr ""
 
-#: ../functions.php:292
+#: ../functions.php:320
 msgid "Tag"
 msgstr ""
 
-#: ../functions.php:293
+#: ../functions.php:321
 #, fuzzy
 msgid "Search Tags"
 msgstr "Искать"
 
-#: ../functions.php:294
+#: ../functions.php:322
 msgid "All Tags"
 msgstr ""
 
-#: ../functions.php:295
+#: ../functions.php:323
 msgid "Parent Tag"
 msgstr ""
 
-#: ../functions.php:296
+#: ../functions.php:324
 msgid "Parent Tag:"
 msgstr ""
 
-#: ../functions.php:297
+#: ../functions.php:325
 #, fuzzy
 msgid "Edit Tag"
 msgstr "(Ред.)"
 
-#: ../functions.php:298
+#: ../functions.php:326
 #, fuzzy
 msgid "Update Tag"
 msgstr ""
@@ -301,7 +298,7 @@ msgstr ""
 "elegantthemes.com/members-area/documentation.html#update\" target=\"_blank"
 "\">re-install it</a> in order to update it to the latest version.</em>"
 
-#: ../functions.php:299
+#: ../functions.php:327
 #, fuzzy
 msgid "Add New Tag"
 msgstr ""
@@ -312,20 +309,20 @@ msgstr ""
 "elegantthemes.com/members-area/documentation.html#update\" target=\"_blank"
 "\">re-install it</a> in order to update it to the latest version.</em>"
 
-#: ../functions.php:300
+#: ../functions.php:328
 #, fuzzy
 msgid "New Tag Name"
 msgstr "Имя"
 
-#: ../functions.php:314
+#: ../functions.php:342
 msgid "Layouts"
 msgstr ""
 
-#: ../functions.php:315
+#: ../functions.php:343
 msgid "Layout"
 msgstr ""
 
-#: ../functions.php:317
+#: ../functions.php:345
 #, fuzzy
 msgid "Add New Layout"
 msgstr ""
@@ -336,12 +333,12 @@ msgstr ""
 "elegantthemes.com/members-area/documentation.html#update\" target=\"_blank"
 "\">re-install it</a> in order to update it to the latest version.</em>"
 
-#: ../functions.php:318
+#: ../functions.php:346
 #, fuzzy
 msgid "Edit Layout"
 msgstr "(Ред.)"
 
-#: ../functions.php:319
+#: ../functions.php:347
 #, fuzzy
 msgid "New Layout"
 msgstr ""
@@ -352,222 +349,500 @@ msgstr ""
 "elegantthemes.com/members-area/documentation.html#update\" target=\"_blank"
 "\">re-install it</a> in order to update it to the latest version.</em>"
 
-#: ../functions.php:320
+#: ../functions.php:348
 msgid "All Layouts"
 msgstr ""
 
-#: ../functions.php:321
+#: ../functions.php:349
 #, fuzzy
 msgid "View Layout"
 msgstr ""
 "Эта страница защищена паролем. Введите пароль для просмотра комментариев."
 
-#: ../functions.php:322
+#: ../functions.php:350
 #, fuzzy
 msgid "Search Layouts"
 msgstr "Искать"
 
-#: ../functions.php:346
+#: ../functions.php:374
 msgid "Skills"
 msgstr ""
 
-#: ../functions.php:349
+#: ../functions.php:377
 msgid "Posted on"
 msgstr "Опубликовано"
 
-#: ../functions.php:364 ../epanel/options_divi.php:88
+#: ../functions.php:392 ../epanel/options_divi.php:88
 msgid "Right Sidebar"
 msgstr ""
 
-#: ../functions.php:365 ../epanel/options_divi.php:89
+#: ../functions.php:393 ../epanel/options_divi.php:89
 msgid "Left Sidebar"
 msgstr ""
 
-#: ../functions.php:366 ../epanel/options_divi.php:90
+#: ../functions.php:394 ../epanel/options_divi.php:90
 msgid "Full Width"
 msgstr ""
 
-#: ../functions.php:370
+#: ../functions.php:398 ../functions.php:755 ../functions.php:787
+msgid "Light"
+msgstr ""
+
+#: ../functions.php:399 ../functions.php:754 ../functions.php:786
+msgid "Dark"
+msgstr ""
+
+#: ../functions.php:412
 #, fuzzy
 msgid "Page Layout"
 msgstr "Редактировать страницу"
 
-#: ../functions.php:442
-msgid "Fonts"
-msgstr ""
-
-#: ../functions.php:447
-msgid "Schemes"
-msgstr ""
-
-#: ../functions.php:449
+#: ../functions.php:436
 #, fuzzy
-msgid ""
-"Note: Color settings set above should be applied to the Default color scheme."
+msgid "Use Background Color"
+msgstr ""
+"Запрашиваемая страница не найдена. Попробуйте уточнить параметры поиска или "
+"используйте меню для нахождения страницы."
+
+#: ../functions.php:440
+msgid "Background Color"
+msgstr ""
+
+#: ../functions.php:441
+msgid "Hex Value"
+msgstr ""
+
+#: ../functions.php:445
+msgid "Text Color"
+msgstr ""
+
+#: ../functions.php:524
+#, fuzzy
+msgid "Theme Settings"
 msgstr ""
 "<div class=\"updated\"><p>This is a fresh installation of %1$s theme. Don't "
 "forget to go to <a href=\"%2$s\">ePanel</a> to set it up. This message will "
 "disappear once you have clicked the Save button within the <a href=\"%2$s"
 "\">theme's options page</a>.</p></div>"
 
-#: ../functions.php:460
+#: ../functions.php:529
+msgid "Fonts"
+msgstr ""
+
+#: ../functions.php:534
+msgid "Schemes"
+msgstr ""
+
+#: ../functions.php:536
+#, fuzzy
+msgid ""
+"Note: Color settings set above should be applied to the Default color scheme."
+msgstr ""
+"Запрашиваемая страница не найдена. Попробуйте уточнить параметры поиска или "
+"используйте меню для нахождения страницы."
+
+#: ../functions.php:547
 msgid "Link Color"
 msgstr ""
 
-#: ../functions.php:473
+#: ../functions.php:560
 msgid "Main Font Color"
 msgstr ""
 
-#: ../functions.php:486
+#: ../functions.php:573
 msgid "Accent Color"
 msgstr ""
 
-#: ../functions.php:499
+#: ../functions.php:586
 msgid "Footer Background Color"
 msgstr ""
 
-#: ../functions.php:512
+#: ../functions.php:599
 msgid "Menu Links Color"
 msgstr ""
 
-#: ../functions.php:525
+#: ../functions.php:612
 msgid "Active Menu Link Color"
 msgstr ""
 
-#: ../functions.php:537
-msgid "Header Font"
+#: ../functions.php:624
+#, fuzzy
+msgid "Boxed Layout"
+msgstr ""
+"There is a new version of %1$s available. <a href=\"%2$s\" class=\"thickbox"
+"\" title=\"%1$s\">View version %3$s details</a>. <em>Auto-updates are not "
+"available for this theme. If this is an Elegant Themes theme, then you must "
+"re-download the theme from the member's area and <a href=\"http://www."
+"elegantthemes.com/members-area/documentation.html#update\" target=\"_blank"
+"\">re-install it</a> in order to update it to the latest version.</em>"
+
+#: ../functions.php:637
+#, fuzzy
+msgid "Vertical Navigation"
+msgstr ""
+"Запрашиваемая страница не найдена. Попробуйте уточнить параметры поиска или "
+"используйте меню для нахождения страницы."
+
+#: ../functions.php:650
+msgid "Show Social Icons in Header"
 msgstr ""
 
-#: ../functions.php:551
-msgid "Body Font"
+#: ../functions.php:664
+msgid "Show Social Icons in Footer"
 msgstr ""
 
-#: ../functions.php:566
-msgid "Color Schemes"
+#: ../functions.php:678
+#, fuzzy
+msgid "Show Search Icon"
+msgstr "Искать"
+
+#: ../functions.php:692
+msgid "Header Style"
 msgstr ""
 
-#: ../functions.php:571
+#: ../functions.php:696 ../functions.php:833
 msgid "Default"
 msgstr ""
 
-#: ../functions.php:572
+#: ../functions.php:697
+msgid "Centered"
+msgstr ""
+
+#: ../functions.php:709
+msgid "Phone Number"
+msgstr ""
+
+#: ../functions.php:722
+msgid "Email"
+msgstr ""
+
+#: ../functions.php:736
+#, fuzzy
+msgid "Primary Navigation Background"
+msgstr ""
+"Запрашиваемая страница не найдена. Попробуйте уточнить параметры поиска или "
+"используйте меню для нахождения страницы."
+
+#: ../functions.php:750
+#, fuzzy
+msgid "Primary Navigation Text Color"
+msgstr ""
+"Запрашиваемая страница не найдена. Попробуйте уточнить параметры поиска или "
+"используйте меню для нахождения страницы."
+
+#: ../functions.php:768
+#, fuzzy
+msgid "Secondary Navigation Background"
+msgstr ""
+"Запрашиваемая страница не найдена. Попробуйте уточнить параметры поиска или "
+"используйте меню для нахождения страницы."
+
+#: ../functions.php:782
+#, fuzzy
+msgid "Secondary Navigation Text Color"
+msgstr ""
+"Запрашиваемая страница не найдена. Попробуйте уточнить параметры поиска или "
+"используйте меню для нахождения страницы."
+
+#: ../functions.php:799
+msgid "Header Font"
+msgstr ""
+
+#: ../functions.php:813
+msgid "Body Font"
+msgstr ""
+
+#: ../functions.php:828
+msgid "Color Schemes"
+msgstr ""
+
+#: ../functions.php:834
 msgid "Green"
 msgstr ""
 
-#: ../functions.php:573
+#: ../functions.php:835
 msgid "Orange"
 msgstr ""
 
-#: ../functions.php:574
+#: ../functions.php:836
 msgid "Pink"
 msgstr ""
 
-#: ../functions.php:575
+#: ../functions.php:837
 msgid "Red"
 msgstr ""
 
-#: ../functions.php:656
+#: ../functions.php:922
 msgid "0 comments"
 msgstr "нет комментариев"
 
-#: ../functions.php:656
+#: ../functions.php:922
 msgid "1 comment"
 msgstr "один комментарий"
 
-#: ../functions.php:656
+#: ../functions.php:922
 msgid "comments"
 msgstr "коммент."
 
-#: ../functions.php:1345
+#: ../functions.php:1201
+#, fuzzy, php-format
+msgid "%1$s Items"
+msgstr "%1$s"
+
+#: ../functions.php:1378
+msgid "Connecting..."
+msgstr ""
+
+#: ../functions.php:1379
+msgid "Connection failed"
+msgstr ""
+
+#: ../functions.php:1380
+msgid "Removing connection..."
+msgstr ""
+
+#: ../functions.php:1381
+msgid "Done"
+msgstr ""
+
+#: ../functions.php:1410
+#, fuzzy, php-format
+msgid ""
+"Step 1: <a href=\"%1$s\" target=\"_blank\">Generate authorization code</a>"
+msgstr ""
+"There is a new version of %1$s available. <a href=\"%2$s\" class=\"thickbox"
+"\" title=\"%1$s\">View version %3$s details</a>. <em>Auto-updates are not "
+"available for this theme. If this is an Elegant Themes theme, then you must "
+"re-download the theme from the member's area and <a href=\"http://www."
+"elegantthemes.com/members-area/documentation.html#update\" target=\"_blank"
+"\">re-install it</a> in order to update it to the latest version.</em>"
+
+#: ../functions.php:1411
+#, fuzzy
+msgid ""
+"Step 2: Paste in the authorization code and click \"Make a connection\" "
+"button: "
+msgstr ""
+"<div class=\"updated\"><p>This is a fresh installation of %1$s theme. Don't "
+"forget to go to <a href=\"%2$s\">ePanel</a> to set it up. This message will "
+"disappear once you have clicked the Save button within the <a href=\"%2$s"
+"\">theme's options page</a>.</p></div>"
+
+#: ../functions.php:1412
+msgid "Make a connection"
+msgstr ""
+
+#: ../functions.php:1415
+#, fuzzy
+msgid "Aweber is set up properly. You can remove connection here if you wish."
+msgstr ""
+"<div class=\"updated\"><p>This is a fresh installation of %1$s theme. Don't "
+"forget to go to <a href=\"%2$s\">ePanel</a> to set it up. This message will "
+"disappear once you have clicked the Save button within the <a href=\"%2$s"
+"\">theme's options page</a>.</p></div>"
+
+#: ../functions.php:1416
+msgid "Remove the connection"
+msgstr ""
+
+#: ../functions.php:1424
+msgid "Nonce failed."
+msgstr ""
+
+#: ../functions.php:1430
+msgid "Authorization code is empty."
+msgstr ""
+
+#: ../functions.php:1441
+#, fuzzy
+msgid ""
+"Authorization code is invalid. Try regenerating it and paste in the new code."
+msgstr ""
+"Запрашиваемая страница не найдена. Попробуйте уточнить параметры поиска или "
+"используйте меню для нахождения страницы."
+
+#: ../functions.php:1472
+msgid "Nonce failed"
+msgstr ""
+
+#: ../functions.php:1567
+#, fuzzy
+msgid "Read more"
+msgstr "Далее"
+
+#: ../functions.php:2115 ../includes/social_icons.php:6
+msgid "Facebook"
+msgstr ""
+
+#: ../functions.php:2123 ../includes/social_icons.php:13
+msgid "Twitter"
+msgstr ""
+
+#: ../functions.php:2131
+msgid "Google+"
+msgstr ""
+
+#: ../functions.php:2139
+msgid "LinkedIn"
+msgstr ""
+
+#: ../functions.php:2358
 msgid "Tab"
 msgstr ""
 
-#: ../functions.php:1565
+#: ../functions.php:2557
+msgid "Follow"
+msgstr ""
+
+#: ../functions.php:2641
+msgid "Days"
+msgstr ""
+
+#: ../functions.php:2642
+msgid "Hours"
+msgstr ""
+
+#: ../functions.php:2643
+msgid "Hrs"
+msgstr ""
+
+#: ../functions.php:2644
+msgid "Minutes"
+msgstr ""
+
+#: ../functions.php:2645
+msgid "Min"
+msgstr ""
+
+#: ../functions.php:2646
+msgid "Seconds"
+msgstr ""
+
+#: ../functions.php:2647
+msgid "Sec"
+msgstr ""
+
+#: ../functions.php:2800
+#, fuzzy, php-format
+msgid "by <strong>%1$s</strong>"
+msgstr "%1$s"
+
+#: ../functions.php:2954
 #, fuzzy
 msgid ""
 "<h2 class=\"et_pb_subscribed\">Subscribed - look for the confirmation email!"
 "</h2>"
 msgstr "Перевод описания"
 
-#: ../functions.php:1578
+#: ../functions.php:3018
 msgid "Subscribe"
 msgstr ""
 
-#: ../functions.php:1591
+#: ../functions.php:3034
 #, fuzzy
 msgid "First Name"
 msgstr "Имя"
 
-#: ../functions.php:1592
+#: ../functions.php:3035
 #, fuzzy
 msgid "Last Name"
 msgstr "Имя"
 
-#: ../functions.php:1593 ../functions.php:2152
+#: ../functions.php:3036 ../functions.php:4137
 msgid "Email Address"
 msgstr ""
 
-#: ../functions.php:1761
+#: ../functions.php:3092 ../functions.php:4136
+#, fuzzy
+msgid "Name"
+msgstr "Имя"
+
+#: ../functions.php:3167
+msgid "Username"
+msgstr ""
+
+#: ../functions.php:3168
+#, fuzzy
+msgid "Password"
+msgstr ""
+"Эта страница защищена паролем. Введите пароль для просмотра комментариев."
+
+#: ../functions.php:3188
+#, fuzzy
+msgid "Forgot your password?"
+msgstr ""
+"Эта страница защищена паролем. Введите пароль для просмотра комментариев."
+
+#: ../functions.php:3195 ../epanel/shortcodes/shortcodes.php:292
+msgid "Login"
+msgstr ""
+
+#: ../functions.php:3368
 #, fuzzy, php-format
 msgid "by %s |"
-msgstr "Опубликовано %s"
+msgstr "%1$s"
 
-#: ../functions.php:1766
+#: ../functions.php:3373
 #, fuzzy, php-format
 msgid "%s |"
-msgstr "Опубликовано %s"
+msgstr "%1$s"
 
-#: ../functions.php:1781
+#: ../functions.php:3388
 #, fuzzy
 msgid "read more..."
 msgstr "Далее"
 
-#: ../functions.php:2091
+#: ../functions.php:3799
+msgid "All"
+msgstr ""
+
+#: ../functions.php:4076
 #, fuzzy
 msgid "Make sure you entered the captcha."
 msgstr ""
 "Запрашиваемая страница не найдена. Попробуйте уточнить параметры поиска или "
 "используйте меню для нахождения страницы."
 
-#: ../functions.php:2094
+#: ../functions.php:4079
 #, fuzzy
 msgid "You entered the wrong number in captcha."
 msgstr ""
 "Запрашиваемая страница не найдена. Попробуйте уточнить параметры поиска или "
 "используйте меню для нахождения страницы."
 
-#: ../functions.php:2101
+#: ../functions.php:4086
 #, fuzzy
 msgid "Make sure you fill all fields."
 msgstr ""
 "Запрашиваемая страница не найдена. Попробуйте уточнить параметры поиска или "
 "используйте меню для нахождения страницы."
 
-#: ../functions.php:2106
+#: ../functions.php:4091
 msgid "Invalid Email."
 msgstr ""
 
-#: ../functions.php:2141
+#: ../functions.php:4126
 #, fuzzy, php-format
 msgid "New Message From %1$s%2$s"
-msgstr "Designed by %1$s | Powered by %2$s"
+msgstr ""
+"There is a new version of %1$s available. <a href=\"%2$s\" class=\"thickbox"
+"\" title=\"%1$s\">View version %3$s details</a>. <em>Auto-updates are not "
+"available for this theme. If this is an Elegant Themes theme, then you must "
+"re-download the theme from the member's area and <a href=\"http://www."
+"elegantthemes.com/members-area/documentation.html#update\" target=\"_blank"
+"\">re-install it</a> in order to update it to the latest version.</em>"
 
-#: ../functions.php:2143
+#: ../functions.php:4128
 #, fuzzy, php-format
 msgid " - %s"
-msgstr "Опубликовано %s"
+msgstr "%1$s"
 
-#: ../functions.php:2146
+#: ../functions.php:4131
 #, fuzzy
 msgid "Thanks for contacting us"
 msgstr "Пожалуйста, не загружайте эту страницу напрямую. Спасибо!"
 
-#: ../functions.php:2151
-#, fuzzy
-msgid "Name"
-msgstr "Имя"
-
-#: ../functions.php:2153
+#: ../functions.php:4138
 #, fuzzy
 msgid "Message"
 msgstr ""
@@ -576,21 +851,17 @@ msgstr ""
 "disappear once you have clicked the Save button within the <a href=\"%2$s"
 "\">theme's options page</a>.</p></div>"
 
-#: ../functions.php:2207
+#: ../functions.php:4191
 #, fuzzy
 msgid "Submit"
 msgstr "Отправить"
 
-#: ../functions.php:2208 ../epanel/core_functions.php:203
-#: ../epanel/core_functions.php:379
-msgid "Reset"
-msgstr ""
-
-#: ../header.php:62 ../epanel/custom_functions.php:462
+#: ../functions.php:4377 ../header.php:143 ../epanel/custom_functions.php:465
 msgid "Home"
 msgstr "Главная"
 
-#: ../page.php:46 ../single-project.php:51 ../single.php:34
+#: ../page-template-blank.php:49 ../page.php:46 ../single-project.php:51
+#: ../single.php:89
 msgid "Pages:"
 msgstr "Страницы:"
 
@@ -604,7 +875,7 @@ msgstr "&larr; Пред."
 msgid "&rarr;"
 msgstr "След. &rarr;"
 
-#: ../epanel/core_functions.php:26 ../epanel/core_functions.php:391
+#: ../epanel/core_functions.php:26 ../epanel/core_functions.php:395
 msgid "Saving..."
 msgstr ""
 
@@ -643,8 +914,8 @@ msgstr ""
 msgid "settings reset."
 msgstr ""
 
-#: ../epanel/core_functions.php:111 ../epanel/options_divi.php:269
-#: ../epanel/options_divi.php:420
+#: ../epanel/core_functions.php:111 ../epanel/options_divi.php:281
+#: ../epanel/options_divi.php:432
 msgid "General Settings"
 msgstr ""
 
@@ -679,6 +950,10 @@ msgstr ""
 msgid "Support Docs"
 msgstr ""
 
+#: ../epanel/core_functions.php:203 ../epanel/core_functions.php:383
+msgid "Reset"
+msgstr ""
+
 #: ../epanel/core_functions.php:204
 msgid "Upload Image"
 msgstr ""
@@ -692,7 +967,7 @@ msgstr ""
 "disappear once you have clicked the Save button within the <a href=\"%2$s"
 "\">theme's options page</a>.</p></div>"
 
-#: ../epanel/core_functions.php:364
+#: ../epanel/core_functions.php:368
 #, fuzzy
 msgid "Save changes"
 msgstr ""
@@ -701,7 +976,7 @@ msgstr ""
 "disappear once you have clicked the Save button within the <a href=\"%2$s"
 "\">theme's options page</a>.</p></div>"
 
-#: ../epanel/core_functions.php:375
+#: ../epanel/core_functions.php:379
 #, fuzzy
 msgid ""
 "This will return all of the settings throughout the options page to their "
@@ -712,34 +987,34 @@ msgstr ""
 "disappear once you have clicked the Save button within the <a href=\"%2$s"
 "\">theme's options page</a>.</p></div>"
 
-#: ../epanel/custom_functions.php:189
+#: ../epanel/custom_functions.php:192
 msgid "&hellip;"
 msgstr ""
 
-#: ../epanel/custom_functions.php:703
+#: ../epanel/custom_functions.php:706
 msgid "Archives"
 msgstr ""
 
-#: ../epanel/custom_functions.php:705
+#: ../epanel/custom_functions.php:708
 #, fuzzy, php-format
 msgid "Search results for \"%s\""
 msgstr "Результаты поиска по"
 
-#: ../epanel/custom_functions.php:707
+#: ../epanel/custom_functions.php:710
 #, fuzzy
 msgid "404 Not Found"
 msgstr "Ничего не найдено"
 
-#: ../epanel/custom_functions.php:778
+#: ../epanel/custom_functions.php:781
 #, fuzzy, php-format
 msgid "Currently viewing archives from %1$s"
 msgstr "%1$s"
 
-#: ../epanel/custom_functions.php:1011
+#: ../epanel/custom_functions.php:1014
 msgid "Image doesn't exist"
 msgstr ""
 
-#: ../epanel/custom_functions.php:1207
+#: ../epanel/custom_functions.php:1210
 #, fuzzy, php-format
 msgid ""
 "<div class=\"updated\"><p>This is a fresh installation of %1$s theme. Don't "
@@ -752,7 +1027,7 @@ msgstr ""
 "disappear once you have clicked the Save button within the <a href=\"%2$s"
 "\">theme's options page</a>.</p></div>"
 
-#: ../epanel/custom_functions.php:1219
+#: ../epanel/custom_functions.php:1222
 #, fuzzy, php-format
 msgid ""
 "There is a new version of %1$s available. <a href=\"%2$s\" class=\"thickbox"
@@ -768,7 +1043,7 @@ msgstr ""
 "elegantthemes.com/members-area/documentation.html#update\" target=\"_blank"
 "\">re-install it</a> in order to update it to the latest version.</em>"
 
-#: ../epanel/custom_functions.php:1223
+#: ../epanel/custom_functions.php:1226
 #, fuzzy
 msgid ""
 "Before you can update your Elegant Themes, you must first install the <a "
@@ -890,12 +1165,21 @@ msgstr ""
 "elegantthemes.com/members-area/documentation.html#update\" target=\"_blank"
 "\">re-install it</a> in order to update it to the latest version.</em>"
 
-#: ../epanel/options_divi.php:169
+#: ../epanel/options_divi.php:105
+msgid "Aweber Authorization"
+msgstr ""
+
+#: ../epanel/options_divi.php:107
+#, fuzzy
+msgid "Authorize your Aweber account here."
+msgstr "Ваш комментарий ожидает модерации."
+
+#: ../epanel/options_divi.php:181
 #, fuzzy
 msgid "Number of Posts displayed on Category page"
 msgstr "Опубликовано"
 
-#: ../epanel/options_divi.php:173
+#: ../epanel/options_divi.php:185
 #, fuzzy
 msgid ""
 "Here you can designate how many recent articles are displayed on the "
@@ -903,12 +1187,12 @@ msgid ""
 "options in wp-admin."
 msgstr "Последние статьи"
 
-#: ../epanel/options_divi.php:177
+#: ../epanel/options_divi.php:189
 #, fuzzy
 msgid "Number of Posts displayed on Archive pages"
 msgstr "Страницы"
 
-#: ../epanel/options_divi.php:181
+#: ../epanel/options_divi.php:193
 #, fuzzy
 msgid ""
 "Here you can designate how many recent articles are displayed on the Archive "
@@ -916,12 +1200,12 @@ msgid ""
 "in wp-admin."
 msgstr "Последние статьи"
 
-#: ../epanel/options_divi.php:185
+#: ../epanel/options_divi.php:197
 #, fuzzy
 msgid "Number of Posts displayed on Search pages"
 msgstr "Страницы"
 
-#: ../epanel/options_divi.php:189
+#: ../epanel/options_divi.php:201
 #, fuzzy
 msgid ""
 "Here you can designate how many recent articles are displayed on the Search "
@@ -929,12 +1213,12 @@ msgid ""
 "options in wp-admin."
 msgstr "Последние статьи"
 
-#: ../epanel/options_divi.php:193
+#: ../epanel/options_divi.php:205
 #, fuzzy
 msgid "Number of Posts displayed on Tag pages"
 msgstr "Страницы"
 
-#: ../epanel/options_divi.php:197
+#: ../epanel/options_divi.php:209
 #, fuzzy
 msgid ""
 "Here you can designate how many recent articles are displayed on the Tag "
@@ -942,11 +1226,11 @@ msgid ""
 "in wp-admin."
 msgstr "Последние статьи"
 
-#: ../epanel/options_divi.php:201
+#: ../epanel/options_divi.php:213
 msgid "Date format"
 msgstr ""
 
-#: ../epanel/options_divi.php:205
+#: ../epanel/options_divi.php:217
 #, fuzzy
 msgid ""
 "This option allows you to change how your dates are displayed. For more "
@@ -961,79 +1245,83 @@ msgstr ""
 "elegantthemes.com/members-area/documentation.html#update\" target=\"_blank"
 "\">re-install it</a> in order to update it to the latest version.</em>"
 
-#: ../epanel/options_divi.php:211
+#: ../epanel/options_divi.php:223
 #, fuzzy
 msgid "Use excerpts when defined"
 msgstr ""
 "Запрашиваемая страница не найдена. Попробуйте уточнить параметры поиска или "
 "используйте меню для нахождения страницы."
 
-#: ../epanel/options_divi.php:215
+#: ../epanel/options_divi.php:227
 #, fuzzy
 msgid "This will enable the use of excerpts in posts or pages."
 msgstr "Страницы"
 
-#: ../epanel/options_divi.php:218
+#: ../epanel/options_divi.php:230
 msgid "Responsive shortcodes"
 msgstr ""
 
-#: ../epanel/options_divi.php:222
+#: ../epanel/options_divi.php:234
 msgid "Enable this option to make shortcodes respond to various screen sizes"
 msgstr ""
 
-#: ../epanel/options_divi.php:227
+#: ../epanel/options_divi.php:239
 msgid "Google Fonts subsets"
 msgstr ""
 
-#: ../epanel/options_divi.php:231
+#: ../epanel/options_divi.php:243
 msgid "This will enable Google Fonts for Non-English languages."
 msgstr ""
 
-#: ../epanel/options_divi.php:236
+#: ../epanel/options_divi.php:248
 msgid "Custom CSS"
 msgstr ""
 
-#: ../epanel/options_divi.php:240
+#: ../epanel/options_divi.php:252
 #, fuzzy
 msgid "Here you can add custom css to override or extend default styles."
 msgstr ""
 "Запрашиваемая страница не найдена. Попробуйте уточнить параметры поиска или "
 "используйте меню для нахождения страницы."
 
-#: ../epanel/options_divi.php:259
+#: ../epanel/options_divi.php:271
 #, fuzzy
 msgid "Pages"
 msgstr "Страницы"
 
-#: ../epanel/options_divi.php:277
+#: ../epanel/options_divi.php:289
 #, fuzzy
 msgid "Exclude pages from the navigation bar"
 msgstr "Страницы"
 
-#: ../epanel/options_divi.php:281
+#: ../epanel/options_divi.php:293
 #, fuzzy
 msgid ""
 "Here you can choose to remove certain pages from the navigation menu. All "
 "pages marked with an X will not appear in your navigation bar. "
-msgstr "Страницы"
+msgstr ""
+"Запрашиваемая страница не найдена. Попробуйте уточнить параметры поиска или "
+"используйте меню для нахождения страницы."
 
-#: ../epanel/options_divi.php:285 ../epanel/options_divi.php:340
+#: ../epanel/options_divi.php:297 ../epanel/options_divi.php:352
 msgid "Show dropdown menus"
 msgstr ""
 
-#: ../epanel/options_divi.php:289
+#: ../epanel/options_divi.php:301
 #, fuzzy
 msgid ""
 "If you would like to remove the dropdown menus from the pages navigation bar "
 "disable this feature."
-msgstr "Страницы"
+msgstr ""
+"Запрашиваемая страница не найдена. Попробуйте уточнить параметры поиска или "
+"используйте меню для нахождения страницы."
 
-#: ../epanel/options_divi.php:292
+#: ../epanel/options_divi.php:304
 #, fuzzy
 msgid "Display Home link"
 msgstr "Главная"
 
-#: ../epanel/options_divi.php:296
+#: ../epanel/options_divi.php:308
 #, fuzzy
 msgid ""
 "By default the theme creates a Home link that, when clicked, leads back to "
@@ -1046,22 +1334,22 @@ msgstr ""
 "disappear once you have clicked the Save button within the <a href=\"%2$s"
 "\">theme's options page</a>.</p></div>"
 
-#: ../epanel/options_divi.php:301
+#: ../epanel/options_divi.php:313
 #, fuzzy
 msgid "Sort Pages Links"
 msgstr "Страницы"
 
-#: ../epanel/options_divi.php:305
+#: ../epanel/options_divi.php:317
 #, fuzzy
 msgid "Here you can choose to sort your pages links."
 msgstr "Страницы"
 
-#: ../epanel/options_divi.php:308
+#: ../epanel/options_divi.php:320
 #, fuzzy
 msgid "Order Pages Links by Ascending/Descending"
 msgstr "Страницы"
 
-#: ../epanel/options_divi.php:312
+#: ../epanel/options_divi.php:324
 #, fuzzy
 msgid ""
 "Here you can choose to reverse the order that your pages links are "
@@ -1070,23 +1358,23 @@ msgstr ""
 "Запрашиваемая страница не найдена. Попробуйте уточнить параметры поиска или "
 "используйте меню для нахождения страницы."
 
-#: ../epanel/options_divi.php:315 ../epanel/options_divi.php:356
+#: ../epanel/options_divi.php:327 ../epanel/options_divi.php:368
 msgid "Number of dropdown tiers shown"
 msgstr ""
 
-#: ../epanel/options_divi.php:319 ../epanel/options_divi.php:360
+#: ../epanel/options_divi.php:331 ../epanel/options_divi.php:372
 #, fuzzy
 msgid ""
 "This options allows you to control how many teirs your pages dropdown menu "
 "has. Increasing the number allows for additional menu items to be shown."
 msgstr "Страницы"
 
-#: ../epanel/options_divi.php:332
+#: ../epanel/options_divi.php:344
 #, fuzzy
 msgid "Exclude categories from the navigation bar"
 msgstr "Подробнее из"
 
-#: ../epanel/options_divi.php:336
+#: ../epanel/options_divi.php:348
 #, fuzzy
 msgid ""
 "Here you can choose to remove certain categories from the navigation menu. "
@@ -1095,7 +1383,7 @@ msgstr ""
 "Запрашиваемая страница не найдена. Попробуйте уточнить параметры поиска или "
 "используйте меню для нахождения страницы."
 
-#: ../epanel/options_divi.php:344
+#: ../epanel/options_divi.php:356
 #, fuzzy
 msgid ""
 "If you would like to remove the dropdown menus from the categories "
@@ -1104,11 +1392,11 @@ msgstr ""
 "Запрашиваемая страница не найдена. Попробуйте уточнить параметры поиска или "
 "используйте меню для нахождения страницы."
 
-#: ../epanel/options_divi.php:347
+#: ../epanel/options_divi.php:359
 msgid "Hide empty categories"
 msgstr ""
 
-#: ../epanel/options_divi.php:351
+#: ../epanel/options_divi.php:363
 #, fuzzy
 msgid ""
 "If you would like categories to be displayed in your navigationbar that "
@@ -1120,23 +1408,19 @@ msgstr ""
 "disappear once you have clicked the Save button within the <a href=\"%2$s"
 "\">theme's options page</a>.</p></div>"
 
-#: ../epanel/options_divi.php:366
+#: ../epanel/options_divi.php:378
 #, fuzzy
 msgid "Sort Categories Links by Name/ID/Slug/Count/Term Group"
 msgstr "Имя"
 
-#: ../epanel/options_divi.php:370
+#: ../epanel/options_divi.php:382
 #, fuzzy
 msgid ""
 "By default pages are sorted by name. However if you would rather have them "
 "sorted by ID you can adjust this setting."
-msgstr ""
-"<div class=\"updated\"><p>This is a fresh installation of %1$s theme. Don't "
-"forget to go to <a href=\"%2$s\">ePanel</a> to set it up. This message will "
-"disappear once you have clicked the Save button within the <a href=\"%2$s"
-"\">theme's options page</a>.</p></div>"
+msgstr "Имя"
 
-#: ../epanel/options_divi.php:373
+#: ../epanel/options_divi.php:385
 #, fuzzy
 msgid "Order Category Links by Ascending/Descending"
 msgstr ""
@@ -1147,7 +1431,7 @@ msgstr ""
 "elegantthemes.com/members-area/documentation.html#update\" target=\"_blank"
 "\">re-install it</a> in order to update it to the latest version.</em>"
 
-#: ../epanel/options_divi.php:377
+#: ../epanel/options_divi.php:389
 #, fuzzy
 msgid ""
 "Here you can choose to reverse the order that your categories links are "
@@ -1156,11 +1440,11 @@ msgstr ""
 "Запрашиваемая страница не найдена. Попробуйте уточнить параметры поиска или "
 "используйте меню для нахождения страницы."
 
-#: ../epanel/options_divi.php:386
+#: ../epanel/options_divi.php:398
 msgid "Disable top tier dropdown menu links"
 msgstr ""
 
-#: ../epanel/options_divi.php:390
+#: ../epanel/options_divi.php:402
 #, fuzzy
 msgid ""
 "In some cases users will want to create parent categories or links as "
@@ -1175,21 +1459,21 @@ msgstr ""
 "disappear once you have clicked the Save button within the <a href=\"%2$s"
 "\">theme's options page</a>.</p></div>"
 
-#: ../epanel/options_divi.php:410
+#: ../epanel/options_divi.php:422
 #, fuzzy
 msgid "Single Post Layout"
 msgstr "Ответить"
 
-#: ../epanel/options_divi.php:415
+#: ../epanel/options_divi.php:427
 #, fuzzy
 msgid "Single Page Layout"
 msgstr "Редактировать страницу"
 
-#: ../epanel/options_divi.php:428
+#: ../epanel/options_divi.php:440
 msgid "Choose which items to display in the postinfo section"
 msgstr ""
 
-#: ../epanel/options_divi.php:432
+#: ../epanel/options_divi.php:444
 #, fuzzy
 msgid ""
 "Here you can choose which items appear in the postinfo section on single "
@@ -1200,12 +1484,12 @@ msgstr ""
 "Запрашиваемая страница не найдена. Попробуйте уточнить параметры поиска или "
 "используйте меню для нахождения страницы."
 
-#: ../epanel/options_divi.php:436
+#: ../epanel/options_divi.php:448
 #, fuzzy
 msgid "Show comments on posts"
 msgstr "Опубликовано"
 
-#: ../epanel/options_divi.php:440
+#: ../epanel/options_divi.php:452
 #, fuzzy
 msgid ""
 "You can disable this option if you want to remove the comments and comment "
@@ -1214,12 +1498,12 @@ msgstr ""
 "Запрашиваемая страница не найдена. Попробуйте уточнить параметры поиска или "
 "используйте меню для нахождения страницы."
 
-#: ../epanel/options_divi.php:443
+#: ../epanel/options_divi.php:455
 #, fuzzy
 msgid "Place Thumbs on Posts"
 msgstr "Опубликовано"
 
-#: ../epanel/options_divi.php:447
+#: ../epanel/options_divi.php:459
 #, fuzzy
 msgid ""
 "By default thumbnails are placed at the beginning of your post on single "
@@ -1229,12 +1513,12 @@ msgstr ""
 "Запрашиваемая страница не найдена. Попробуйте уточнить параметры поиска или "
 "используйте меню для нахождения страницы."
 
-#: ../epanel/options_divi.php:458
+#: ../epanel/options_divi.php:470
 #, fuzzy
 msgid "Place Thumbs on Pages"
 msgstr "Страницы"
 
-#: ../epanel/options_divi.php:462
+#: ../epanel/options_divi.php:474
 #, fuzzy
 msgid ""
 "By default thumbnails are not placed on pages (they are only used on posts). "
@@ -1242,24 +1526,24 @@ msgid ""
 "option. "
 msgstr "Опубликовано"
 
-#: ../epanel/options_divi.php:465
+#: ../epanel/options_divi.php:477
 #, fuzzy
 msgid "Show comments on pages"
 msgstr "Страницы"
 
-#: ../epanel/options_divi.php:469
+#: ../epanel/options_divi.php:481
 #, fuzzy
 msgid ""
 "By default comments are not placed on pages, however, if you would like to "
 "allow people to comment on your pages simply enable this option. "
 msgstr "Страницы"
 
-#: ../epanel/options_divi.php:480
+#: ../epanel/options_divi.php:492
 #, fuzzy
 msgid "Post info section"
 msgstr "Ответить"
 
-#: ../epanel/options_divi.php:484
+#: ../epanel/options_divi.php:496
 #, fuzzy
 msgid ""
 "Here you can choose which items appear in the postinfo section on pages. "
@@ -1269,33 +1553,33 @@ msgstr ""
 "Запрашиваемая страница не найдена. Попробуйте уточнить параметры поиска или "
 "используйте меню для нахождения страницы."
 
-#: ../epanel/options_divi.php:489
+#: ../epanel/options_divi.php:501
 #, fuzzy
 msgid "Show Thumbs on Index pages"
 msgstr "Страницы"
 
-#: ../epanel/options_divi.php:493
+#: ../epanel/options_divi.php:505
 #, fuzzy
 msgid "Enable this option to show thumbnails on Index Pages."
 msgstr "Страницы"
 
-#: ../epanel/options_divi.php:512
+#: ../epanel/options_divi.php:524
 msgid "Homepage SEO"
 msgstr ""
 
-#: ../epanel/options_divi.php:517
+#: ../epanel/options_divi.php:529
 #, fuzzy
 msgid "Single Post Page SEO"
 msgstr ""
 "Запрашиваемая страница не найдена. Попробуйте уточнить параметры поиска или "
 "используйте меню для нахождения страницы."
 
-#: ../epanel/options_divi.php:522
+#: ../epanel/options_divi.php:534
 #, fuzzy
 msgid "Index Page SEO"
 msgstr "Редактировать страницу"
 
-#: ../epanel/options_divi.php:530
+#: ../epanel/options_divi.php:542
 #, fuzzy
 msgid " Enable custom title "
 msgstr ""
@@ -1306,7 +1590,7 @@ msgstr ""
 "elegantthemes.com/members-area/documentation.html#update\" target=\"_blank"
 "\">re-install it</a> in order to update it to the latest version.</em>"
 
-#: ../epanel/options_divi.php:534
+#: ../epanel/options_divi.php:546
 #, fuzzy
 msgid ""
 "By default the theme uses a combination of your blog name and your blog "
@@ -1317,12 +1601,12 @@ msgstr ""
 "Запрашиваемая страница не найдена. Попробуйте уточнить параметры поиска или "
 "используйте меню для нахождения страницы."
 
-#: ../epanel/options_divi.php:537
+#: ../epanel/options_divi.php:549
 #, fuzzy
 msgid " Enable meta description"
 msgstr "<span class=\"meta-nav\">&larr;</span> Предыдущие комментарии"
 
-#: ../epanel/options_divi.php:541
+#: ../epanel/options_divi.php:553
 #, fuzzy
 msgid ""
 "By default the theme uses your blog description, as defined when you created "
@@ -1333,12 +1617,12 @@ msgstr ""
 "Запрашиваемая страница не найдена. Попробуйте уточнить параметры поиска или "
 "используйте меню для нахождения страницы."
 
-#: ../epanel/options_divi.php:544
+#: ../epanel/options_divi.php:556
 #, fuzzy
 msgid " Enable meta keywords"
 msgstr "<span class=\"meta-nav\">&larr;</span> Предыдущие комментарии"
 
-#: ../epanel/options_divi.php:548
+#: ../epanel/options_divi.php:560
 #, fuzzy
 msgid ""
 "By default the theme does not add keywords to your header. Most search "
@@ -1349,11 +1633,11 @@ msgstr ""
 "Запрашиваемая страница не найдена. Попробуйте уточнить параметры поиска или "
 "используйте меню для нахождения страницы."
 
-#: ../epanel/options_divi.php:551 ../epanel/options_divi.php:684
+#: ../epanel/options_divi.php:563 ../epanel/options_divi.php:696
 msgid " Enable canonical URL's"
 msgstr ""
 
-#: ../epanel/options_divi.php:555
+#: ../epanel/options_divi.php:567
 #, fuzzy
 msgid ""
 "Canonicalization helps to prevent the indexing of duplicate content by "
@@ -1370,7 +1654,7 @@ msgstr ""
 "Запрашиваемая страница не найдена. Попробуйте уточнить параметры поиска или "
 "используйте меню для нахождения страницы."
 
-#: ../epanel/options_divi.php:560
+#: ../epanel/options_divi.php:572
 #, fuzzy
 msgid "Homepage custom title (if enabled)"
 msgstr ""
@@ -1381,7 +1665,7 @@ msgstr ""
 "elegantthemes.com/members-area/documentation.html#update\" target=\"_blank"
 "\">re-install it</a> in order to update it to the latest version.</em>"
 
-#: ../epanel/options_divi.php:564
+#: ../epanel/options_divi.php:576
 #, fuzzy
 msgid ""
 "If you have enabled custom titles you can add your custom title here. "
@@ -1395,12 +1679,12 @@ msgstr ""
 "elegantthemes.com/members-area/documentation.html#update\" target=\"_blank"
 "\">re-install it</a> in order to update it to the latest version.</em>"
 
-#: ../epanel/options_divi.php:568
+#: ../epanel/options_divi.php:580
 #, fuzzy
 msgid "Homepage meta description (if enabled)"
 msgstr "<span class=\"meta-nav\">&larr;</span> Предыдущие комментарии"
 
-#: ../epanel/options_divi.php:572
+#: ../epanel/options_divi.php:584
 #, fuzzy
 msgid ""
 "If you have enabled meta descriptions you can add your custom description "
@@ -1409,12 +1693,12 @@ msgstr ""
 "Запрашиваемая страница не найдена. Попробуйте уточнить параметры поиска или "
 "используйте меню для нахождения страницы."
 
-#: ../epanel/options_divi.php:576
+#: ../epanel/options_divi.php:588
 #, fuzzy
 msgid "Homepage meta keywords (if enabled)"
 msgstr "<span class=\"meta-nav\">&larr;</span> Предыдущие комментарии"
 
-#: ../epanel/options_divi.php:580
+#: ../epanel/options_divi.php:592
 #, fuzzy
 msgid ""
 "If you have enabled meta keywords you can add your custom keywords here. "
@@ -1428,11 +1712,11 @@ msgstr ""
 "elegantthemes.com/members-area/documentation.html#update\" target=\"_blank"
 "\">re-install it</a> in order to update it to the latest version.</em>"
 
-#: ../epanel/options_divi.php:584 ../epanel/options_divi.php:662
+#: ../epanel/options_divi.php:596 ../epanel/options_divi.php:674
 msgid "If custom titles are disabled, choose autogeneration method"
 msgstr ""
 
-#: ../epanel/options_divi.php:589
+#: ../epanel/options_divi.php:601
 #, fuzzy
 msgid ""
 "If you are not using cutsom post titles you can still have control over how "
@@ -1443,13 +1727,13 @@ msgstr ""
 "Запрашиваемая страница не найдена. Попробуйте уточнить параметры поиска или "
 "используйте меню для нахождения страницы."
 
-#: ../epanel/options_divi.php:592 ../epanel/options_divi.php:670
-#: ../epanel/options_divi.php:708
+#: ../epanel/options_divi.php:604 ../epanel/options_divi.php:682
+#: ../epanel/options_divi.php:720
 #, fuzzy
 msgid "Define a character to separate BlogName and Post title"
 msgstr "Ответить"
 
-#: ../epanel/options_divi.php:596 ../epanel/options_divi.php:674
+#: ../epanel/options_divi.php:608 ../epanel/options_divi.php:686
 #, fuzzy
 msgid ""
 "Here you can change which character separates your blog title and post name "
@@ -1458,11 +1742,11 @@ msgstr ""
 "Запрашиваемая страница не найдена. Попробуйте уточнить параметры поиска или "
 "используйте меню для нахождения страницы."
 
-#: ../epanel/options_divi.php:606
+#: ../epanel/options_divi.php:618
 msgid "Enable custom titles"
 msgstr ""
 
-#: ../epanel/options_divi.php:610
+#: ../epanel/options_divi.php:622
 #, fuzzy
 msgid ""
 "By default the theme creates post titles based on the title of your post and "
@@ -1474,11 +1758,11 @@ msgstr ""
 "Запрашиваемая страница не найдена. Попробуйте уточнить параметры поиска или "
 "используйте меню для нахождения страницы."
 
-#: ../epanel/options_divi.php:613
+#: ../epanel/options_divi.php:625
 msgid "Enable custom description"
 msgstr ""
 
-#: ../epanel/options_divi.php:617
+#: ../epanel/options_divi.php:629
 #, fuzzy
 msgid ""
 "If you would like to add a meta description to your post you can do so using "
@@ -1489,11 +1773,11 @@ msgstr ""
 "Запрашиваемая страница не найдена. Попробуйте уточнить параметры поиска или "
 "используйте меню для нахождения страницы."
 
-#: ../epanel/options_divi.php:622
+#: ../epanel/options_divi.php:634
 msgid "Enable custom keywords"
 msgstr ""
 
-#: ../epanel/options_divi.php:626
+#: ../epanel/options_divi.php:638
 #, fuzzy
 msgid ""
 "If you would like to add meta keywords to your post you can do so using "
@@ -1504,11 +1788,11 @@ msgstr ""
 "Запрашиваемая страница не найдена. Попробуйте уточнить параметры поиска или "
 "используйте меню для нахождения страницы."
 
-#: ../epanel/options_divi.php:629
+#: ../epanel/options_divi.php:641
 msgid "Enable canonical URL's"
 msgstr ""
 
-#: ../epanel/options_divi.php:633 ../epanel/options_divi.php:688
+#: ../epanel/options_divi.php:645 ../epanel/options_divi.php:700
 #, fuzzy
 msgid ""
 "Canonicalization helps to prevent the indexing of duplicate content by "
@@ -1525,12 +1809,12 @@ msgstr ""
 "Запрашиваемая страница не найдена. Попробуйте уточнить параметры поиска или "
 "используйте меню для нахождения страницы."
 
-#: ../epanel/options_divi.php:638
+#: ../epanel/options_divi.php:650
 #, fuzzy
 msgid "Custom field Name to be used for title"
 msgstr "Имя"
 
-#: ../epanel/options_divi.php:642
+#: ../epanel/options_divi.php:654
 #, fuzzy
 msgid ""
 "When you define your title using custom fields you should use this value for "
@@ -1540,12 +1824,12 @@ msgstr ""
 "Запрашиваемая страница не найдена. Попробуйте уточнить параметры поиска или "
 "используйте меню для нахождения страницы."
 
-#: ../epanel/options_divi.php:646
+#: ../epanel/options_divi.php:658
 #, fuzzy
 msgid "Custom field Name to be used for description"
 msgstr "Имя"
 
-#: ../epanel/options_divi.php:650
+#: ../epanel/options_divi.php:662
 #, fuzzy
 msgid ""
 "When you define your meta description using custom fields you should use "
@@ -1555,12 +1839,12 @@ msgstr ""
 "Запрашиваемая страница не найдена. Попробуйте уточнить параметры поиска или "
 "используйте меню для нахождения страницы."
 
-#: ../epanel/options_divi.php:654
+#: ../epanel/options_divi.php:666
 #, fuzzy
 msgid "Custom field Name to be used for keywords"
 msgstr "Имя"
 
-#: ../epanel/options_divi.php:658
+#: ../epanel/options_divi.php:670
 #, fuzzy
 msgid ""
 "When you define your keywords using custom fields you should use this value "
@@ -1570,7 +1854,7 @@ msgstr ""
 "Запрашиваемая страница не найдена. Попробуйте уточнить параметры поиска или "
 "используйте меню для нахождения страницы."
 
-#: ../epanel/options_divi.php:667
+#: ../epanel/options_divi.php:679
 #, fuzzy
 msgid ""
 "If you are not using cutsom post titles you can still have control over hw "
@@ -1581,12 +1865,12 @@ msgstr ""
 "Запрашиваемая страница не найдена. Попробуйте уточнить параметры поиска или "
 "используйте меню для нахождения страницы."
 
-#: ../epanel/options_divi.php:691
+#: ../epanel/options_divi.php:703
 #, fuzzy
 msgid "Enable meta descriptions"
 msgstr "<span class=\"meta-nav\">&larr;</span> Предыдущие комментарии"
 
-#: ../epanel/options_divi.php:695
+#: ../epanel/options_divi.php:707
 #, fuzzy
 msgid ""
 "Check this box if you want to display meta descriptions on category/archive "
@@ -1596,7 +1880,7 @@ msgstr ""
 "Запрашиваемая страница не найдена. Попробуйте уточнить параметры поиска или "
 "используйте меню для нахождения страницы."
 
-#: ../epanel/options_divi.php:700
+#: ../epanel/options_divi.php:712
 #, fuzzy
 msgid "Choose title autogeneration method"
 msgstr ""
@@ -1607,7 +1891,7 @@ msgstr ""
 "elegantthemes.com/members-area/documentation.html#update\" target=\"_blank"
 "\">re-install it</a> in order to update it to the latest version.</em>"
 
-#: ../epanel/options_divi.php:705
+#: ../epanel/options_divi.php:717
 #, fuzzy
 msgid ""
 "Here you can choose how your titles on index pages are generated. You can "
@@ -1621,7 +1905,7 @@ msgstr ""
 "elegantthemes.com/members-area/documentation.html#update\" target=\"_blank"
 "\">re-install it</a> in order to update it to the latest version.</em>"
 
-#: ../epanel/options_divi.php:712
+#: ../epanel/options_divi.php:724
 #, fuzzy
 msgid ""
 "Here you can change which character separates your blog title and index page "
@@ -1630,15 +1914,15 @@ msgstr ""
 "Запрашиваемая страница не найдена. Попробуйте уточнить параметры поиска или "
 "используйте меню для нахождения страницы."
 
-#: ../epanel/options_divi.php:733
+#: ../epanel/options_divi.php:745
 msgid "Code Integration"
 msgstr ""
 
-#: ../epanel/options_divi.php:741
+#: ../epanel/options_divi.php:753
 msgid "Enable header code"
 msgstr ""
 
-#: ../epanel/options_divi.php:745
+#: ../epanel/options_divi.php:757
 #, fuzzy
 msgid ""
 "Disabling this option will remove the header code below from your blog. This "
@@ -1647,11 +1931,11 @@ msgstr ""
 "Запрашиваемая страница не найдена. Попробуйте уточнить параметры поиска или "
 "используйте меню для нахождения страницы."
 
-#: ../epanel/options_divi.php:748
+#: ../epanel/options_divi.php:760
 msgid "Enable body code"
 msgstr ""
 
-#: ../epanel/options_divi.php:752
+#: ../epanel/options_divi.php:764
 #, fuzzy
 msgid ""
 "Disabling this option will remove the body code below from your blog. This "
@@ -1660,11 +1944,11 @@ msgstr ""
 "Запрашиваемая страница не найдена. Попробуйте уточнить параметры поиска или "
 "используйте меню для нахождения страницы."
 
-#: ../epanel/options_divi.php:757
+#: ../epanel/options_divi.php:769
 msgid "Enable single top code"
 msgstr ""
 
-#: ../epanel/options_divi.php:761
+#: ../epanel/options_divi.php:773
 #, fuzzy
 msgid ""
 "Disabling this option will remove the single top code below from your blog. "
@@ -1673,11 +1957,11 @@ msgstr ""
 "Запрашиваемая страница не найдена. Попробуйте уточнить параметры поиска или "
 "используйте меню для нахождения страницы."
 
-#: ../epanel/options_divi.php:764
+#: ../epanel/options_divi.php:776
 msgid "Enable single bottom code"
 msgstr ""
 
-#: ../epanel/options_divi.php:768
+#: ../epanel/options_divi.php:780
 #, fuzzy
 msgid ""
 "Disabling this option will remove the single bottom code below from your "
@@ -1686,12 +1970,12 @@ msgstr ""
 "Запрашиваемая страница не найдена. Попробуйте уточнить параметры поиска или "
 "используйте меню для нахождения страницы."
 
-#: ../epanel/options_divi.php:773
+#: ../epanel/options_divi.php:785
 #, fuzzy
 msgid "Add code to the < head > of your blog"
 msgstr "Ваш комментарий ожидает модерации."
 
-#: ../epanel/options_divi.php:777
+#: ../epanel/options_divi.php:789
 #, fuzzy
 msgid ""
 "Any code you place here will appear in the head section of every page of "
@@ -1701,12 +1985,12 @@ msgstr ""
 "Запрашиваемая страница не найдена. Попробуйте уточнить параметры поиска или "
 "используйте меню для нахождения страницы."
 
-#: ../epanel/options_divi.php:780
+#: ../epanel/options_divi.php:792
 msgid ""
 "Add code to the < body > (good for tracking codes such as google analytics)"
 msgstr ""
 
-#: ../epanel/options_divi.php:784
+#: ../epanel/options_divi.php:796
 #, fuzzy
 msgid ""
 "Any code you place here will appear in body section of all pages of your "
@@ -1716,12 +2000,12 @@ msgstr ""
 "Запрашиваемая страница не найдена. Попробуйте уточнить параметры поиска или "
 "используйте меню для нахождения страницы."
 
-#: ../epanel/options_divi.php:787
+#: ../epanel/options_divi.php:799
 #, fuzzy
 msgid "Add code to the top of your posts"
 msgstr "Опубликовано"
 
-#: ../epanel/options_divi.php:791 ../epanel/options_divi.php:798
+#: ../epanel/options_divi.php:803 ../epanel/options_divi.php:810
 #, fuzzy
 msgid ""
 "Any code you place here will be placed at the top of all single posts. This "
@@ -1731,25 +2015,25 @@ msgstr ""
 "Запрашиваемая страница не найдена. Попробуйте уточнить параметры поиска или "
 "используйте меню для нахождения страницы."
 
-#: ../epanel/options_divi.php:794
+#: ../epanel/options_divi.php:806
 #, fuzzy
 msgid "Add code to the bottom of your posts, before the comments"
 msgstr "Опубликовано"
 
-#: ../epanel/options_divi.php:816
+#: ../epanel/options_divi.php:828
 msgid "Documentation"
 msgstr ""
 
-#: ../epanel/options_divi.php:842
+#: ../epanel/options_divi.php:854
 msgid "Manage Un-widgetized Advertisements"
 msgstr ""
 
-#: ../epanel/options_divi.php:850
+#: ../epanel/options_divi.php:862
 #, fuzzy
 msgid "Enable Single Post 468x60 banner"
 msgstr "Ответить"
 
-#: ../epanel/options_divi.php:854
+#: ../epanel/options_divi.php:866
 #, fuzzy
 msgid ""
 "Enabling this option will display a 468x60 banner ad on the bottom of your "
@@ -1759,33 +2043,33 @@ msgstr ""
 "Запрашиваемая страница не найдена. Попробуйте уточнить параметры поиска или "
 "используйте меню для нахождения страницы."
 
-#: ../epanel/options_divi.php:859
+#: ../epanel/options_divi.php:871
 msgid "Input 468x60 advertisement banner image"
 msgstr ""
 
-#: ../epanel/options_divi.php:863
+#: ../epanel/options_divi.php:875
 #, fuzzy
 msgid "Here you can provide 468x60 banner image url"
 msgstr ""
 "Запрашиваемая страница не найдена. Попробуйте уточнить параметры поиска или "
 "используйте меню для нахождения страницы."
 
-#: ../epanel/options_divi.php:867
+#: ../epanel/options_divi.php:879
 msgid "Input 468x60 advertisement destination url"
 msgstr ""
 
-#: ../epanel/options_divi.php:871
+#: ../epanel/options_divi.php:883
 #, fuzzy
 msgid "Here you can provide 468x60 banner destination url"
 msgstr ""
 "Запрашиваемая страница не найдена. Попробуйте уточнить параметры поиска или "
 "используйте меню для нахождения страницы."
 
-#: ../epanel/options_divi.php:875
+#: ../epanel/options_divi.php:887
 msgid "Input 468x60 adsense code"
 msgstr ""
 
-#: ../epanel/options_divi.php:879
+#: ../epanel/options_divi.php:891
 #, fuzzy
 msgid "Place your adsense code here."
 msgstr "Ваш комментарий ожидает модерации."
@@ -1818,10 +2102,6 @@ msgstr ""
 msgid "Password: "
 msgstr ""
 "Эта страница защищена паролем. Введите пароль для просмотра комментариев."
-
-#: ../epanel/shortcodes/shortcodes.php:292
-msgid "Login"
-msgstr ""
 
 #: ../epanel/shortcodes/shortcodes.php:328
 msgid "Add a Tooltip Text"
@@ -2055,22 +2335,18 @@ msgid "Image Width"
 msgstr ""
 
 #: ../et-pagebuilder/et-pagebuilder.php:33
-#: ../et-pagebuilder/et-pagebuilder.php:54
+#: ../et-pagebuilder/et-pagebuilder.php:72
 #, fuzzy
 msgid "Export Page Builder Layouts"
 msgstr "Редактировать страницу"
 
-#: ../et-pagebuilder/et-pagebuilder.php:49
+#: ../et-pagebuilder/et-pagebuilder.php:67
 #, fuzzy
 msgid ""
 "You do not have sufficient permissions to export the content of this site."
-msgstr ""
-"<div class=\"updated\"><p>This is a fresh installation of %1$s theme. Don't "
-"forget to go to <a href=\"%2$s\">ePanel</a> to set it up. This message will "
-"disappear once you have clicked the Save button within the <a href=\"%2$s"
-"\">theme's options page</a>.</p></div>"
+msgstr "искать..."
 
-#: ../et-pagebuilder/et-pagebuilder.php:55
+#: ../et-pagebuilder/et-pagebuilder.php:73
 #, fuzzy
 msgid ""
 "When you click the button below WordPress will create an XML file for you to "
@@ -2081,7 +2357,7 @@ msgstr ""
 "disappear once you have clicked the Save button within the <a href=\"%2$s"
 "\">theme's options page</a>.</p></div>"
 
-#: ../et-pagebuilder/et-pagebuilder.php:56
+#: ../et-pagebuilder/et-pagebuilder.php:74
 #, fuzzy
 msgid ""
 "This format, which we call WordPress eXtended RSS or WXR, will contain all "
@@ -2090,7 +2366,7 @@ msgstr ""
 "Запрашиваемая страница не найдена. Попробуйте уточнить параметры поиска или "
 "используйте меню для нахождения страницы."
 
-#: ../et-pagebuilder/et-pagebuilder.php:57
+#: ../et-pagebuilder/et-pagebuilder.php:75
 #, fuzzy
 msgid ""
 "Once you&#8217;ve saved the download file, you can use the Import function "
@@ -2101,7 +2377,7 @@ msgstr ""
 "disappear once you have clicked the Save button within the <a href=\"%2$s"
 "\">theme's options page</a>.</p></div>"
 
-#: ../et-pagebuilder/et-pagebuilder.php:63
+#: ../et-pagebuilder/et-pagebuilder.php:81
 #, fuzzy
 msgid "Download Export File"
 msgstr ""
@@ -2112,52 +2388,63 @@ msgstr ""
 "elegantthemes.com/members-area/documentation.html#update\" target=\"_blank"
 "\">re-install it</a> in order to update it to the latest version.</em>"
 
-#: ../et-pagebuilder/et-pagebuilder.php:83
-#: ../et-pagebuilder/et-pagebuilder.php:85
+#: ../et-pagebuilder/et-pagebuilder.php:97
+#: ../et-pagebuilder/et-pagebuilder.php:99
 #, fuzzy
 msgid "Use Default Editor"
 msgstr ""
 "Запрашиваемая страница не найдена. Попробуйте уточнить параметры поиска или "
 "используйте меню для нахождения страницы."
 
-#: ../et-pagebuilder/et-pagebuilder.php:83
-#: ../et-pagebuilder/et-pagebuilder.php:84
+#: ../et-pagebuilder/et-pagebuilder.php:97
+#: ../et-pagebuilder/et-pagebuilder.php:98
 #, fuzzy
 msgid "Use Page Builder"
 msgstr ""
 "Запрашиваемая страница не найдена. Попробуйте уточнить параметры поиска или "
 "используйте меню для нахождения страницы."
 
-#: ../et-pagebuilder/et-pagebuilder.php:180
+#: ../et-pagebuilder/et-pagebuilder.php:194
 msgid "Replace the existing content with loaded layout"
 msgstr ""
 
-#: ../et-pagebuilder/et-pagebuilder.php:198
+#: ../et-pagebuilder/et-pagebuilder.php:212
 msgid "Saved Layouts:"
 msgstr ""
 
-#: ../et-pagebuilder/et-pagebuilder.php:226
+#: ../et-pagebuilder/et-pagebuilder.php:242
 msgid "Predefined Layouts:"
 msgstr ""
 
-#: ../et-pagebuilder/et-pagebuilder.php:319
+#: ../et-pagebuilder/et-pagebuilder.php:341
 #, fuzzy
 msgid "The section should have at least one row."
 msgstr "Один комментарий"
 
-#: ../et-pagebuilder/et-pagebuilder.php:320
+#: ../et-pagebuilder/et-pagebuilder.php:342
 msgid "Fullwidth module can't be used outside of the Fullwidth Section."
 msgstr ""
 
-#: ../et-pagebuilder/et-pagebuilder.php:321
+#: ../et-pagebuilder/et-pagebuilder.php:343
+#, fuzzy
+msgid "3 column row can't be used in this column."
+msgstr ""
+"There is a new version of %1$s available. <a href=\"%2$s\" class=\"thickbox"
+"\" title=\"%1$s\">View version %3$s details</a>. <em>Auto-updates are not "
+"available for this theme. If this is an Elegant Themes theme, then you must "
+"re-download the theme from the member's area and <a href=\"http://www."
+"elegantthemes.com/members-area/documentation.html#update\" target=\"_blank"
+"\">re-install it</a> in order to update it to the latest version.</em>"
+
+#: ../et-pagebuilder/et-pagebuilder.php:344
 msgid "Preview"
 msgstr ""
 
-#: ../et-pagebuilder/et-pagebuilder.php:322
+#: ../et-pagebuilder/et-pagebuilder.php:345
 msgid "Module"
 msgstr ""
 
-#: ../et-pagebuilder/et-pagebuilder.php:335
+#: ../et-pagebuilder/et-pagebuilder.php:359
 #, fuzzy
 msgid "Page Builder"
 msgstr "Редактировать страницу"
@@ -2181,6 +2468,14 @@ msgid ""
 msgstr ""
 "Запрашиваемая страница не найдена. Попробуйте уточнить параметры поиска или "
 "используйте меню для нахождения страницы."
+
+#: ../includes/social_icons.php:20
+msgid "Google"
+msgstr ""
+
+#: ../includes/social_icons.php:32
+msgid "RSS"
+msgstr ""
 
 #: ../includes/functions/comments.php:15
 #, fuzzy, php-format

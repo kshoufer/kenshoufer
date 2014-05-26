@@ -31,7 +31,13 @@ a {
 .et_pb_section {
     background-repeat: repeat;
     background-size: 132px;
+    /*background-color: transparent !important;*/
 }
+
+#main-content, .et_pb_section {
+    background-color: transparent;
+}
+
 .et_pb_text p {
     line-height: 1.5;
     font-size: 25px;

@@ -1,3 +1,48 @@
+version 2.0 ( updated 05-21-2014 )
+* All files changed/updated
+- Added many options to WordPress Customizer
+- Added lightbox to images
+- Added real parallax effect
+- More elements utilize accent color setting
+- Added Aweber and Feedburner integrations for Subscribe module
+- Added post formats support
+	- Video
+	- Audio
+	- Quote
+	- Gallery
+	- Link
+- New Header Options
+	- Added vertical navigation option
+	- Added optional secondary header menu
+	- Added boxed layout option
+	- Added centered main menu option
+- Pagebuilder Updates
+	- New specialty sections
+	- Added many new pre-made layouts
+	- Added clone module functionality
+- Updated Modules
+	- Blurb
+	- Testimonials
+- Added New Modules
+	- Gallery
+	- Audio
+	- Login
+	- Filterable Portfolio
+	- Circle Counter
+	- Number Counter
+	- Accordion
+	- Team Member
+	- Countdown Timer
+	- Social Media Follow
+	- Map
+	- Fullwidth Map
+	- Fullwidth Menu
+	- Fullwidth Portfolio
+- Fixed the issue with jumping backround image in sliders
+- Many bug fixes and CSS improvements
+- Bumped version number
+
+
 version 1.9.1 ( updated 04-21-2014 )
 - Fixed Page Builder issues in IE9 and IE10
 	* et-pagebuilder/js/admin.js

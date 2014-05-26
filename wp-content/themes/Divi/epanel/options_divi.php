@@ -102,11 +102,23 @@ $options = array (
 				   "desc" => sprintf( __( 'Enter your MailChimp API key. You can create an api key <a target="_blank" href="%1$s">here</a>', $themename ), 'https://us3.admin.mailchimp.com/account/api/' ),
 			),
 
+			array( "name" => __( "Aweber Authorization", $themename ),
+                   "type" => "callback_function",
+				   "desc" => __( 'Authorize your Aweber account here.', $themename ),
+				   "function_name" => 'et_aweber_authorization_option',
+			),
+
 			array( "name" => "Regenerate MailChimp Lists",
                    "id" => $shortname."_regenerate_mailchimp_lists",
                    "type" => "checkbox",
                    "std" => "false",
                    "desc" => "By default, MailChimp lists are cached for one day. If you added new list, but it doesn't appear within the SignUp module settings, activate this option. Don't forget to disable it once the list has been regenerated."),
+
+			array( "name" => "Regenerate Aweber Lists",
+                   "id" => $shortname."_regenerate_aweber_lists",
+                   "type" => "checkbox2",
+                   "std" => "false",
+                   "desc" => "By default, Aweber lists are cached for one day. If you added new list, but it doesn't appear within the SignUp module settings, activate this option. Don't forget to disable it once the list has been regenerated."),
 
 			array( "type" => "clearfix",),
 
