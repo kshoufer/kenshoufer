@@ -43,22 +43,6 @@ class SG_CachePress_Environment {
 	}
 
 	/**
-	 * Get the account name from the server document root (the bit after /home/).
-	 *
-	 * @since 1.1.0
-	 *
-	 * @return string Account name, or empty string if it couldn't be determined.
-	 */
-	public function get_account_name() {
-		if( ! preg_match( '#^/home/([a-z0-9]+)/#i', $_SERVER['DOCUMENT_ROOT'], $matches ) )
-			return '';
-		if ( ! isset( $matches[1] ) || ! $matches[1] )
-			return '';
-
-		return $matches[1];
-	}
-
-	/**
 	 * Obtain and set application's path and URL for further usage.
 	 *
 	 * @since 1.1.0

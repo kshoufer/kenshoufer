@@ -10,7 +10,7 @@
  * @wordpress-plugin
  * Plugin Name:       SG CachePress
  * Description:       Through the settings of this plugin you can manage how your Wordpress interracts with SG Cache. Before you can use this plugin you need to have the SG Cache service installed and activated.
- * Version:           2.1.1
+ * Version:           2.1.2
  * Author:            George Penkov
  * Text Domain:       sg-cachepress
  * Domain Path:       /languages
@@ -21,7 +21,7 @@ add_action('init', 'sg_update_check');
 function sg_update_check()
 {
     require_once ('class-sg-autoupdate.php');
-    $sg_plugin_current_version = '2.1.1';
+    $sg_plugin_current_version = '2.1.2';
     $sg_plugin_remote_path = 'http://download.siteground.com/cacheupdate.php';
     $sg_plugin_slug = plugin_basename(__FILE__);
     new sg_auto_update ($sg_plugin_current_version, $sg_plugin_remote_path, $sg_plugin_slug);

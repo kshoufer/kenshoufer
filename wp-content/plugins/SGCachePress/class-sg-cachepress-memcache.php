@@ -136,9 +136,7 @@ class SG_CachePress_Memcache {
 	 * @return string Memcached port number, or empty string if error.
 	 */
 	protected function get_memcached_port() {
-		$account_name = $this->environment->get_account_name();
-		if ( ! $account_name )
-			return '';
+		$account_name = get_current_user();
 
 		$port_file_content = $this->get_port_file_contents( $account_name );
 		if ( ! $port_file_content )
