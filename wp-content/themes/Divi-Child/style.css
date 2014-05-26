@@ -147,6 +147,14 @@ a {
     margin-top: 50px !important;
 }
 
+#footer-info {
+    margin-top: 20px;
+}
+
+#et-social-icons a {
+    margin-top: 10px;
+}
+
 
 
 }/****end max-width: 479px****/
