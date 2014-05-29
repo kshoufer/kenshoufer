@@ -13,9 +13,5 @@ wp-content/cache/
 wp-content/backups/
 sitemap.xml.gz
 wp-config.php
-<<<<<<< HEAD
-node_modules/
-=======
 node_modules/
 .sass-cache/
->>>>>>> b3decf822b81062f028194892371c172385adc07
