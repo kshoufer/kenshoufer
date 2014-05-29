@@ -1,0 +1,147 @@
+/*
+Theme Name: Divi Child
+Author: Ken Shoufer
+Template: Divi
+*/
+@import url(../Divi/style.css);
+/* line 9, style.scss */
+#footer-info, #footer-info a {
+  color: #c45576; }
+
+/* line 14, style.scss */
+#et-social-icons {
+  text-align: right; }
+
+/* line 19, style.scss */
+#et-social-icons a {
+  color: #fff; }
+
+/* line 23, style.scss */
+.et-social-icon span {
+  display: inline; }
+
+/* line 27, style.scss */
+a {
+  text-decoration: underline;
+  font-weight: bold; }
+
+/* line 32, style.scss */
+.et_pb_slide {
+  box-shadow: none;
+  background-color: transparent; }
+
+/* line 37, style.scss */
+.et_pb_slider .et_pb_slide, .et_pb_section {
+  background-size: contain; }
+
+/* line 41, style.scss */
+.et_pb_section {
+  background-repeat: repeat;
+  background-size: 132px;
+  /*background-color: transparent !important;*/ }
+
+/* line 47, style.scss */
+#main-content, .et_pb_section {
+  background-color: transparent !important; }
+
+/* line 51, style.scss */
+.et_pb_text p {
+  line-height: 1.5;
+  font-size: 25px; }
+
+/* line 57, style.scss */
+#logo_mobile {
+  display: none; }
+
+/* line 61, style.scss */
+.et_pb_promo_description {
+  font-size: 30px; }
+
+/* line 65, style.scss */
+.et_pb_promo_description p {
+  line-height: 2; }
+
+/* line 69, style.scss */
+.et_pb_contact p input, .et_pb_contact p textarea {
+  background-color: #fff; }
+
+/* line 73, style.scss */
+.et-pb-arrow-next, .et-pb-arrow-prev {
+  font-size: 8em; }
+
+/* line 77, style.scss */
+.main_title {
+  display: none; }
+
+/* line 81, style.scss */
+#slider1 {
+  width: 100%; }
+
+/* line 85, style.scss */
+#small-image {
+  display: none; }
+
+/* line 89, style.scss */
+#et_top_search {
+  display: none; }
+
+/* line 93, style.scss */
+.vfb-checkbox, .vfb-radio {
+  -webkit-appearance: checkbox; }
+
+/* line 97, style.scss */
+.et_pb_slider .et_pb_slide {
+  box-shadow: none; }
+
+/* line 101, style.scss */
+.et-pb-arrow-prev, .et-pb-arrow-next {
+  background-color: rgba(0, 0, 0, 0.07); }
+
+/* line 105, style.scss */
+.entry-post-content {
+  background-color: #fff;
+  padding: 10px; }
+
+@media only screen and (max-width: 479px) {
+  /* line 113, style.scss */
+  #small-image {
+    display: inline; }
+
+  /* line 118, style.scss */
+  #home-slider {
+    display: none; }
+
+  /* line 124, style.scss */
+  .et_pb_slide {
+    box-shadow: none !important;
+    background-color: transparent !important; }
+
+  /* line 129, style.scss */
+  #logo {
+    display: none; }
+
+  /* line 133, style.scss */
+  #logo_mobile {
+    display: block;
+    width: 50%; }
+
+  /* line 138, style.scss */
+  #et_mobile_nav_menu {
+    margin-top: -40px !important; }
+
+  /* line 142, style.scss */
+  .mobile_menu_bar:before {
+    content: "b"; }
+
+  /* line 146, style.scss */
+  #main-content {
+    margin-top: 50px !important; }
+
+  /* line 150, style.scss */
+  #footer-info {
+    margin-top: 20px; }
+
+  /* line 154, style.scss */
+  #et-social-icons a {
+    margin-top: 10px; } }
+/****end max-width: 479px****/
