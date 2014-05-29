@@ -9,7 +9,11 @@ module.exports = function(grunt) {
         //concat
         concat: {
         options: {
+<<<<<<< HEAD
                     separator: ';',
+=======
+                    //separator: ';',
+>>>>>>> b3decf822b81062f028194892371c172385adc07
                 },
         dist: {
                 src: ['wp-content/themes/Divi-Child/assets/styles/build/style-header.css','wp-content/themes/Divi-Child/assets/styles/build/style-divi.css','wp-content/themes/Divi-Child/assets/styles/build/style-editor.scss'],
@@ -38,12 +42,19 @@ module.exports = function(grunt) {
                 dest: 'wp-content/themes/Divi-Child/',
                 ext: '.css'
                 }
+<<<<<<< HEAD
         }//cssmin
+=======
+        },//cssmin
+>>>>>>> b3decf822b81062f028194892371c172385adc07
 
 
     });
 
+<<<<<<< HEAD
     // register task
+=======
+>>>>>>> b3decf822b81062f028194892371c172385adc07
     grunt.registerTask('default', ['concat','sass', 'cssmin']);
 
 };
