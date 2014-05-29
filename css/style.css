@@ -1,0 +1,148 @@
+/*
+Theme Name: Divi Child
+Author: Ken Shoufer
+Template: Divi
+Mics: style.scss
+*/
+@import url(../../Divi/style.css);
+/* line 10, ../wp-content/themes/Divi-Child/sass/style.scss */
+#footer-info, #footer-info a {
+  color: #ff0000; }
+
+/* line 15, ../wp-content/themes/Divi-Child/sass/style.scss */
+#et-social-icons {
+  text-align: right; }
+
+/* line 20, ../wp-content/themes/Divi-Child/sass/style.scss */
+#et-social-icons a {
+  color: #fff; }
+
+/* line 24, ../wp-content/themes/Divi-Child/sass/style.scss */
+.et-social-icon span {
+  display: inline; }
+
+/* line 28, ../wp-content/themes/Divi-Child/sass/style.scss */
+a {
+  text-decoration: underline;
+  font-weight: bold; }
+
+/* line 33, ../wp-content/themes/Divi-Child/sass/style.scss */
+.et_pb_slide {
+  box-shadow: none;
+  background-color: transparent; }
+
+/* line 38, ../wp-content/themes/Divi-Child/sass/style.scss */
+.et_pb_slider .et_pb_slide, .et_pb_section {
+  background-size: contain; }
+
+/* line 42, ../wp-content/themes/Divi-Child/sass/style.scss */
+.et_pb_section {
+  background-repeat: repeat;
+  background-size: 132px;
+  /*background-color: transparent !important;*/ }
+
+/* line 48, ../wp-content/themes/Divi-Child/sass/style.scss */
+#main-content, .et_pb_section {
+  background-color: transparent !important; }
+
+/* line 52, ../wp-content/themes/Divi-Child/sass/style.scss */
+.et_pb_text p {
+  line-height: 1.5;
+  font-size: 25px; }
+
+/* line 58, ../wp-content/themes/Divi-Child/sass/style.scss */
+#logo_mobile {
+  display: none; }
+
+/* line 62, ../wp-content/themes/Divi-Child/sass/style.scss */
+.et_pb_promo_description {
+  font-size: 30px; }
+
+/* line 66, ../wp-content/themes/Divi-Child/sass/style.scss */
+.et_pb_promo_description p {
+  line-height: 2; }
+
+/* line 70, ../wp-content/themes/Divi-Child/sass/style.scss */
+.et_pb_contact p input, .et_pb_contact p textarea {
+  background-color: #fff; }
+
+/* line 74, ../wp-content/themes/Divi-Child/sass/style.scss */
+.et-pb-arrow-next, .et-pb-arrow-prev {
+  font-size: 8em; }
+
+/* line 78, ../wp-content/themes/Divi-Child/sass/style.scss */
+.main_title {
+  display: none; }
+
+/* line 82, ../wp-content/themes/Divi-Child/sass/style.scss */
+#slider1 {
+  width: 100%; }
+
+/* line 86, ../wp-content/themes/Divi-Child/sass/style.scss */
+#small-image {
+  display: none; }
+
+/* line 90, ../wp-content/themes/Divi-Child/sass/style.scss */
+#et_top_search {
+  display: none; }
+
+/* line 94, ../wp-content/themes/Divi-Child/sass/style.scss */
+.vfb-checkbox, .vfb-radio {
+  -webkit-appearance: checkbox; }
+
+/* line 98, ../wp-content/themes/Divi-Child/sass/style.scss */
+.et_pb_slider .et_pb_slide {
+  box-shadow: none; }
+
+/* line 102, ../wp-content/themes/Divi-Child/sass/style.scss */
+.et-pb-arrow-prev, .et-pb-arrow-next {
+  background-color: rgba(0, 0, 0, 0.07); }
+
+/* line 106, ../wp-content/themes/Divi-Child/sass/style.scss */
+.entry-post-content {
+  background-color: #fff;
+  padding: 10px; }
+
+@media only screen and (max-width: 479px) {
+  /* line 114, ../wp-content/themes/Divi-Child/sass/style.scss */
+  #small-image {
+    display: inline; }
+
+  /* line 119, ../wp-content/themes/Divi-Child/sass/style.scss */
+  #home-slider {
+    display: none; }
+
+  /* line 125, ../wp-content/themes/Divi-Child/sass/style.scss */
+  .et_pb_slide {
+    box-shadow: none !important;
+    background-color: transparent !important; }
+
+  /* line 130, ../wp-content/themes/Divi-Child/sass/style.scss */
+  #logo {
+    display: none; }
+
+  /* line 134, ../wp-content/themes/Divi-Child/sass/style.scss */
+  #logo_mobile {
+    display: block;
+    width: 50%; }
+
+  /* line 139, ../wp-content/themes/Divi-Child/sass/style.scss */
+  #et_mobile_nav_menu {
+    margin-top: -40px !important; }
+
+  /* line 143, ../wp-content/themes/Divi-Child/sass/style.scss */
+  .mobile_menu_bar:before {
+    content: "b"; }
+
+  /* line 147, ../wp-content/themes/Divi-Child/sass/style.scss */
+  #main-content {
+    margin-top: 50px !important; }
+
+  /* line 151, ../wp-content/themes/Divi-Child/sass/style.scss */
+  #footer-info {
+    margin-top: 20px; }
+
+  /* line 155, ../wp-content/themes/Divi-Child/sass/style.scss */
+  #et-social-icons a {
+    margin-top: 10px; } }
+/****end max-width: 479px****/

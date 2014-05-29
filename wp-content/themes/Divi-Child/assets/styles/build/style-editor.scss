@@ -1,0 +1,165 @@
+/*
+Divi Child
+Ken Shoufer
+*/
+
+@font-face {
+  font-family: 'ETmodules';
+  src: url("../Divi/fonts/ETmodules.eot");
+  src: url("../Divi/fonts/ETmodules.eot?#iefix") format("embedded-opentype"), url("../Divi/fonts/ETmodules.ttf") format("truetype"), url("../fonts/Divi/ETmodules.woff") format("woff"), url("fonts/Divi/ETmodules.svg#ETmodules") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+$font-stack:    Helvetica, sans-serif;
+$primary-color: #fff;
+
+#footer-info, #footer-info a  {
+    color: $primary-color;
+}
+
+#et-social-icons {
+    text-align: right;
+}
+
+#et-social-icons a {
+    color: $primary-color;
+}
+
+.et-social-icon span {
+    display: inline;
+}
+
+a {
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+.et_pb_slide {
+    box-shadow: none;
+    background-color: transparent;
+}
+
+.et_pb_slider .et_pb_slide, .et_pb_section {
+    background-size: contain;
+}
+
+.et_pb_section {
+    background-repeat: repeat;
+    background-size: 132px;
+    /*background-color: transparent !important;*/
+}
+
+#main-content, .et_pb_section {
+    background-color: transparent !important;
+}
+
+.et_pb_text p {
+    line-height: 1.5;
+    font-size: 25px;
+}
+
+
+#logo_mobile {
+    display: none;
+}
+
+.et_pb_promo_description {
+    font-size: 30px;
+}
+
+.et_pb_promo_description p {
+    line-height: 2;
+}
+
+.et_pb_contact p input, .et_pb_contact p textarea {
+    background-color: $primary-color;
+}
+
+.et-pb-arrow-next, .et-pb-arrow-prev {
+    font-size: 8em;
+}
+
+.main_title {
+    display: none;
+}
+
+#slider1 {
+    width: 100%;
+}
+
+#small-image {
+    display: none;
+}
+
+#et_top_search {
+    display: none;
+}
+
+.vfb-checkbox, .vfb-radio {
+-webkit-appearance: checkbox;
+}
+
+.et_pb_slider .et_pb_slide {
+    box-shadow:none;
+}
+
+.et-pb-arrow-prev, .et-pb-arrow-next {
+    background-color: rgba(0, 0, 0, .07);
+}
+
+.entry-post-content {
+     background-color: $primary-color;
+     padding: 10px;
+}
+
+
+@media only screen and ( max-width: 479px ) {
+
+#small-image {
+    display: inline;
+}
+
+
+#home-slider
+{
+    display: none;
+}
+
+    
+.et_pb_slide {
+    box-shadow: none !important;
+    background-color: transparent !important;
+}
+
+#logo {
+    display: none;
+}
+
+#logo_mobile {
+    display: block;
+    width: 50%;
+}
+
+#et_mobile_nav_menu {
+    margin-top: -40px !important;
+}
+
+.mobile_menu_bar:before {
+    content: "b";
+}
+
+#main-content {
+    margin-top: 50px !important;
+}
+
+#footer-info {
+    margin-top: 20px;
+}
+
+#et-social-icons a {
+    margin-top: 10px;
+}
+
+
+}/****end max-width: 479px****/
