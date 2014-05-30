@@ -34,6 +34,7 @@
 		document.documentElement.className = 'js';
 	</script>
 
+
 	<?php wp_head(); ?>
 </head>
 <body <?php body_class(); ?>>
@@ -92,6 +93,7 @@
 					?>
 					</form>
 				</div>
+
 
 				<?php do_action( 'et_header_top' ); ?>
 			</div> <!-- #et-top-navigation -->

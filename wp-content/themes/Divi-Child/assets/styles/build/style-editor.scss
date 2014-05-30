@@ -3,10 +3,14 @@ Divi Child
 Ken Shoufer
 */
 
+
 @font-face {
   font-family: 'ETmodules';
-  src: url("../Divi/fonts/ETmodules.eot");
-  src: url("../Divi/fonts/ETmodules.eot?#iefix") format("embedded-opentype"), url("../Divi/fonts/ETmodules.ttf") format("truetype"), url("../fonts/Divi/ETmodules.woff") format("woff"), url("fonts/Divi/ETmodules.svg#ETmodules") format("svg");
+  src:url('../Divi/fonts/ETmodules.eot');
+  src:url('../Divi/fonts/ETmodules.eot?#iefix') format('embedded-opentype'),
+    url('../Divi/fonts/ETmodules.ttf') format('truetype'),
+    url('../Divi/fonts/ETmodules.woff') format('woff'),
+    url('../Divi/fonts/ETmodules.svg#ETmodules') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -113,17 +117,77 @@ a {
      padding: 10px;
 }
 
+#soliloquy-container-1009 .soliloquy-prev, #soliloquy-container-1009 .soliloquy-next {
+  display: none !important;
+}
 
+
+/*-------------------[981px]------------------*/
+@media only screen and ( min-width: 981px ) and ( max-width: 1100px ) {
+
+
+
+}//end 981px to 1100px
+
+
+/*-------------------[768px]------------------*/
+@media only screen and ( min-width: 768px ) and ( max-width: 980px ) {
+
+ #main-content {
+    margin-top: 50px !important;
+  }
+
+
+}//end 768px to 908px
+
+
+/*-------------------[480px to 767px]------------------*/
+@media only screen and ( min-width: 480px ) and ( max-width: 767px ) {
+
+#main-header {
+    
+    #small-image {
+        display: inline;
+    }
+
+  }
+
+  #logo {
+    display: none;
+  }
+
+  #logo_mobile {
+    display: block;
+    width: 50%;
+  }
+
+  #et_mobile_nav_menu {
+    margin-top: -60px !important;
+  }
+
+  .mobile_menu_bar:before {
+    content: "b";
+  }
+
+  #main-content {
+    margin-top: 50px !important;
+  }
+
+  .et_pb_column {
+    padding-bottom: 0px;
+  }
+
+}//end 480px to 767px
+
+/*-------------------[479px]------------------*/
 @media only screen and ( max-width: 479px ) {
 
 #small-image {
     display: inline;
 }
 
-
-#home-slider
-{
-    display: none;
+#soliloquy-container-1009 {
+  display: none;
 }
 
     
@@ -147,7 +211,7 @@ a {
 
 .mobile_menu_bar:before {
     content: "b";
-}
+}  
 
 #main-content {
     margin-top: 50px !important;
