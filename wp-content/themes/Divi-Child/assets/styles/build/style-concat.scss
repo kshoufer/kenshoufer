@@ -3094,6 +3094,10 @@ Ken Shoufer
   font-style: normal;
 }
 
+.et-social-facebook a:before {
+content: '\68';
+}
+
 $font-stack:    Helvetica, sans-serif;
 $primary-color: #fff;
 

@@ -10545,6 +10545,10 @@ Ken Shoufer
   font-weight: normal;
   font-style: normal;
 }
+.et-social-facebook a:before {
+  content: '\68';
+}
+
 #footer-info, #footer-info a {
   color: white;
 }
