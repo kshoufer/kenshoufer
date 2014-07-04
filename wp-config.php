@@ -39,7 +39,7 @@ if ($_SERVER['SERVER_NAME'] === "localhost") {
     /** MySQL database username */
     define('DB_USER', 'backcou2_ks');
     /** MySQL database password */
-    define('DB_PASSWORD', 'belmont1');
+    define('DB_PASSWORD', 'pi76X!L.$-P%');
     /** MySQL hostname */
     define('DB_HOST', 'localhost');
     /** Database Charset to use in creating database tables. */

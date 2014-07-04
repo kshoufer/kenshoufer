@@ -1,0 +1,1 @@
+[05-Jun-2014 13:48:14 CST6CDT] PHP Fatal error:  Call to undefined function add_action() in /home/backcou2/public_html/kenshoufer/wp-includes/admin-bar.php on line 48
