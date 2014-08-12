@@ -50,7 +50,7 @@
 					<?php
 						et_divi_post_meta();
 
-						if ( 'on' !== et_get_option( 'divi_blog_style', 'false' ) )
+						if ( 'on' !== et_get_option( 'divi_blog_style', 'false' ) || ( is_search() && ( 'on' === get_post_meta( get_the_ID(), '_et_pb_use_builder', true ) ) ) )
 							truncate_post( 270 );
 						else
 							the_content();

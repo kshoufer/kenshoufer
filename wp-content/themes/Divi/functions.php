@@ -128,7 +128,13 @@ function et_divi_load_scripts_styles(){
 		'field'               => esc_html__( 'field', 'Divi' ),
 		'invalid'             => esc_html__( 'Invalid email', 'Divi' ),
 		'captcha'             => esc_html__( 'Captcha', 'Divi' ),
+		'prev'				  => esc_html__( 'Prev', 'Divi' ),
+		'next'				  => esc_html__( 'Next', 'Divi' ),
 	) );
+
+	if ( 'on' === et_get_option( 'divi_smooth_scroll', false ) ) {
+		wp_enqueue_script( 'smooth-scroll', $template_dir . '/js/smoothscroll.js', array( 'jquery' ), $theme_version, true );
+	}
 
 	$et_gf_enqueue_fonts = array();
 	$et_gf_heading_font = sanitize_text_field( et_get_option( 'heading_font', 'none' ) );
@@ -179,13 +185,13 @@ endif;
 
 if ( ! function_exists( 'et_get_theme_version' ) ) :
 function et_get_theme_version() {
-	if ( ! function_exists( 'get_custom_header' ) ){
-		$theme_info = get_theme_data( get_template_directory() . '/style.css' );
-		$theme_version = $theme_info['Version'];
-	} else {
-		$theme_info = wp_get_theme();
-		$theme_version = $theme_info->display('Version');
+	$theme_info = wp_get_theme();
+
+	if ( is_child_theme() ) {
+		$theme_info = wp_get_theme( $theme_info->parent_theme );
 	}
+
+	$theme_version = $theme_info->display( 'Version' );
 
 	return $theme_version;
 }
@@ -232,16 +238,22 @@ function et_postinfo_meta( $postinfo, $date_format, $comment_zero, $comment_one,
 	$postinfo_meta = '';
 
 	if ( in_array( 'author', $postinfo ) )
-		$postinfo_meta .= ' ' . esc_html__('by',$themename) . ' ' . et_get_the_author_posts_link() . ' | ';
+		$postinfo_meta .= ' ' . esc_html__('by',$themename) . ' ' . et_get_the_author_posts_link();
 
-	if ( in_array( 'date', $postinfo ) )
-		$postinfo_meta .= get_the_time( $date_format ) . ' | ';
+	if ( in_array( 'date', $postinfo ) ) {
+		if ( in_array( 'author', $postinfo ) ) $postinfo_meta .= ' | ';
+		$postinfo_meta .= get_the_time( $date_format );
+	}
 
-	if ( in_array( 'categories', $postinfo ) )
-		$postinfo_meta .= get_the_category_list(', ')  . ' | ';
+	if ( in_array( 'categories', $postinfo ) ){
+		if ( in_array( 'author', $postinfo ) || in_array( 'date', $postinfo ) ) $postinfo_meta .= ' | ';
+		$postinfo_meta .= get_the_category_list(', ');
+	}
 
-	if ( in_array( 'comments', $postinfo ) )
+	if ( in_array( 'comments', $postinfo ) ){
+		if ( in_array( 'author', $postinfo ) || in_array( 'date', $postinfo ) || in_array( 'categories', $postinfo ) ) $postinfo_meta .= ' | ';
 		$postinfo_meta .= et_get_comments_popup_link( $comment_zero, $comment_one, $comment_more );
+	}
 
 	echo $postinfo_meta;
 }
@@ -388,6 +400,8 @@ function et_single_settings_meta_box( $post ) {
 
 	$page_layout = get_post_meta( $post_id, '_et_pb_page_layout', true );
 
+	$side_nav = get_post_meta( $post_id, '_et_pb_side_nav', true );
+
 	$page_layouts = array(
 		'et_right_sidebar'   => __( 'Right Sidebar', 'Divi' ),
    		'et_left_sidebar'    => __( 'Left Sidebar', 'Divi' ),
@@ -420,6 +434,14 @@ function et_single_settings_meta_box( $post ) {
 				selected( $layout_value, $page_layout )
 			);
 		} ?>
+		</select>
+	</p>
+	<p class="et_pb_page_settings et_pb_side_nav_settings" style="display: none;">
+		<label for="et_pb_side_nav" style="display: block; font-weight: bold; margin-bottom: 5px;"><?php esc_html_e( 'Side Navigation', 'Divi' ); ?>: </label>
+
+		<select id="et_pb_side_nav" name="et_pb_side_nav">
+			<option value="off"<?php selected( 'off', $side_nav ); ?> >Off</option>
+			<option value="on" <?php selected( 'on', $side_nav ); ?> >On</option>
 		</select>
 	</p>
 <?php if ( in_array( $post->post_type, array( 'page', 'project' ) ) ) : ?>
@@ -478,6 +500,12 @@ function et_metabox_settings_save_details( $post_id, $post ){
 		update_post_meta( $post_id, '_et_pb_page_layout', sanitize_text_field( $_POST['et_pb_page_layout'] ) );
 	} else {
 		delete_post_meta( $post_id, '_et_pb_page_layout' );
+	}
+
+	if ( isset( $_POST['et_pb_side_nav'] ) ) {
+		update_post_meta( $post_id, '_et_pb_side_nav', sanitize_text_field( $_POST['et_pb_side_nav'] ) );
+	} else {
+		delete_post_meta( $post_id, '_et_pb_side_nav' );
 	}
 
 	if ( isset( $_POST['et_pb_use_builder'] ) ) {
@@ -622,6 +650,20 @@ function et_divi_customize_register( $wp_customize ) {
 
 	$wp_customize->add_control( 'et_divi[boxed_layout]', array(
 		'label'		=> __( 'Boxed Layout', 'Divi' ),
+		'section'	=> 'et_divi_settings',
+		'type'      => 'checkbox',
+		'priority'  => 10,
+	) );
+
+	$wp_customize->add_setting( 'et_divi[cover_background]', array(
+		'default'       => 'on',
+		'type'			=> 'option',
+		'capability'	=> 'edit_theme_options',
+		'transport'		=> 'postMessage',
+	) );
+
+	$wp_customize->add_control( 'et_divi[cover_background]', array(
+		'label'		=> __( 'Stretch Background Image', 'Divi' ),
 		'section'	=> 'et_divi_settings',
 		'type'      => 'checkbox',
 		'priority'  => 10,
@@ -792,7 +834,8 @@ function et_divi_customize_register( $wp_customize ) {
 	$wp_customize->add_setting( 'et_divi[heading_font]', array(
 		'default'		=> 'none',
 		'type'			=> 'option',
-		'capability'	=> 'edit_theme_options'
+		'capability'	=> 'edit_theme_options',
+		'transport'		=> 'postMessage'
 	) );
 
 	$wp_customize->add_control( 'et_divi[heading_font]', array(
@@ -806,7 +849,8 @@ function et_divi_customize_register( $wp_customize ) {
 	$wp_customize->add_setting( 'et_divi[body_font]', array(
 		'default'		=> 'none',
 		'type'			=> 'option',
-		'capability'	=> 'edit_theme_options'
+		'capability'	=> 'edit_theme_options',
+		'transport'		=> 'postMessage'
 	) );
 
 	$wp_customize->add_control( 'et_divi[body_font]', array(
@@ -1161,6 +1205,10 @@ function et_layout_body_class( $classes ) {
 		$classes[] = 'et_boxed_layout';
 	}
 
+	if ( true === et_get_option( 'cover_background', true ) ) {
+		$classes[] = 'et_cover_background';
+	}
+
 	$et_secondary_nav_items = et_divi_get_top_nav_items();
 
 	if ( $et_secondary_nav_items->top_info_defined ) {
@@ -1177,6 +1225,10 @@ function et_layout_body_class( $classes ) {
 
 	if ( 'left' !== ( $header_style = et_get_option( 'header_style', 'left' ) ) ) {
 		$classes[] = esc_attr( "et_header_style_{$header_style}" );
+	}
+
+	if ( ( is_page() || is_singular( 'project' ) ) && 'on' == get_post_meta( get_the_ID(), '_et_pb_side_nav', true ) && et_pb_is_pagebuilder_used( get_the_ID() ) ) {
+		$classes[] = 'et_pb_side_nav_page';
 	}
 
 	if ( stristr( $_SERVER['HTTP_USER_AGENT'],"mac") ) {
@@ -1210,8 +1262,9 @@ if ( ! function_exists( 'et_show_cart_total' ) ) {
 			esc_url( WC()->cart->get_cart_url() ),
 			( ! $args['no_text']
 				? sprintf(
-					__( '%1$s Items', 'Divi' ),
-					esc_html( WC()->cart->get_cart_contents_count() )
+				__( '%1$s %2$s' ),
+				esc_html( WC()->cart->get_cart_contents_count() ),
+				( 1 === WC()->cart->get_cart_contents_count() ? __( 'Item', 'Divi' ) : __( 'Items', 'Divi' ) )
 				)
 				: ''
 			)
@@ -1264,15 +1317,12 @@ function et_divi_sidebar_class( $classes ) {
 			? $layout
 			: 'et_right_sidebar';
 
-	if ( class_exists( 'woocommerce' ) && ( is_shop() || is_product() ) ) {
-		if ( is_shop() )
+	if ( class_exists( 'woocommerce' ) && ( is_shop() || is_product() || is_product_category() || is_product_tag() ) ) {
+		if ( is_shop() || is_tax() )
 			$classes[] = et_get_option( 'divi_shop_page_sidebar', 'et_right_sidebar' );
 		if ( is_product() )
 			$classes[] = $page_layout;
 	}
-
-	else if ( class_exists( 'woocommerce' ) && ( is_product_category() || is_product_tag() ) )
-		$classes[] = 'et_full_width_page';
 
 	else if ( is_archive() || is_home() || is_search() || is_404() ) {
 		$classes[] = 'et_right_sidebar';
@@ -1372,10 +1422,10 @@ function et_divi_output_content_wrapper_end() {
 	if (
 		( is_product() && 'et_full_width_page' !== get_post_meta( get_the_ID(), '_et_pb_page_layout', true ) )
 		||
-		( is_shop() && 'et_full_width_page' !== et_get_option( 'divi_shop_page_sidebar', 'et_right_sidebar' ) )
-	)
-
+		( ( is_shop() || is_product_category() || is_product_tag() ) && 'et_full_width_page' !== et_get_option( 'divi_shop_page_sidebar', 'et_right_sidebar' ) )
+	) {
 		woocommerce_get_sidebar();
+	}
 
 	echo '
 				</div> <!-- #content-area -->
@@ -1626,16 +1676,19 @@ function et_pb_slider( $atts, $content = '', $function_name ) {
 			'show_arrows' => 'on',
 			'show_pagination' => 'on',
 			'parallax' => 'off',
+			'parallax_method' => 'off',
 			'auto' => 'off',
 			'auto_speed' => '7000',
 		), $atts
 	) );
 
-	global $et_pb_slider_has_video, $et_pb_slider_parallax;
+	global $et_pb_slider_has_video, $et_pb_slider_parallax, $et_pb_slider_parallax_method;
 
 	$et_pb_slider_has_video = false;
 
 	$et_pb_slider_parallax = $parallax;
+
+	$et_pb_slider_parallax_method = $parallax_method;
 
 	$fullwidth = 'et_pb_fullwidth_slider' === $function_name ? 'on' : 'off';
 
@@ -1685,7 +1738,7 @@ function et_pb_slide( $atts, $content = '' ) {
 		), $atts
 	) );
 
-	global $et_pb_slider_has_video, $et_pb_slider_parallax;
+	global $et_pb_slider_has_video, $et_pb_slider_parallax, $et_pb_slider_parallax_method;
 
 	$background_video = '';
 
@@ -1802,7 +1855,7 @@ function et_pb_slide( $atts, $content = '' ) {
 		$image,
 		esc_attr( $class ),
 		( '' !== $background_video ? $background_video : '' ),
-		( '' !== $background_image && 'on' === $et_pb_slider_parallax ? sprintf( '<div class="et_parallax_bg" style="background-image: url(%1$s);"></div>', esc_attr( $background_image ) ) : '' )
+		( '' !== $background_image && 'on' === $et_pb_slider_parallax ? sprintf( '<div class="et_parallax_bg%2$s" style="background-image: url(%1$s);"></div>', esc_attr( $background_image ), ( 'off' === $et_pb_slider_parallax_method ? ' et_pb_parallax_css' : '' ) ) : '' )
 	);
 
 	return $output;
@@ -1821,9 +1874,10 @@ function et_pb_section( $atts, $content = '' ) {
 			'background_video_height' => '',
 			'inner_shadow' => 'off',
 			'parallax' => 'off',
-			'parallax_method' => 'css',
+			'parallax_method' => 'off',
 			'fullwidth' => 'off',
 			'specialty' => 'off',
+			'transparent_background' => 'off',
 		), $atts
 	) );
 
@@ -1850,7 +1904,8 @@ function et_pb_section( $atts, $content = '' ) {
 		wp_enqueue_script( 'wp-mediaelement' );
 	}
 
-	if ( '' !== $background_color )
+
+	if ( '' !== $background_color && 'off' === $transparent_background )
 		$style .= sprintf( 'background-color:%s;',
 			esc_attr( $background_color )
 		);
@@ -1864,7 +1919,7 @@ function et_pb_section( $atts, $content = '' ) {
 	$style = '' !== $style ? " style='{$style}'" : '';
 
 	$output = sprintf(
-		'<div%8$s class="et_pb_section%4$s%5$s%6$s%7$s%9$s%13$s"%2$s>
+		'<div%8$s class="et_pb_section%4$s%5$s%6$s%7$s%9$s%13$s%14$s"%2$s>
 			%12$s
 			%10$s
 				%3$s
@@ -1886,11 +1941,12 @@ function et_pb_section( $atts, $content = '' ) {
 			? sprintf(
 				'<div class="et_parallax_bg%2$s" style="background-image: url(%1$s);"></div>',
 				esc_attr( $background_image ),
-				( 'css' === $parallax_method ? ' et_pb_parallax_css' : '' )
+				( 'off' === $parallax_method ? ' et_pb_parallax_css' : '' )
 			)
 			: ''
 		),
-		( 'on' === $specialty ? ' et_section_specialty' : ' et_section_regular' )
+		( 'on' === $specialty ? ' et_section_specialty' : ' et_section_regular' ),
+		( 'on' === $transparent_background ? ' et_section_transparent' : '' )
 	);
 
 	return $output;
@@ -1984,20 +2040,24 @@ function et_pb_image( $atts ) {
 			'module_class' => '',
 			'src' => '',
 			'alt' => '',
+			'title_text' => '',
 			'animation' => 'left',
 			'url' => '',
 			'url_new_window' => 'off',
 			'show_in_lightbox' => 'off',
+			'sticky' => 'off',
 		), $atts
 	) );
 
 	$output = sprintf(
-		'<img%4$s src="%1$s" alt="%2$s" class="et-waypoint et_pb_image%3$s%5$s" />',
+		'<img%4$s src="%1$s" alt="%2$s"%6$s class="et-waypoint et_pb_image%3$s%5$s%7$s" />',
 		esc_attr( $src ),
 		esc_attr( $alt ),
 		esc_attr( " et_pb_animation_{$animation}" ),
 		( '' !== $module_id ? sprintf( ' id="%1$s"', esc_attr( $module_id ) ) : '' ),
-		( '' !== $module_class ? sprintf( ' %1$s', esc_attr( $module_class ) ) : '' )
+		( '' !== $module_class ? sprintf( ' %1$s', esc_attr( $module_class ) ) : '' ),
+		( '' !== $title_text ? sprintf( ' title="%1$s"', esc_attr( $title_text ) ) : '' ),
+		( 'on' === $sticky ? esc_attr( ' et_pb_image_sticky' ) : '' )
 	);
 
 	if ( 'on' === $show_in_lightbox ) {
@@ -2861,28 +2921,30 @@ function et_pb_get_mailchimp_lists() {
 	$lists = array();
 
 	if ( 'on' === et_get_option( 'divi_regenerate_mailchimp_lists', 'false' ) || false === ( $et_pb_mailchimp_lists = get_transient( 'et_pb_mailchimp_lists' ) ) ) {
-		if ( ! class_exists( 'MCAPI' ) )
-			require_once( get_template_directory() . '/includes/subscription/mailchimp/MCAPI.class.php' );
+		if ( ! class_exists( 'Mailchimp' ) )
+			require_once( get_template_directory() . '/includes/subscription/mailchimp/Mailchimp.php' );
 
 		$mailchimp_api_key = et_get_option( 'divi_mailchimp_api_key' );
 
 		if ( '' === $mailchimp_api_key ) return false;
 
-		$api = new MCAPI( $mailchimp_api_key );
+		try {
+			$mailchimp = new Mailchimp( $mailchimp_api_key );
+			$mailchimp_lists = new Mailchimp_Lists( $mailchimp );
 
-		$retval = $api->lists();
+			$retval = $mailchimp_lists->getlist();
 
-		if ( ! $api->errorCode ) {
-			foreach ( $retval['data'] as $list )
+			foreach ( $retval['data'] as $list ) {
 				$lists[$list['id']] = $list['name'];
+			}
+
+			set_transient( 'et_pb_mailchimp_lists', $lists, 60*60*24 );
+		} catch ( Exception $exc ) {
+			$lists = $et_pb_mailchimp_lists;
 		}
 
-		set_transient( 'et_pb_mailchimp_lists', $lists, 60*60*24 );
-	} else {
-		$lists = $et_pb_mailchimp_lists;
-	}
-
 	return $lists;
+	}
 }
 endif;
 
@@ -2947,21 +3009,21 @@ function et_pb_get_aweber_lists() {
 endif;
 
 function et_pb_submit_subscribe_form(  ) {
-	if ( ! wp_verify_nonce( $_POST['et_load_nonce'], 'et_load_nonce' ) ) die(-1);
+	if ( ! wp_verify_nonce( $_POST['et_load_nonce'], 'et_load_nonce' ) ) die( json_encode( array( 'error' => __( 'Configuration error', 'Divi' ) ) ) );
 
 	$service = sanitize_text_field( $_POST['et_service'] );
 
 	$list_id = sanitize_text_field( $_POST['et_list_id'] );
 
-	$email = sanitize_email( $_POST['et_email'] );
+	$email = array( 'email' => sanitize_email( $_POST['et_email'] ) );
 
 	$firstname = sanitize_text_field( $_POST['et_firstname'] );
 
-	if ( '' === $firstname ) die( -1 );
+	if ( '' === $firstname ) die( json_encode( array( 'error' => __( 'Please enter first name', 'Divi' ) ) ) );
 
-	if ( ! is_email( $email ) ) die( -1 );
+	if ( ! is_email( sanitize_email( $_POST['et_email'] ) ) ) die( json_encode( array( 'error' => __( 'Incorrect email', 'Divi' ) ) ) );
 
-	if ( '' == $list_id ) die( -1 );
+	if ( '' == $list_id ) die( json_encode( array( 'error' => __( 'Configuration error: List is not defined', 'Divi' ) ) ) );
 
 	$success_message = __( '<h2 class="et_pb_subscribed">Subscribed - look for the confirmation email!</h2>', 'Divi' );
 
@@ -2969,26 +3031,38 @@ function et_pb_submit_subscribe_form(  ) {
 		case 'mailchimp' :
 			$lastname = sanitize_text_field( $_POST['et_lastname'] );
 
-			if ( ! class_exists( 'MCAPI' ) )
-				require_once( get_template_directory() . '/includes/subscription/mailchimp/MCAPI.class.php' );
+			if ( ! class_exists( 'Mailchimp' ) )
+				require_once( get_template_directory() . '/includes/subscription/mailchimp/Mailchimp.php' );
 
 			$mailchimp_api_key = et_get_option( 'divi_mailchimp_api_key' );
 
-			if ( '' === $mailchimp_api_key ) die( -1 );
+			if ( '' === $mailchimp_api_key ) die( json_encode( array( 'error' => __( 'Configuration error: api key is not defined', 'Divi' ) ) ) );
 
-			$api = new MCAPI( $mailchimp_api_key );
+			try {
+				$mailchimp = new Mailchimp( $mailchimp_api_key );
+				$mailchimp_lists = new Mailchimp_Lists( $mailchimp );
 
-			$merge_vars = array(
-				'FNAME' => $firstname,
-				'LNAME' => $lastname,
-			);
+	 			$merge_vars = array(
+					'FNAME' => $firstname,
+					'LNAME' => $lastname,
+				);
 
-			$retval = $api->listSubscribe( $list_id, $email, $merge_vars );
+				$retval = $mailchimp_lists->subscribe( $list_id, $email, $merge_vars );
 
-			if ( ! $api->errorCode ) {
-				echo $success_message;
-			}
+				$result = json_encode( array( 'success' => $success_message ) );
+			} catch ( Exception $e ) {
+				 if ( $e == 'List_AlreadySubscribed' ) {
+                    $error_code = $e->code;
+                }
+                    if ( $error_code = '214' ) {
+                        $error_message = str_replace( 'Click here to update your profile.', '', $e->getMessage() );
+                        $result = json_encode( array( 'success' => $error_message ) );
+                    } else {
+                    	$result = json_encode( array( 'success' => $e->getMessage() ) );
+                    }
+                }
 
+            die( $result );
 			break;
 		case 'aweber' :
 			if ( ! class_exists( 'AWeberAPI' ) ) {
@@ -3168,48 +3242,62 @@ function et_pb_login( $atts, $content = null ) {
 		), $atts
 	) );
 
+	$redirect_url = 'on' === $current_page_redirect
+		? ( is_ssl() ? 'https://' : 'http://' ) . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']
+		: '';
+
+
 	if ( is_user_logged_in() ) {
-		return '';
+		global $current_user;
+     	get_currentuserinfo();
+
+		$content .= sprintf( '<br/>%1$s <a href="%2$s">%3$s</a>',
+				sprintf( __( 'Logged in as %1$s', 'Divi' ), esc_html( $current_user->display_name ) ),
+				esc_url( wp_logout_url( $redirect_url ) ),
+				esc_html__( 'Log out', 'Divi' )
+			);
 	}
 
 	$class = " et_pb_bg_layout_{$background_layout} et_pb_text_align_{$text_orientation}";
 
 	$form = '';
 
-	$username = __( 'Username', 'Divi' );
-	$password = __( 'Password', 'Divi' );
+	if ( !is_user_logged_in() ) {
+		$username = __( 'Username', 'Divi' );
+		$password = __( 'Password', 'Divi' );
 
-	$form = sprintf( '
-		<div class="et_pb_newsletter_form et_pb_login_form">
-			<form action="%7$s" method="post">
-				<p>
-					<label class="et_pb_contact_form_label" for="user_login" style="display: none;">%3$s</label>
-					<input id="user_login" placeholder="%4$s" class="input" type="text" value="" name="log" />
-				</p>
-				<p>
-					<label class="et_pb_contact_form_label" for="user_pass" style="display: none;">%5$s</label>
-					<input id="user_pass" placeholder="%6$s" class="input" type="password" value="" name="pwd" />
-				</p>
-				<p class="et_pb_forgot_password"><a href="%2$s">%1$s</a></p>
-				<p>
-					<button type="submit" class="et_pb_newsletter_button">%8$s</button>
-					%9$s
-				</p>
-			</form>
-		</div>',
-		__( 'Forgot your password?', 'Divi' ),
-		esc_url( wp_lostpassword_url() ),
-		esc_html( $username ),
-		esc_attr( $username ),
-		esc_html( $password ),
-		esc_attr( $password ),
-		esc_url( site_url( 'wp-login.php' ) ),
-		__( 'Login', 'Divi' ),
-		( 'on' === $current_page_redirect
-			? sprintf( '<input type="hidden" name="redirect_to" value="%1$s" />', ( is_ssl() ? 'https://' : 'http://' ) . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'] )
-			: ''
-		)
-	);
+		$form = sprintf( '
+			<div class="et_pb_newsletter_form et_pb_login_form">
+				<form action="%7$s" method="post">
+					<p>
+						<label class="et_pb_contact_form_label" for="user_login" style="display: none;">%3$s</label>
+						<input id="user_login" placeholder="%4$s" class="input" type="text" value="" name="log" />
+					</p>
+					<p>
+						<label class="et_pb_contact_form_label" for="user_pass" style="display: none;">%5$s</label>
+						<input id="user_pass" placeholder="%6$s" class="input" type="password" value="" name="pwd" />
+					</p>
+					<p class="et_pb_forgot_password"><a href="%2$s">%1$s</a></p>
+					<p>
+						<button type="submit" class="et_pb_newsletter_button">%8$s</button>
+						%9$s
+					</p>
+				</form>
+			</div>',
+			__( 'Forgot your password?', 'Divi' ),
+			esc_url( wp_lostpassword_url() ),
+			esc_html( $username ),
+			esc_attr( $username ),
+			esc_html( $password ),
+			esc_attr( $password ),
+			esc_url( site_url( 'wp-login.php' ) ),
+			__( 'Login', 'Divi' ),
+			( 'on' === $current_page_redirect
+				? sprintf( '<input type="hidden" name="redirect_to" value="%1$s" />',  $redirect_url )
+				: ''
+			)
+		);
+	}
 
 	$output = sprintf(
 		'<div%6$s class="et_pb_newsletter et_pb_login clearfix%4$s%7$s"%5$s>
@@ -3288,6 +3376,7 @@ function et_pb_blog( $atts ) {
 			'show_categories' => 'on',
 			'show_pagination' => 'on',
 			'background_layout' => 'light',
+			'show_more' => 'off',
 		), $atts
 	) );
 
@@ -3374,15 +3463,25 @@ function et_pb_blog( $atts ) {
 
 			<?php
 				if ( 'on' === $show_author || 'on' === $show_date || 'on' === $show_categories ) {
-					printf( '<p class="post-meta">%1$s %2$s %3$s</p>',
+					printf( '<p class="post-meta">%1$s %2$s %3$s %4$s %5$s</p>',
 						(
 							'on' === $show_author
-								? sprintf( __( 'by %s |', 'Divi' ), et_get_the_author_posts_link() )
+								? sprintf( __( 'by %s', 'Divi' ), et_get_the_author_posts_link() )
+								: ''
+						),
+						(
+							( 'on' === $show_author && 'on' === $show_date )
+								? ' | '
 								: ''
 						),
 						(
 							'on' === $show_date
-								? sprintf( __( '%s |', 'Divi' ), get_the_date( $meta_date ) )
+								? sprintf( __( '%s', 'Divi' ), get_the_date( $meta_date ) )
+								: ''
+						),
+						(
+							(( 'on' === $show_author || 'on' === $show_date ) && 'on' === $show_categories)
+								? ' | '
 								: ''
 						),
 						(
@@ -3404,6 +3503,8 @@ function et_pb_blog( $atts ) {
 					} else {
 						truncate_post( 270 );
 					}
+					$more = 'on' == $show_more ? sprintf( ' <a href="%1$s" class="more-link" >%2$s</a>' , esc_url( get_permalink() ), __( 'read more', 'Divi' ) )  : '';
+					echo $more;
 				} ?>
 		<?php } // 'off' === $fullwidth || ! in_array( $post_format, array( 'link', 'audio', 'quote', 'gallery' ?>
 
@@ -3462,12 +3563,26 @@ function et_pb_gallery( $atts ) {
 		'show_title_and_caption'    => 'on',
 		'background_layout' => 'light',
 		'posts_number' => 4,
-		'show_pagination' => 'on'
+		'show_pagination' => 'on',
+		'gallery_orderby' => '',
 	), $atts ));
 
 	$attachments = array();
 	if ( !empty($gallery_ids) ) {
-		$_attachments = get_posts( array('include' => $gallery_ids, 'post_status' => 'inherit', 'post_type' => 'attachment', 'post_mime_type' => 'image', 'order' => 'ASC', 'orderby' => 'post__in') );
+		$attachments_args = array(
+			'include'        => $gallery_ids,
+			'post_status'    => 'inherit',
+			'post_type'      => 'attachment',
+			'post_mime_type' => 'image',
+			'order'          => 'ASC',
+			'orderby'        => 'post__in',
+		);
+
+		if ( 'rand' === $gallery_orderby ) {
+			$attachments_args['orderby'] = 'rand';
+		}
+
+		$_attachments = get_posts( $attachments_args );
 
 		foreach ( $_attachments as $key => $val ) {
 			$attachments[$val->ID] = $_attachments[$key];
@@ -3798,7 +3913,7 @@ function et_pb_filterable_portfolio( $atts ) {
 
 	$posts = ob_get_clean();
 
-	$categories_included = array_unique( $categories_included );
+	$categories_included = explode ( ',', $include_categories );
 	$terms_args = array(
 		'include' => $categories_included,
 		'orderby' => 'name',
@@ -4435,7 +4550,8 @@ function et_pb_map( $atts, $content = '' ) {
 			'module_class' => '',
 			'address_lat' => '',
 			'address_lng' => '',
-			'zoom_level' => 18
+			'zoom_level' => 18,
+			'mouse_wheel' => 'on',
 		), $atts
 	) );
 
@@ -4444,15 +4560,17 @@ function et_pb_map( $atts, $content = '' ) {
 	$all_pins_content = do_shortcode( et_pb_fix_shortcodes( $content ) );
 
 	$output = sprintf(
-		'<div class="et_pb_map_container">
-			<div class="et_pb_map" data-center-lat="%1$s" data-center-lng="%2$s" data-zoom="%3$d"></div>
+		'<div%5$s class="et_pb_map_container%6$s">
+			<div class="et_pb_map" data-center-lat="%1$s" data-center-lng="%2$s" data-zoom="%3$d" data-mouse-wheel="%7$s"></div>
 			%4$s
 		</div>',
-
 		esc_attr( $address_lat ),
 		esc_attr( $address_lng ),
 		esc_attr( $zoom_level ),
-		$all_pins_content
+		$all_pins_content,
+		( '' !== $module_id ? sprintf( ' id="%1$s"', esc_attr( $module_id ) ) : '' ),
+		( '' !== $module_class ? sprintf( ' %1$s', esc_attr( $module_class ) ) : '' ),
+		esc_attr( $mouse_wheel )
 	);
 
 	return $output;

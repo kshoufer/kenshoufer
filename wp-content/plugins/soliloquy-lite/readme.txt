@@ -14,12 +14,12 @@ Soliloquy, the <a href="http://soliloquywp.com/" rel="friend" title="Soliloquy -
 
 *Need more convincing? <a href="http://soliloquywp.com/wordpress-slider-plugin/" rel="friend" title="Check out the top ten reasons why Soliloquy is the best responsive WordPress slider plugin on the market!">Check out the top ten reasons why Soliloquy is the **best responsive WordPress slider plugin** on the market!</a>
 
-**Note: This is the lite version of the Soliloquy WordPress slider. Want even more WordPress slider features, including HTML/video slides, complete embedded video support for YouTube and Vimeo, widgets, and access to exclusive Addons (such as full lightbox support and image filters)? <a href="http://soliloquywp.com/pricing/" rel="friend" title="Click here to purchase the best responsive WordPress slider plugin now!">Click here to purchase the best responsive WordPress slider plugin now!</a>.**
+**Note: This is the lite version of the Soliloquy WordPress slider. Want even more WordPress slider features, including HTML/video slides, complete embedded video support for YouTube and Vimeo, widgets, and access to exclusive Addons (such as full lightbox support and image filters)? <a href="http://soliloquywp.com/pricing/" rel="friend" title="Click here to purchase the best responsive WordPress slider plugin now!">Click here to purchase the best responsive WordPress slider plugin now!</a>**
 
 = Features =
 
-* Usage of custom post types to create an unlimited number of WordPress sliders.
-* Drag-and-drop image uploading, sorting and saving.
+* Usage of a custom post type to create an unlimited number of WordPress sliders.
+* Drag-and-drop image uploading, sorting and saving for each WordPress slider that you build.
 * Completely SEO optimized with the ability to specify alt and title tags for your images within the slider.
 * Completely responsive (with touch enabled swiping).
 * Shortcode and template tags handy so that you can insert your WordPress slider anywhere in your theme.
@@ -67,6 +67,8 @@ Soliloquy is absolutely, positively the <a href="http://soliloquywp.com/" rel="f
 
 In v2.0 of Soliloquy Lite, it includes a big plugin architecture change. You need to make sure you click on the link and follow the instructions on the screen when updating. There will be an upgrade notice - make sure you click this and upgrade your sliders after updating to v2!
 
+The pro version of Soliloquy has many more features and enables you to do so much more than Soliloquy Lite, such as add images from your Media Library and use your own custom videos from YouTube, Vimeo and Wistia!
+
 = Addons =
 
 Soliloquy has many Addons that extend its default functionality to make it do incredible things.
@@ -82,6 +84,9 @@ Soliloquy has many Addons that extend its default functionality to make it do in
 * <a href="http://soliloquywp.com/addons/carousel/" rel="friend" title="Soliloquy Carousel Addon">Soliloquy Carousel Addon</a> - transform your default WordPress slider into a responsive and easy-to-use carousel slider.
 
 == Changelog ==
+
+= 2.1.4 =
+* Fixed bug where metadata modal would not close using the Esc key.
 
 = 2.1.3 =
 * Fixed bug with link dialog modal showing below the edit metadata modal.

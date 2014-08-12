@@ -400,6 +400,11 @@ var ET_PageBuilder = ET_PageBuilder || {};
 				ET_PageBuilder_App.saveAsShortcode();
 
 				setTimeout( function(){
+					var $builder_container = $( '#et_pb_layout' ),
+						builder_height     = $builder_container.innerHeight();
+
+					$builder_container.css( { 'height' : builder_height } );
+
 					content = et_pb_get_content( 'content' );
 
 					ET_PageBuilder_App.removeAllSections();
@@ -407,6 +412,8 @@ var ET_PageBuilder = ET_PageBuilder || {};
 					ET_PageBuilder_App.$el.find( '.et_pb_section' ).remove();
 
 					ET_PageBuilder_App.createLayoutFromContent( content );
+
+					$builder_container.css( { 'height' : 'auto' } );
 				}, 600 );
 			},
 
@@ -424,7 +431,7 @@ var ET_PageBuilder = ET_PageBuilder || {};
 					connectWith: sortable_el,
 					cancel : '.et-pb-settings, .et-pb-clone, .et-pb-remove, .et-pb-row-add, .et-pb-insert-module, .et-pb-insert-column',
 					update : function( event, ui ) {
-						if ( ! $( event.srcElement ).closest( event.target ).length ) {
+						if ( ! $( ui.item ).closest( event.target ).length ) {
 
 							// don't allow to move the row to another section if the section has only one row
 							if ( ! $( event.target ).find( '.et_pb_row' ).length ) {
@@ -585,6 +592,11 @@ var ET_PageBuilder = ET_PageBuilder || {};
 				ET_PageBuilder_App.saveAsShortcode();
 
 				setTimeout( function(){
+					var $builder_container = $( '#et_pb_layout' ),
+						builder_height     = $builder_container.innerHeight();
+
+					$builder_container.css( { 'height' : builder_height } );
+
 					content = et_pb_get_content( 'content' );
 
 					ET_PageBuilder_App.removeAllSections();
@@ -592,6 +604,8 @@ var ET_PageBuilder = ET_PageBuilder || {};
 					ET_PageBuilder_App.$el.find( '.et_pb_section' ).remove();
 
 					ET_PageBuilder_App.createLayoutFromContent( content );
+
+					$builder_container.css( { 'height' : 'auto' } );
 				}, 600 );
 			},
 
@@ -759,7 +773,7 @@ var ET_PageBuilder = ET_PageBuilder || {};
 
 				event.preventDefault();
 
-				this.$( 'input, select, textarea' ).each( function() {
+				this.$( 'input, select, textarea, #et_pb_content_main' ).each( function() {
 					var $this_el = $(this),
 						setting_value,
 						checked_values = [],
@@ -777,10 +791,17 @@ var ET_PageBuilder = ET_PageBuilder || {};
 						} );
 
 						setting_value = checked_values.join( "," );
+					} else if ( $this_el.is( '#et_pb_content_main' ) ) {
+						setting_value = $this_el.html();
 					} else if ( ! $this_el.is( ':checkbox' ) ) {
 						setting_value = $this_el.is('textarea#et_pb_content_new')
 							? et_pb_get_content( 'et_pb_content_new' )
 							: $this_el.val();
+					}
+
+					// escape input form value
+					if ( $this_el.is( 'input' ) && setting_value !== '' ) {
+						setting_value = _.escape( setting_value );
 					}
 
 					attributes[name] = setting_value;
@@ -975,7 +996,7 @@ var ET_PageBuilder = ET_PageBuilder || {};
 			initialize : function( attributes ) {
 				this.listenTo( ET_PageBuilder_Events, 'et-add:columns', this.removeView );
 
-				this.listenTo( ET_PageBuilder_Events, 'et-modal-view-removed', this.remove );
+				this.listenTo( ET_PageBuilder_Events, 'et-modal-view-removed', this.removeViewAndEmptySection );
 
 				this.options = attributes;
 			},
@@ -1022,6 +1043,22 @@ var ET_PageBuilder = ET_PageBuilder || {};
 			},
 
 			removeView : function() {
+				this.remove();
+			},
+
+			/**
+			 * Remove modal view and empty specialty section, if the user hasn't selected a section layout
+			 * and closed a modal window
+			 */
+			removeViewAndEmptySection : function() {
+				if ( this.model.get( 'et_pb_specialty' ) === 'on' ) {
+					this.options.view.model.destroy();
+
+					ET_PageBuilder_Layout.removeView( this.options.view.model.get('cid') );
+
+					this.options.view.remove();
+				}
+
 				this.remove();
 			}
 
@@ -1244,6 +1281,8 @@ var ET_PageBuilder = ET_PageBuilder || {};
 
 				$et_affect_fields = $this_el.find( '.et-pb-affects' );
 
+				$validation_element = $this_el.find('.et-validate-number');
+
 				if ( $et_affect_fields.length ) {
 					$et_affect_fields.change( function() {
 						var $this_field         = $(this), // this field value affects another field visibility
@@ -1308,6 +1347,24 @@ var ET_PageBuilder = ET_PageBuilder || {};
 					$time_picker.datetimepicker();
 				}
 
+				if( $validation_element.length ){
+					$validation_element.keyup( function() {
+						var $this_el = $( this );
+
+						if ( $this_el.val() < 0 || ( !$.isNumeric( $this_el.val() ) && $this_el.val() !== '' ) ) {
+							$this_el.val( 0 );
+						}
+
+					    if ( $this_el.val() > 100 ) {
+					    	$this_el.val( 100 );
+					    }
+
+					    if ( $this_el.val() !=='' ) {
+					    	$this_el.val( Math.round( $this_el.val() ) );
+					    }
+					});
+				}
+
 				if ( $icon_font_list.length ) {
 					var $icon_font_field    = $icon_font_list.siblings('.et-pb-font-icon'),
 						current_symbol_val  = $icon_font_field.val(),
@@ -1351,15 +1408,16 @@ var ET_PageBuilder = ET_PageBuilder || {};
 					if ( ! advanced_mode ) {
 						$content_textarea_container = $content_textarea.closest( '.et-pb-option-container' );
 
-						content = $content_textarea.val();
+						content = $content_textarea.html();
 
 						$content_textarea.remove();
 
 						$content_textarea_container.prepend( et_pb_content_html );
 
 						setTimeout( function() {
-							if ( typeof window.switchEditors !== 'undefined' )
-								window.switchEditors.go('et_pb_content_new', 'tmce');
+							if ( typeof window.switchEditors !== 'undefined' ) {
+								window.switchEditors.go( 'et_pb_content_new', et_get_editor_mode() );
+							}
 
 							et_pb_set_content( 'et_pb_content_new', content );
 
@@ -1385,8 +1443,8 @@ var ET_PageBuilder = ET_PageBuilder || {};
 
 						$content_textarea_option.before( view.render() );
 
-						if ( $content_textarea.val() !== '' ) {
-							view.generateAdvancedSortableItems( $content_textarea.val(), this.$el.find( '.et-pb-option-advanced-module-settings' ).data( 'module_type' ) );
+						if ( $content_textarea.html() !== '' ) {
+							view.generateAdvancedSortableItems( $content_textarea.html(), this.$el.find( '.et-pb-option-advanced-module-settings' ).data( 'module_type' ) );
 						}
 					}
 				}
@@ -1569,7 +1627,7 @@ var ET_PageBuilder = ET_PageBuilder || {};
 					content += ET_PageBuilder_App.generateModuleShortcode( $this_el, false );
 				} );
 
-				this.$content_textarea.val( content );
+				this.$content_textarea.html( content );
 
 				if ( ! this.$sortable_options.find( 'li' ).length )
 					this.$add_sortable_item.addClass( 'et-pb-add-sortable-initial' );
@@ -1911,7 +1969,7 @@ var ET_PageBuilder = ET_PageBuilder || {};
 					var $this_el = $(this),
 						setting_value;
 
-					setting_value = $this_el.is('textarea#et_pb_content_new')
+					setting_value = $this_el.is('#et_pb_content_new')
 						? et_pb_get_content( 'et_pb_content_new' )
 						: $this_el.val();
 
@@ -1949,12 +2007,12 @@ var ET_PageBuilder = ET_PageBuilder || {};
 				this.$el.html( this.template( this.model.attributes ) );
 
 				// TODO: convert it into function, it can be used in 2 places
-				$content_textarea = this.$el.find( 'textarea#et_pb_content_new' );
+				$content_textarea = this.$el.find( 'div#et_pb_content_new' );
 
 				if ( $content_textarea.length ) {
 					$content_textarea_container = $content_textarea.closest( '.et-pb-option-container' );
 
-					content = $content_textarea.val();
+					content = $content_textarea.html();
 
 					$content_textarea.remove();
 
@@ -1962,7 +2020,7 @@ var ET_PageBuilder = ET_PageBuilder || {};
 
 					setTimeout( function() {
 						if ( typeof window.switchEditors !== 'undefined' )
-							window.switchEditors.go('et_pb_content_new', 'tmce');
+							window.switchEditors.go( 'et_pb_content_new', et_get_editor_mode() );
 
 						et_pb_set_content( 'et_pb_content_new', content );
 
@@ -2701,6 +2759,8 @@ var ET_PageBuilder = ET_PageBuilder || {};
 
 					if ( shortcode_atts.orderby ) {
 						$gallery_orderby.val( shortcode_atts.orderby );
+					} else {
+						$gallery_orderby.val( '' );
 					}
 
 				});
@@ -2878,14 +2938,19 @@ var ET_PageBuilder = ET_PageBuilder || {};
 		}
 
 		function et_pb_hide_layout_settings(){
-			if ( $et_pb_setting.filter( ':visible' ).length > 1 )
-				$et_pb_layout_settings.hide();
-			else
-				$et_pb_layout_settings.closest( '#et_settings_meta_box' ).hide();
+			if ( $et_pb_setting.filter( ':visible' ).length > 1 ){
+				$et_pb_layout_settings.find('.et_pb_page_layout_settings').hide();
+				$et_pb_layout_settings.find('.et_pb_side_nav_settings').show();
+			}
+			else{
+				$et_pb_layout_settings.closest( '#et_settings_meta_box' ).find('.et_pb_page_layout_settings').hide();
+				$et_pb_layout_settings.closest( '#et_settings_meta_box' ).find('.et_pb_side_nav_settings').show();
+			}
 		}
 
 		function et_pb_show_layout_settings(){
 			$et_pb_layout_settings.show().closest( '#et_settings_meta_box' ).show();
+			$et_pb_layout_settings.closest( '#et_settings_meta_box' ).find('.et_pb_side_nav_settings').hide();
 		}
 
 		function et_pb_get_content( textarea_id, fix_shortcodes ) {
@@ -2903,6 +2968,16 @@ var ET_PageBuilder = ET_PageBuilder || {};
 			}
 
 			return content.trim();
+		}
+
+		function et_get_editor_mode() {
+			var et_editor_mode = 'tinymce';
+
+			if ( 'html' === getUserSetting( 'editor' ) ) {
+				et_editor_mode = 'html';
+			}
+
+			return et_editor_mode;
 		}
 
 		function et_pb_set_content( textarea_id, content ) {

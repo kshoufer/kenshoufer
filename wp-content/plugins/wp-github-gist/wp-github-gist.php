@@ -4,20 +4,14 @@ Plugin Name: WP Github Gist
 Plugin URI: http://sudarmuthu.com/wordpress/wp-github-gist
 Description: Embed files and gist from Github in your blog posts or pages.
 Author: Sudar
-Version: 0.3
+Version: 0.4
 Donate Link: http://sudarmuthu.com/if-you-wanna-thank-me
 License: GPL
 Author URI: http://sudarmuthu.com/
 Text Domain: wp-github-gist
 
 === RELEASE NOTES ===
-2011-08-23 - v0.1 - Initial Release
-2012-05-02 - v0.2 - (Dev time: 0.5 hours)
-                  - Fixed issue in embedding Github files
-2012-05-31 - v0.3 - (Dev time: 2 hours)
-                  - Added the ability to choose gist-it server
-                  - Added information to the screen help tab                   
-                  - Generated Pot file for translation
+Check readme file for full release notes
 
 Based on Github Gist Plugin http://wordpress.org/extend/plugins/github-gist by Jingwen Owen Ou
 Used the Gist-it script https://github.com/sudar/gist-it by Robert Krimen
@@ -91,15 +85,15 @@ class WPGithubGist {
 
     /**
      * Add Help Panel
-     */ 
+     */
 	function create_help_panel() {
- 
-		/** 
+
+		/**
 		 * Create the WP_Screen object against your admin page handle
 		 * This ensures we're working with the right admin page
 		 */
 		$this->admin_screen = WP_Screen::get($this->admin_page);
- 
+
 		/**
 		 * Content specified inline
 		 */
@@ -111,7 +105,7 @@ class WPGithubGist {
 				'callback' => false
 			)
 		);
- 
+
         // Add help sidebar
 		$this->admin_screen->set_help_sidebar(
             '<p><strong>' . __('More information', 'wp-github-gist') . '</strong></p>' .
@@ -136,7 +130,7 @@ class WPGithubGist {
     }
 
     /**
-     * Dipslay the Settings page
+     * Display the Settings page
      */
     function settings_page() {
 ?>
@@ -223,29 +217,41 @@ class WPGithubGist {
     /**
      * Handler for gist shortcode
      *
-     * @param <type> $atts
-     * @param <type> $content
-     * @return <type>
+     * @param  array  $atts    Attributes array
+     * @param  string $content Content inside the shortcode
+     * @return string          The string to be replaced with
      */
     function gist_shortcode_handler($atts, $content = null) {
         extract(shortcode_atts(array(
-            'id' => null,
-            'file' => null,
+            'id'    => null,
+            'user'  => null,
+            'file'  => null,
+            'width' => '100%'
             ), $atts));
+
+        $user  = apply_filters( 'wp-github-gist-user', $user, $id );
+
+        $id    = trim( $id );
+        $user  = trim( $user );
+        $file  = trim( $file );
+        $width = trim( $width );
 
         if ($content != null && preg_match("/".self::REGEXP_GIST_URL."/", $content, $matches)) {
             $id = $matches[1];
             $file = $matches[2];
         }
 
-        if ($id == null && $file == null) {
-            return "Error when loading gists from https://gist.github.com/.".$content;
+        if ( $id == null && $file == null ) {
+            return "Error when loading gists from https://gist.github.com/." . $content;
         }
 
-        $gist_html = $this->get_gist_embed_script($id, $file);
-        $gist_raw = $this->get_gist_raw($id, $file);
+        $gist_html     = $this->get_gist_embed_script( $id, $user, $file );
+        $gist_raw      = $this->get_gist_raw( $id, $user, $file );
 
-        return $gist_html . $gist_raw;
+        $wrap_html     = '<div class="wrap_githubgist" style="width:' . $width . '">';
+        $wrap_html_end = '</div>';
+
+        return $wrap_html . $gist_html . $gist_raw . $wrap_html_end;
     }
 
     /**
@@ -259,14 +265,19 @@ class WPGithubGist {
         extract(shortcode_atts(array(
             'file' => null,
             'start_line' => 0,
-            'end_line' => 0
+            'end_line' => 0,
+            'width' => '100%'
             ), $atts));
 
         if ($file == null) {
             return "Error when github pages." . $content;
         }
 
-        return $this->get_github_embed_script($file, $start_line, $end_line);
+        $github_html = $this->get_github_embed_script($file, $start_line, $end_line);
+        $wrap_html = '<div class="wrap_githubgist" style="width:'.$width.'">';
+        $wrap_html_end = '</div>';
+
+        return $wrap_html . $github_html . $wrap_html_end;
     }
 
     /**
@@ -299,21 +310,28 @@ class WPGithubGist {
     /**
      * Get Embed script for gist
      *
-     * @param <type> $id
-     * @param <type> $file
-     * @return <type>
+     * @param  string $id   Id of the gist
+     * @param  string $user User of the gist
+     * @param  string $file File of the gist
+     * @return string       Embed script
      */
-    private function get_gist_embed_script($id, $file = '') {
-        $script_url = "https://gist.github.com/".trim($id).".js";
+    private function get_gist_embed_script( $id, $user = '', $file = '' ) {
+        $script_url = 'https://gist.github.com/';
 
-        if ($file != '') {
-            $script_url .= "?file=".trim($file);
+        if ( $user != '' ) {
+            $script_url .= $user . '/';
         }
 
-        $script = $this->get_content_from_url($script_url);
+        $script_url .= $id . '.js';
 
-        if ($script != '') {
-            $script = "<script>".$script."</script>";
+        if ( $file != '') {
+            $script_url .= "?file=" . $file;
+        }
+
+        $script = $this->get_content_from_url( $script_url );
+
+        if ( $script != '' ) {
+            $script = "<script>" . $script . "</script>";
         }
 
         return $script;
@@ -322,24 +340,27 @@ class WPGithubGist {
     /**
      * Get the raw content of the gist
      *
-     * @param <type> $id
-     * @param <type> $file
-     * @return <type>
+     * @param  string $id       Gist id
+     * @param  string $user     Gist User
+     * @param  string $file     Gist file name. Optional
+     * @return string $gist_raw Raw gist content
      */
-    private function get_gist_raw($id, $file = '') {
-        $url = "https://raw.github.com/gist/".$id;
+    private function get_gist_raw( $id, $user = '', $file = '' ) {
+        $url = "https://gist.github.com/$user/$id/raw/";
 
-        if ($file != '') {
-            $url .= "/" . $file;
+        if ( $file != '' ) {
+            $url .= $file;
         }
 
         $gist_raw = $this->get_content_from_url($url);
-        
+
         if ($gist_raw != '') {
-            $gist_raw =  "<div style='margin-bottom:1em;padding:0;'><noscript><code><pre style='overflow:auto;margin:0;padding:0;border:1px solid #DDD;'>"
-                            .htmlentities($gist_raw)
-                          ."</pre></code></noscript></div>";
+            $gist_raw =  "<div style='margin-bottom:1em;padding:0;'>" .
+                "<noscript><code><pre style='overflow:auto;margin:0;padding:0;border:1px solid #DDD;'>" .
+                    htmlentities( $gist_raw ) .
+                "</pre></code></noscript></div>";
         }
+
         return $gist_raw;
     }
 
@@ -361,14 +382,8 @@ class WPGithubGist {
 
         return $content;
     }
-
-    // PHP4 compatibility
-    function WPGithubGist() {
-        $this->__construct();
-    }
 }
 
 // Start this plugin once all other plugins are fully loaded
 add_action( 'init', 'WPGithubGist' ); function WPGithubGist() { global $WPGithubGist; $WPGithubGist = new WPGithubGist(); }
-
 ?>

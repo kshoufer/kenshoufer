@@ -81,7 +81,7 @@ $options = array (
 
 			array( "type" => "clearfix",),
 
-			array( 	"name" => esc_html__( "Shop Page Layout", $themename ),
+			array( 	"name" => esc_html__( "Shop Page & Category Page Layout for WooCommerce", $themename ),
 				   	"id" => $shortname . "_shop_page_sidebar",
 				   	"type" => "select",
 				   	"options" => array(
@@ -90,7 +90,7 @@ $options = array (
 				   		'et_full_width_page' => __( 'Full Width', $themename ),
 				   	),
 				   	"std" => 'et_right_sidebar',
-				   	"desc" => esc_html__( "Here you can choose Shop page layout.", $themename ),
+				   	"desc" => esc_html__( "Here you can choose Shop Page & Category Page Layout for WooCommerce.", $themename ),
 				   	'et_save_values' => true,
 			),
 
@@ -241,6 +241,20 @@ $options = array (
 				   "type" => "checkbox",
 				   "std" => "false",
 				   "desc" => esc_html__("This will enable Google Fonts for Non-English languages.",$themename)
+			),
+
+			array( "name" => esc_html__("Back To Top Button",$themename),
+				   "id" => $shortname."_back_to_top",
+				   "type" => "checkbox",
+				   "std" => "false",
+				   "desc" => esc_html__("Enable this option to display Back To Top Button while scrolling",$themename)
+			),
+
+			array( "name" => esc_html__( "Smooth Scrolling", $themename ),
+				   "id" => $shortname . "_smooth_scroll",
+				   "type" => "checkbox2",
+				   "std" => "false",
+				   "desc" => esc_html__( "Enable this option to get the smooth scrolling effect with mouse wheel", $themename )
 			),
 
 			array( "type" => "clearfix",),

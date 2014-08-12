@@ -65,7 +65,7 @@
 
 	wp.customize( 'et_divi[link_color]', function( value ) {
 		value.bind( function( to ) {
-			$( 'a' ).css( 'color', to );
+			$( 'article p:not(.post-meta) a, .comment-edit-link, .pinglist a, .pagination a' ).css( 'color', to );
 		} );
 	} );
 
@@ -123,6 +123,18 @@
 				$body.addClass( 'et_boxed_layout' );
 			} else {
 				$body.removeClass( 'et_boxed_layout' );
+			}
+		} );
+	} );
+
+	wp.customize( 'et_divi[cover_background]', function( value ) {
+		value.bind( function( to ) {
+			var $body = $('body');
+
+			if ( to ) {
+				$body.addClass( 'et_cover_background' );
+			} else {
+				$body.removeClass( 'et_cover_background' );
 			}
 		} );
 	} );

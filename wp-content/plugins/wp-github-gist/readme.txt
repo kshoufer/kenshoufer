@@ -1,11 +1,11 @@
 === WP Github Gist ===
-Contributors: sudar 
-Tags: github, gist, embed
-Requires at least: 2.8
-Donate Link: http://sudarmuthu.com/if-you-wanna-thank-me
-Tested up to: 3.3.2
-Stable tag: 0.3
-	
+Contributors: sudar  
+Tags: github, gist, embed  
+Requires at least: 2.8  
+Donate Link: http://sudarmuthu.com/if-you-wanna-thank-me  
+Tested up to: 3.9.1  
+Stable tag: 0.4  
+
 Embed files and gist from Github in your blog posts or pages.
 
 == Description ==
@@ -18,29 +18,31 @@ WP Github Gist WordPress Plugin, provides the ability to embed gist and files fr
 
 To embed a gist you have to use the following shortcode
 
-[gist id = "{GIST_ID}" file = "{GIST_FILE}"]
+`[gist id = "{GIST_ID}" file = "{GIST_FILE}" width = "{WIDTH}"]`
 
-Where {GIST_ID} is the id of your gist and {GIST_FILE} is the file inside gist that you want to display. If there is only one file in the gist, then you can ignore this.
+The following are the different attributes that you can use in the shortcode
 
-Example
+- `id` - Id of your gist.
+- `file` - File inside gist that you want to display. If there is only one file in the gist, then you can ignore this.
+- `width` - Width of the code wrapper. Default is `100%`.
 
-[gist id = "12345" file = "myfile"]
+eg: `[gist id = "12345" file = "myfile" width = "100%"]`
 
 #### Embed Github files
 
 To embed a github file you have to use the following shortcode
 
-[github file = "{GITHUB_FILE}" start_line = "{START_LINE}" end_line = "{END_LINE}"]
+`[github file = "{GITHUB_FILE}" start_line = "{START_LINE}" end_line = "{END_LINE}"]`
 
-*   {GITHUB_FILE} - full path to your github file. eg: If you want to embed https://github.com/sudar/MissileLauncher/blob/master/MissileLauncher.cpp then {GITHUB_FILE} would be /sudar/MissileLauncher/blob/master/MissileLauncher.cpp
-*   {START_LINE} - If you want to embed only part of the file, then you can specify the starting line number (optional)
-*   {END_LINE} - If you want to embed only part of the file, then you can specify the ending line number (optional)
+- `{GITHUB_FILE}` - full path to your github file. eg: If you want to embed https://github.com/sudar/MissileLauncher/blob/master/MissileLauncher.cpp then `{GITHUB_FILE}` would be /sudar/MissileLauncher/blob/master/MissileLauncher.cpp
+- `{START_LINE}` - If you want to embed only part of the file, then you can specify the starting line number (optional)
+- `{END_LINE}` - If you want to embed only part of the file, then you can specify the ending line number (optional)
 
-eg: [github file = "/sudar/MissileLauncher/blob/master/MissileLauncher.cpp"]
+eg: `[github file = "/sudar/MissileLauncher/blob/master/MissileLauncher.cpp"]`
 
 if you want to embed only part of the file, then you can specify the start and end line as well
 
-[github file = "/sudar/MissileLauncher/blob/master/MissileLauncher.cpp" start_line = "10" end_line = "20"]
+`[github file = "/sudar/MissileLauncher/blob/master/MissileLauncher.cpp" start_line = "10" end_line = "20"]`
 
 ### Changing Gist-it server
 
@@ -63,19 +65,31 @@ Support for the Plugin is available from the [Plugin's home page][1]. If you hav
 
 Extract the zip file and just drop the contents in the wp-content/plugins/ directory of your WordPress installation and then activate the Plugin from Plugins page.
 
-== Changelog ==
-
-####v0.1 (2011-08-23)
-*   Initial Version
-
-####v0.2 (2012-05-02)
-*   Fixed issue in embedding Github files
-
-####v0.3 (2012-05-31) (Dev time: 2 hours)
-    * Added the ability to choose gist-it server
-    * Added information to the screen help tab                   
-    * Generated Pot file for translation
-
-==Readme Generator== 
+== Readme Generator ==
 
 This Readme file was generated using <a href = 'http://sudarmuthu.com/wordpress/wp-readme'>wp-readme</a>, which generates readme files for WordPress Plugins.
+== Changelog ==
+
+= 0.4 (2014-07-11) (Dev time: 3 hours) =
+
+- Fix: Handle changes in github gist embed code
+
+- Tweak: Remove Legacy and PHP 4 complaint code
+- Tweak: Add support for specifying width in gist shortcode
+
+= 0.3 (2012-05-31) (Dev time: 2 hours) =
+- Added the ability to choose gist-it server
+- Added information to the screen help tab
+- Generated Pot file for translation
+
+= 0.2 (2012-05-02) =
+- Fixed issue in embedding Github files
+
+= 0.1 (2011-08-23) =
+- Initial Version
+
+
+== Upgrade Notice ==
+
+= 0.4 =
+Handle changes in github gist embed code

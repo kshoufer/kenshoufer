@@ -72,7 +72,7 @@
 				<?php endif; ?>
 
 				<?php if ( '' !== ( $et_email = et_get_option( 'header_email' ) ) ) : ?>
-					<span id="et-info-email"><?php echo esc_html( $et_email ); ?></span>
+					<a href="<?php echo esc_attr( 'mailto:' . $et_email ); ?>"><span id="et-info-email"><?php echo esc_html( $et_email ); ?></span></a>
 				<?php endif; ?>
 
 				<?php

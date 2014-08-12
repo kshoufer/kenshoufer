@@ -413,9 +413,7 @@ echo <<<END
 
 	<script type="text/template" id="et-builder-modal-template">
 		<div class="et-pb-modal-container">
-		<% if ( ! ( typeof open_view !== 'undefined' && open_view === 'column_specialty_settings' ) ) { %>
 			<a href="#" class="et-pb-modal-close"><span>Close modal window</span></a>
-		<% } %>
 
 		<% if ( ! ( typeof open_view !== 'undefined' && open_view === 'column_specialty_settings' ) && typeof type !== 'undefined' && ( type === 'module' || type === 'section' ) ) { %>
 			<div class="et-pb-modal-bottom-container">
@@ -652,12 +650,24 @@ echo <<<END
 			</div> <!-- .et-pb-option -->
 
 			<div class="et-pb-option">
+				<label for="et_pb_transparent_background">Transparent Background Color: </label>
+
+				<div class="et-pb-option-container">
+					<select name="et_pb_transparent_background" id="et_pb_transparent_background" class="et-pb-affects" data-affects="#et_pb_background_color">
+						<option value="off"<%= typeof( et_pb_transparent_background ) !== 'undefined' && 'off' === et_pb_transparent_background ?  ' selected="selected"' : '' %>>Off</option>
+						<option value="on"<%= typeof( et_pb_transparent_background ) !== 'undefined' && 'on' === et_pb_transparent_background ?  ' selected="selected"' : '' %>>On</option>
+					</select>
+					<p class="description">Switch on this option if you need transparent background color for the section.</b></p>
+				</div> <!-- .et-pb-option-container -->
+			</div> <!-- .et-pb-option -->
+
+			<div class="et-pb-option et-pb-depends" data-depends_show_if="off">
 				<label for="et_pb_background_color">Background Color: </label>
 
 				<div class="et-pb-option-container">
 
 					<input id="et_pb_background_color" class="et-pb-color-picker-hex" type="text" maxlength="7" placeholder="Hex Value" value="<%= typeof( et_pb_background_color ) !== 'undefined' && et_pb_background_color !== '' ?  et_pb_background_color : '#ffffff' %>" />
-					<p class="description">If defined, this image will be used as the background for this module. To remove a background image, simply delete the URL from the settings field.</p>
+					<p class="description">Define a custom background color for your module, or leave blank to use the default color.</p>
 
 				</div> <!-- .et-pb-option-container -->
 			</div> <!-- .et-pb-option -->
@@ -729,8 +739,8 @@ echo <<<END
 				<label for="et_pb_parallax_method">Parallax method: </label>
 				<div class="et-pb-option-container">
 					<select name="et_pb_parallax_method" id="et_pb_parallax_method">
-						<option value="css"<%= typeof( et_pb_parallax_method ) !== 'undefined' && 'off' === et_pb_parallax_method ?  ' selected="selected"' : '' %>>CSS</option>
-						<option value="jquery"<%= typeof( et_pb_parallax_method ) !== 'undefined' && 'on' === et_pb_parallax_method ?  ' selected="selected"' : '' %>>True Parallax</option>
+						<option value="off"<%= typeof( et_pb_parallax_method ) !== 'undefined' && 'off' === et_pb_parallax_method ?  ' selected="selected"' : '' %>>CSS</option>
+						<option value="on"<%= typeof( et_pb_parallax_method ) !== 'undefined' && 'on' === et_pb_parallax_method ?  ' selected="selected"' : '' %>>True Parallax</option>
 					</select>
 
 					<p class="description">Define the method, used for the parallax effect.</p>
@@ -781,6 +791,15 @@ echo <<<END
 			</div> <!-- .et-pb-option -->
 
 			<div class="et-pb-option">
+				<label for="et_pb_title_text">Image Title Text: </label>
+
+				<div class="et-pb-option-container">
+					<input id="et_pb_title_text" type="text" class="regular-text" value="<%= typeof( et_pb_title_text ) !== 'undefined' ?  et_pb_title_text : '' %>" />
+					<p class="description">This defines the HTML Title text.</p>
+				</div> <!-- .et-pb-option-container -->
+			</div> <!-- .et-pb-option -->
+
+			<div class="et-pb-option">
 				<label for="et_pb_show_in_lightbox">Lightbox: </label>
 				<div class="et-pb-option-container">
 					<select name="et_pb_show_in_lightbox" id="et_pb_show_in_lightbox" class="et-pb-affects" data-affects="#et_pb_url, #et_pb_url_new_window">
@@ -826,6 +845,18 @@ echo <<<END
 					</select>
 
 					<p class="description">This controls the direction of the lazy-loading animation.</p>
+				</div> <!-- .et-pb-option-container -->
+			</div> <!-- .et-pb-option -->
+
+			<div class="et-pb-option">
+				<label for="et_pb_sticky">Remove Space Below The Image: </label>
+				<div class="et-pb-option-container">
+					<select name="et_pb_sticky" id="et_pb_sticky">
+						<option value="off"<%= typeof( et_pb_sticky ) !== 'undefined' && 'off' === et_pb_sticky ?  ' selected="selected"' : '' %>>No</option>
+						<option value="on"<%= typeof( et_pb_sticky ) !== 'undefined' && 'on' === et_pb_sticky ?  ' selected="selected"' : '' %>>Yes</option>
+					</select>
+
+					<p class="description">Here you can choose whether or not the image should have a space below it.</p>
 				</div> <!-- .et-pb-option-container -->
 			</div> <!-- .et-pb-option -->
 
@@ -991,7 +1022,7 @@ echo <<<END
 				<label for="et_pb_content_new">Content: </label>
 
 				<div class="et-pb-option-container">
-					<textarea id="et_pb_content_new"><%= typeof( et_pb_content_new )!== 'undefined' ? et_pb_content_new : '' %></textarea>
+					<div id="et_pb_content_new"><%= typeof( et_pb_content_new )!== 'undefined' ? et_pb_content_new : '' %></div>
 					<p class="description">Here you can create the content that will be used within the module.</p>
 				</div> <!-- .et-pb-option-container -->
 			</div> <!-- .et-pb-option -->
@@ -1060,7 +1091,7 @@ echo <<<END
 				<label for="et_pb_content_new">Content: </label>
 
 				<div class="et-pb-option-container">
-					<textarea id="et_pb_content_new"><%= typeof( et_pb_content_new )!== 'undefined' ? et_pb_content_new : '' %></textarea>
+					<div id="et_pb_content_new"><%= typeof( et_pb_content_new )!== 'undefined' ? et_pb_content_new : '' %></div>
 					<p class="description">Here you can define the content that will be placed within the current tab.</p>
 				</div> <!-- .et-pb-option-container -->
 			</div> <!-- .et-pb-option -->
@@ -1081,7 +1112,7 @@ echo <<<END
 				<label for="et_pb_content_new">Content: </label>
 
 				<div class="et-pb-option-container">
-					<textarea id="et_pb_content_new"><%= typeof( et_pb_content_new )!== 'undefined' ? et_pb_content_new : '' %></textarea>
+					<div id="et_pb_content_new"><%= typeof( et_pb_content_new )!== 'undefined' ? et_pb_content_new : '' %></div>
 					<p class="description">Here you can define the content that will be placed within the current tab.</p>
 				</div> <!-- .et-pb-option-container -->
 			</div> <!-- .et-pb-option -->
@@ -1173,7 +1204,7 @@ echo <<<END
 			<div class="et-pb-option">
 				<label for="et_pb_parallax">Parallax effect: </label>
 				<div class="et-pb-option-container">
-					<select name="et_pb_parallax" id="et_pb_parallax">
+					<select name="et_pb_parallax" id="et_pb_parallax" class="et-pb-affects" data-affects="#et_pb_parallax_method">
 						<option value="off"<%= typeof( et_pb_parallax ) !== 'undefined' && 'off' === et_pb_parallax ?  ' selected="selected"' : '' %>>Don't Use Parallax Effect</option>
 						<option value="on"<%= typeof( et_pb_parallax ) !== 'undefined' && 'on' === et_pb_parallax ?  ' selected="selected"' : '' %>>Use Parallax Effect</option>
 					</select>
@@ -1182,11 +1213,23 @@ echo <<<END
 				</div> <!-- .et-pb-option-container -->
 			</div> <!-- .et-pb-option -->
 
+			<div class="et-pb-option et-pb-depends" data-depends_show_if="on">
+				<label for="et_pb_parallax_method">Parallax method: </label>
+				<div class="et-pb-option-container">
+					<select name="et_pb_parallax_method" id="et_pb_parallax_method">
+						<option value="off"<%= typeof( et_pb_parallax_method ) !== 'undefined' && 'off' === et_pb_parallax_method ?  ' selected="selected"' : '' %>>CSS</option>
+						<option value="on"<%= typeof( et_pb_parallax_method ) !== 'undefined' && 'on' === et_pb_parallax_method ?  ' selected="selected"' : '' %>>True Parallax</option>
+					</select>
+
+					<p class="description">Define the method, used for the parallax effect.</p>
+				</div> <!-- .et-pb-option-container -->
+			</div> <!-- .et-pb-option -->
+
 			<div class="et-pb-option et-pb-option-main-content et-pb-option-advanced-module">
 				<label for="et_pb_content_new">Content: </label>
 
 				<div class="et-pb-option-container">
-					<textarea id="et_pb_content_new"><%= typeof( et_pb_content_new )!== 'undefined' ? et_pb_content_new : '' %></textarea>
+					<div id="et_pb_content_new"><%= typeof( et_pb_content_new )!== 'undefined' ? et_pb_content_new : '' %></div>
 					<p class="description">Input the main text content for your slider here.</p>
 				</div> <!-- .et-pb-option-container -->
 			</div> <!-- .et-pb-option -->
@@ -1278,7 +1321,7 @@ echo <<<END
 			<div class="et-pb-option">
 				<label for="et_pb_parallax">Parallax effect: </label>
 				<div class="et-pb-option-container">
-					<select name="et_pb_parallax" id="et_pb_parallax">
+					<select name="et_pb_parallax" id="et_pb_parallax" class="et-pb-affects" data-affects="#et_pb_parallax_method">
 						<option value="off"<%= typeof( et_pb_parallax ) !== 'undefined' && 'off' === et_pb_parallax ?  ' selected="selected"' : '' %>>Don't Use Parallax Effect</option>
 						<option value="on"<%= typeof( et_pb_parallax ) !== 'undefined' && 'on' === et_pb_parallax ?  ' selected="selected"' : '' %>>Use Parallax Effect</option>
 					</select>
@@ -1287,11 +1330,23 @@ echo <<<END
 				</div> <!-- .et-pb-option-container -->
 			</div> <!-- .et-pb-option -->
 
+			<div class="et-pb-option et-pb-depends" data-depends_show_if="on">
+				<label for="et_pb_parallax_method">Parallax method: </label>
+				<div class="et-pb-option-container">
+					<select name="et_pb_parallax_method" id="et_pb_parallax_method">
+						<option value="off"<%= typeof( et_pb_parallax_method ) !== 'undefined' && 'off' === et_pb_parallax_method ?  ' selected="selected"' : '' %>>CSS</option>
+						<option value="on"<%= typeof( et_pb_parallax_method ) !== 'undefined' && 'on' === et_pb_parallax_method ?  ' selected="selected"' : '' %>>True Parallax</option>
+					</select>
+
+					<p class="description">Define the method, used for the parallax effect.</p>
+				</div> <!-- .et-pb-option-container -->
+			</div> <!-- .et-pb-option -->
+
 			<div class="et-pb-option et-pb-option-main-content et-pb-option-advanced-module">
 				<label for="et_pb_content_new">Content: </label>
 
 				<div class="et-pb-option-container">
-					<textarea id="et_pb_content_new"><%= typeof( et_pb_content_new )!== 'undefined' ? et_pb_content_new : '' %></textarea>
+					<div id="et_pb_content_new"><%= typeof( et_pb_content_new )!== 'undefined' ? et_pb_content_new : '' %></div>
 					<p class="description">Here you can define the text content that will be used in this slide.</p>
 				</div> <!-- .et-pb-option-container -->
 			</div> <!-- .et-pb-option -->
@@ -1475,7 +1530,7 @@ echo <<<END
 				<label for="et_pb_content_new">Content: </label>
 
 				<div class="et-pb-option-container">
-					<textarea id="et_pb_content_new"><%= typeof( et_pb_content_new )!== 'undefined' ? et_pb_content_new : '' %></textarea>
+					<div id="et_pb_content_new"><%= typeof( et_pb_content_new )!== 'undefined' ? et_pb_content_new : '' %></div>
 					<p class="description">Input your main slide text content here.</p>
 				</div> <!-- .et-pb-option-container -->
 			</div> <!-- .et-pb-option -->
@@ -1524,7 +1579,7 @@ echo <<<END
 						<option value="on"<%= typeof( et_pb_use_icon ) !== 'undefined' && 'on' === et_pb_use_icon ?  ' selected="selected"' : '' %>>Yes</option>
 					</select>
 
-					<p class="description">Here you can choose whether icon set above should be used.</p>
+					<p class="description">Here you can choose whether icon set below should be used.</p>
 				</div> <!-- .et-pb-option-container -->
 			</div> <!-- .et-pb-option -->
 
@@ -1630,7 +1685,7 @@ echo <<<END
 						<option value="left"<%= typeof( et_pb_icon_placement ) !== 'undefined' && 'left' === et_pb_icon_placement ?  ' selected="selected"' : '' %>>Left</option>
 					</select>
 
-					<p class="description">Here you can choose whether or not your link opens in a new window</p>
+					<p class="description">Here you can choose where to place the icon.</p>
 				</div> <!-- .et-pb-option-container -->
 			</div> <!-- .et-pb-option -->
 
@@ -1678,7 +1733,7 @@ echo <<<END
 				<label for="et_pb_content_new">Content: </label>
 
 				<div class="et-pb-option-container">
-					<textarea id="et_pb_content_new"><%= typeof( et_pb_content_new )!== 'undefined' ? et_pb_content_new : '' %></textarea>
+					<div id="et_pb_content_new"><%= typeof( et_pb_content_new )!== 'undefined' ? et_pb_content_new : '' %></div>
 					<p class="description">Input the main text content for your module here.</p>
 				</div> <!-- .et-pb-option-container -->
 			</div> <!-- .et-pb-option -->
@@ -1836,7 +1891,7 @@ echo <<<END
 				<label for="et_pb_content_new">Content: </label>
 
 				<div class="et-pb-option-container">
-					<textarea id="et_pb_content_new"><%= typeof( et_pb_content_new )!== 'undefined' ? et_pb_content_new : '' %></textarea>
+					<div id="et_pb_content_new"><%= typeof( et_pb_content_new )!== 'undefined' ? et_pb_content_new : '' %></div>
 					<p class="description">Input the main text content for your module here.</p>
 				</div> <!-- .et-pb-option-container -->
 			</div> <!-- .et-pb-option -->
@@ -1970,7 +2025,7 @@ echo <<<END
 				<label for="et_pb_content_new">Description: </label>
 
 				<div class="et-pb-option-container">
-					<textarea id="et_pb_content_new"><%= typeof( et_pb_content_new )!== 'undefined' ? et_pb_content_new : '' %></textarea>
+					<div id="et_pb_content_new"><%= typeof( et_pb_content_new )!== 'undefined' ? et_pb_content_new : '' %></div>
 					<p class="description">Input the main text content for your module here.</p>
 				</div> <!-- .et-pb-option-container -->
 			</div> <!-- .et-pb-option -->
@@ -2033,7 +2088,7 @@ echo <<<END
 				<label for="et_pb_content_new">Content: </label>
 
 				<div class="et-pb-option-container">
-					<textarea id="et_pb_content_new"><%= typeof( et_pb_content_new )!== 'undefined' ? et_pb_content_new : '' %></textarea>
+					<div id="et_pb_content_new"><%= typeof( et_pb_content_new )!== 'undefined' ? et_pb_content_new : '' %></div>
 					<p class="description">Input the main text content for your module here.</p>
 				</div> <!-- .et-pb-option-container -->
 			</div> <!-- .et-pb-option -->
@@ -2152,7 +2207,7 @@ echo <<<END
 				<label for="et_pb_content_new">Content: </label>
 
 				<div class="et-pb-option-container">
-					<textarea id="et_pb_content_new"><%= typeof( et_pb_content_new )!== 'undefined' ? et_pb_content_new : '' %></textarea>
+					<div id="et_pb_content_new"><%= typeof( et_pb_content_new )!== 'undefined' ? et_pb_content_new : '' %></div>
 					<p class="description">Input the main text content for your module here.</p>
 				</div> <!-- .et-pb-option-container -->
 			</div> <!-- .et-pb-option -->
@@ -2336,7 +2391,7 @@ echo <<<END
 				<label for="et_pb_content_new">Content: </label>
 
 				<div class="et-pb-option-container">
-					<textarea id="et_pb_content_new"><%= typeof( et_pb_content_new )!== 'undefined' ? et_pb_content_new : '' %></textarea>
+					<div id="et_pb_content_new"><%= typeof( et_pb_content_new )!== 'undefined' ? et_pb_content_new : '' %></div>
 					<p class="description">Input the main text content for your module here.</p>
 				</div> <!-- .et-pb-option-container -->
 			</div> <!-- .et-pb-option -->
@@ -2449,7 +2504,7 @@ echo <<<END
 				<label for="et_pb_content_new">Content: </label>
 
 				<div class="et-pb-option-container">
-					<textarea id="et_pb_content_new"><%= typeof( et_pb_content_new )!== 'undefined' ? et_pb_content_new : '' %></textarea>
+					<div id="et_pb_content_new"><%= typeof( et_pb_content_new )!== 'undefined' ? et_pb_content_new : '' %></div>
 					<p class="description">Input the main text content for your module here.</p>
 				</div> <!-- .et-pb-option-container -->
 			</div> <!-- .et-pb-option -->
@@ -2784,12 +2839,24 @@ echo <<<END
 			<div class="et-pb-option">
 				<label for="et_pb_show_content">Content: </label>
 				<div class="et-pb-option-container">
-					<select name="et_pb_show_content" id="et_pb_show_content">
+					<select name="et_pb_show_content" id="et_pb_show_content" class="et-pb-affects" data-affects="#et_pb_show_more">
 						<option value="off"<%= typeof( et_pb_show_content ) !== 'undefined' && 'off' === et_pb_show_content ?  ' selected="selected"' : '' %>>Show Excerpt</option>
 						<option value="on"<%= typeof( et_pb_show_content ) !== 'undefined' && 'on' === et_pb_show_content ?  ' selected="selected"' : '' %>>Show Content</option>
 					</select>
 
 					<p class="description">Showing the full content will not truncate your posts on the index page. Showing the excerpt will only display your excerpt text.</p>
+				</div> <!-- .et-pb-option-container -->
+			</div> <!-- .et-pb-option -->
+
+			<div class="et-pb-option" data-depends_show_if="off">
+				<label for="et_pb_show_more">Read More Button: </label>
+				<div class="et-pb-option-container">
+					<select name="et_pb_show_more" id="et_pb_show_more">
+						<option value="off"<%= typeof( et_pb_show_more ) !== 'undefined' && 'off' === et_pb_show_more ?  ' selected="selected"' : '' %>>Off</option>
+						<option value="on"<%= typeof( et_pb_show_more ) !== 'undefined' && 'on' === et_pb_show_more ?  ' selected="selected"' : '' %>>On</option>
+					</select>
+
+					<p class="description">Here you can define whether to show "read more" link after the excerpts or not.</p>
 				</div> <!-- .et-pb-option-container -->
 			</div> <!-- .et-pb-option -->
 
@@ -3366,7 +3433,7 @@ echo <<<END
 				<label for="et_pb_content_new">Content: </label>
 
 				<div class="et-pb-option-container">
-					<textarea id="et_pb_content_new"><%= typeof( et_pb_content_new )!== 'undefined' ? et_pb_content_new : '' %></textarea>
+					<div id="et_pb_content_new"><%= typeof( et_pb_content_new )!== 'undefined' ? et_pb_content_new : '' %></div>
 					<p class="description">Input the main text content for your module here.</p>
 				</div> <!-- .et-pb-option-container -->
 			</div> <!-- .et-pb-option -->
@@ -3487,7 +3554,7 @@ echo <<<END
 				<label for="et_pb_content_new">Content: </label>
 
 				<div class="et-pb-option-container">
-					<textarea id="et_pb_content_new"><%= typeof( et_pb_content_new )!== 'undefined' ? et_pb_content_new : '' %></textarea>
+					<div id="et_pb_content_new"><%= typeof( et_pb_content_new )!== 'undefined' ? et_pb_content_new : '' %></div>
 					<p class="description">Input a list of features that are/are not included in the product. Separate items on a new line, and begin with either a + or - symbol: <br/>
 					+ Included option<br/>
 					- Excluded option<br/>
@@ -3549,7 +3616,7 @@ echo <<<END
 				<label for="et_pb_content_new">Content: </label>
 
 				<div class="et-pb-option-container">
-					<textarea id="et_pb_content_new"><%= typeof( et_pb_content_new )!== 'undefined' ? et_pb_content_new : '' %></textarea>
+					<div id="et_pb_content_new"><%= typeof( et_pb_content_new )!== 'undefined' ? et_pb_content_new : '' %></div>
 					<p class="description">Input the main text content for your module here.</p>
 				</div> <!-- .et-pb-option-container -->
 			</div> <!-- .et-pb-option -->
@@ -3625,7 +3692,7 @@ echo <<<END
 				<label for="et_pb_content_new">Content: </label>
 
 				<div class="et-pb-option-container">
-					<textarea id="et_pb_content_new"><%= typeof( et_pb_content_new )!== 'undefined' ? et_pb_content_new : '' %></textarea>
+					<div id="et_pb_content_new"><%= typeof( et_pb_content_new )!== 'undefined' ? et_pb_content_new : '' %></div>
 					<p class="description">Here you can define the content that will be placed within the current tab.</p>
 				</div> <!-- .et-pb-option-container -->
 			</div> <!-- .et-pb-option -->
@@ -3680,7 +3747,7 @@ echo <<<END
 				<label for="et_pb_content_new">Content: </label>
 
 				<div class="et-pb-option-container">
-					<textarea id="et_pb_content_new"><%= typeof( et_pb_content_new )!== 'undefined' ? et_pb_content_new : '' %></textarea>
+					<div id="et_pb_content_new"><%= typeof( et_pb_content_new )!== 'undefined' ? et_pb_content_new : '' %></div>
 					<p class="description">Here you can define the content that will be placed within the current tab.</p>
 				</div> <!-- .et-pb-option-container -->
 			</div> <!-- .et-pb-option -->
@@ -3817,7 +3884,7 @@ echo <<<END
 				<label for="et_pb_content_new">Content: </label>
 
 				<div class="et-pb-option-container">
-					<textarea id="et_pb_content_new"><%= typeof( et_pb_content_new )!== 'undefined' ? et_pb_content_new : '' %></textarea>
+					<div id="et_pb_content_new"><%= typeof( et_pb_content_new )!== 'undefined' ? et_pb_content_new : '' %></div>
 					<p class="description">Here you can define the content that will be placed within the infobox for the pin.</p>
 				</div> <!-- .et-pb-option-container -->
 			</div> <!-- .et-pb-option -->
@@ -3839,7 +3906,7 @@ echo <<<END
 				<label for="et_pb_content_new">Content: </label>
 
 				<div class="et-pb-option-container">
-					<textarea id="et_pb_content_new"><%= typeof( et_pb_content_new )!== 'undefined' ? et_pb_content_new : '' %></textarea>
+					<div id="et_pb_content_new"><%= typeof( et_pb_content_new )!== 'undefined' ? et_pb_content_new : '' %></div>
 					<p class="description">Here you can define the content that will be placed within the infobox for the pin.</p>
 				</div> <!-- .et-pb-option-container -->
 			</div> <!-- .et-pb-option -->
@@ -3859,6 +3926,18 @@ echo <<<END
 				<input id="et_pb_address_lng" class="et_pb_address_lng" type="hidden"  value="<%= typeof( et_pb_address_lng ) !== 'undefined' ?  et_pb_address_lng : '' %>" />
 				<div id="et_pb_map_center_map" class="et-pb-map et_pb_map_center_map"></div>
 			</div>
+
+			<div class="et-pb-option">
+				<label for="et_pb_mouse_wheel">Mouse Wheel Zoom: </label>
+				<div class="et-pb-option-container">
+					<select name="et_pb_mouse_wheel" id="et_pb_mouse_wheel">
+						<option value="on"<%= typeof( et_pb_mouse_wheel ) !== 'undefined' && 'on' === et_pb_mouse_wheel ?  ' selected="selected"' : '' %>>On</option>
+						<option value="off"<%= typeof( et_pb_mouse_wheel ) !== 'undefined' && 'off' === et_pb_mouse_wheel ?  ' selected="selected"' : '' %>>Off</option>
+					</select>
+
+					<p class="description">Here you can choose whether the zoom level will be controlled by mouse wheel or not.</p>
+				</div> <!-- .et-pb-option-container -->
+			</div> <!-- .et-pb-option -->
 
 			<div class="et-pb-option">
 				<label for="admin_label">Admin Label: </label>
@@ -3899,20 +3978,11 @@ echo <<<END
 				<a href="#" class="et-pb-add-sortable-option"><span>Add New Pin</span></a>
 			</div> <!-- .et-pb-option -->
 
-			<div class="et-pb-option">
-				<label for="admin_label">Admin Label: </label>
-
-				<div class="et-pb-option-container">
-					<input id="admin_label" type="text" class="regular-text" value="<%= typeof( admin_label ) !== 'undefined' ?  admin_label : '' %>" />
-					<p class="description">This will change the label of the module in the builder for easy identification.</p>
-				</div> <!-- .et-pb-option-container -->
-			</div> <!-- .et-pb-option -->
-
 			<div class="et-pb-option et-pb-option-main-content et-pb-option-advanced-module">
 				<label for="et_pb_content_new">Content: </label>
 
 				<div class="et-pb-option-container">
-					<textarea id="et_pb_content_new"><%= typeof( et_pb_content_new )!== 'undefined' ? et_pb_content_new : '' %></textarea>
+					<div id="et_pb_content_new"><%= typeof( et_pb_content_new )!== 'undefined' ? et_pb_content_new : '' %></div>
 					<p class="description">Here you can define the content that will be placed within the infobox for the pin.</p>
 				</div> <!-- .et-pb-option-container -->
 			</div> <!-- .et-pb-option -->
@@ -3932,6 +4002,27 @@ echo <<<END
 				<input id="et_pb_address_lng" class="et_pb_address_lng" type="hidden"  value="<%= typeof( et_pb_address_lng ) !== 'undefined' ?  et_pb_address_lng : '' %>" />
 				<div id="et_pb_map_center_map" class="et-pb-map et_pb_map_center_map"></div>
 			</div>
+
+			<div class="et-pb-option">
+				<label for="et_pb_mouse_wheel">Mouse Wheel Zoom: </label>
+				<div class="et-pb-option-container">
+					<select name="et_pb_mouse_wheel" id="et_pb_mouse_wheel">
+						<option value="on"<%= typeof( et_pb_mouse_wheel ) !== 'undefined' && 'on' === et_pb_mouse_wheel ?  ' selected="selected"' : '' %>>On</option>
+						<option value="off"<%= typeof( et_pb_mouse_wheel ) !== 'undefined' && 'off' === et_pb_mouse_wheel ?  ' selected="selected"' : '' %>>Off</option>
+					</select>
+
+					<p class="description">Here you can choose whether the zoom level will be controlled by mouse wheel or not.</p>
+				</div> <!-- .et-pb-option-container -->
+			</div> <!-- .et-pb-option -->
+
+			<div class="et-pb-option">
+				<label for="admin_label">Admin Label: </label>
+
+				<div class="et-pb-option-container">
+					<input id="admin_label" type="text" class="regular-text" value="<%= typeof( admin_label ) !== 'undefined' ?  admin_label : '' %>" />
+					<p class="description">This will change the label of the module in the builder for easy identification.</p>
+				</div> <!-- .et-pb-option-container -->
+			</div> <!-- .et-pb-option -->
 
 			<div class="et-pb-option">
 				<label for="et_pb_module_id">CSS ID: </label>
@@ -3970,9 +4061,9 @@ echo <<<END
 			<div class="et-pb-option">
 				<label for="et_pb_number">Number: </label>
 				<div class="et-pb-option-container">
-					<input id="et_pb_number" type="text" class="regular-text" value="<%= typeof( et_pb_number ) !== 'undefined' ?  et_pb_number : '' %>" />
+					<input id="et_pb_number" type="text" class="regular-text et-validate-number" maxlength="3" value="<%= typeof( et_pb_number ) !== 'undefined' ?  et_pb_number : '' %>" />
 
-					<p class="description">Define a number for the circle counter. (Don't include the percentage sign, use the option below.)</p>
+					<p class="description">Define a number for the circle counter. (Don't include the percentage sign, use the option below.). <strong>Note: You can use only natural numbers from 0 to 100</strong></p>
 				</div> <!-- .et-pb-option-container -->
 			</div> <!-- .et-pb-option -->
 
@@ -4424,7 +4515,7 @@ echo <<<END
 				<label for="et_pb_content_new">Content: </label>
 
 				<div class="et-pb-option-container">
-					<textarea id="et_pb_content_new"><%= typeof( et_pb_content_new )!== 'undefined' ? et_pb_content_new : '' %></textarea>
+					<div id="et_pb_content_new"><%= typeof( et_pb_content_new )!== 'undefined' ? et_pb_content_new : '' %></div>
 					<p class="description">Input the main text content for your module here.</p>
 				</div> <!-- .et-pb-option-container -->
 			</div> <!-- .et-pb-option -->
