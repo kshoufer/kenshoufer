@@ -4,17 +4,6 @@ Ken Shoufer
 */
 
 
-@font-face {
-  font-family: 'ETmodules';
-  src:url('../Divi/fonts/ETmodules.eot');
-  src:url('../Divi/fonts/ETmodules.eot?#iefix') format('embedded-opentype'),
-    url('../Divi/fonts/ETmodules.ttf') format('truetype'),
-    url('../Divi/fonts/ETmodules.woff') format('woff'),
-    url('../Divi/fonts/ETmodules.svg#ETmodules') format('svg');
-  font-weight: normal;
-  font-style: normal;
-}
-
 .et-social-facebook a:before {
 content: '\68';
 }
