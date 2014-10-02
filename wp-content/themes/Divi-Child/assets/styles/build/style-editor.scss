@@ -3,13 +3,12 @@ Divi Child
 Ken Shoufer
 */
 
+$font-stack: Helvetica, sans-serif;
+$primary-color: #fff;
 
 .et-social-facebook a:before {
 content: '\68';
 }
-
-$font-stack:    Helvetica, sans-serif;
-$primary-color: #fff;
 
 #footer-info, #footer-info a  {
     color: $primary-color;
@@ -29,7 +28,7 @@ $primary-color: #fff;
 
 a {
     text-decoration: underline;
-    font-weight: bold;
+    font-weight: 700;
 }
 
 .et_pb_slide {
@@ -44,7 +43,6 @@ a {
 .et_pb_section {
     background-repeat: repeat;
     background-size: 132px;
-    /*background-color: transparent !important;*/
 }
 
 #main-content, .et_pb_section {
@@ -85,11 +83,7 @@ a {
     width: 100%;
 }
 
-#small-image {
-    display: none;
-}
-
-#et_top_search {
+#et_top_search, #small-image {
     display: none;
 }
 
@@ -110,8 +104,21 @@ a {
      padding: 10px;
 }
 
-#soliloquy-container-1009 .soliloquy-prev, #soliloquy-container-1009 .soliloquy-next {
-  display: none !important;
+#soliloquy-container-1009 .soliloquy-next,#soliloquy-container-1009 .soliloquy-prev {
+  display: none!important;
+}
+
+
+hr.style-dashed {
+    border-width: 0px 0px 4px;
+    border-style: none none dashed;
+    border-color: -moz-use-text-color -moz-use-text-color #CCC;
+    -moz-border-top-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    border-image: none;
+    background: none repeat scroll 0% 0% #999;
 }
 
 
@@ -120,7 +127,7 @@ a {
 
 
 
-}//end 981px to 1100px
+}/*end 981px to 1100px*/
 
 
 /*-------------------[768px]------------------*/
@@ -131,11 +138,16 @@ a {
   }
 
 
-}//end 768px to 908px
+}/*end 768px to 908px*/
 
 
 /*-------------------[480px to 767px]------------------*/
 @media only screen and ( min-width: 480px ) and ( max-width: 767px ) {
+
+#main-content .container {
+    font-size: 1.3em;
+    width: 90%;
+  }
 
 #main-header {
     
@@ -170,10 +182,17 @@ a {
     padding-bottom: 0px;
   }
 
-}//end 480px to 767px
+}/*end 480px to 767px*/
+
 
 /*-------------------[479px]------------------*/
 @media only screen and ( max-width: 479px ) {
+
+
+#main-content .container {
+    font-size: 1.3em;
+    width: 90%;
+}
 
 #small-image {
     display: inline;

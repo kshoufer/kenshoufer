@@ -6,17 +6,6 @@ module.exports = function(grunt) {
 
     grunt.initConfig({
 
-        //concat
-        concat: {
-        options: {
-
-                },
-        dist: {
-                src: ['wp-content/themes/Divi-Child/assets/styles/build/style-header.css','wp-content/themes/Divi-Child/assets/styles/build/style-divi.css','wp-content/themes/Divi-Child/assets/styles/build/style-editor.scss'],
-                dest: 'wp-content/themes/Divi-Child/assets/styles/build/style-concat.scss',
-              },
-        },//concat
-
         // sass
         sass: {
             dist: {
@@ -25,23 +14,36 @@ module.exports = function(grunt) {
                     style: 'expanded',
                 },
                 files: {
-                    'wp-content/themes/Divi-Child/assets/styles/build/style.css': 'wp-content/themes/Divi-Child/assets/styles/build/style-concat.scss'
+                    'wp-content/themes/Divi-Child/assets/styles/build/style-editor.css': 'wp-content/themes/Divi-Child/assets/styles/build/style-editor.scss'
                 }
             }
         },//sass
 
+        //concat
+        concat: {
+        options: {
+
+                },
+        dist: {
+                src: ['wp-content/themes/Divi-Child/assets/styles/build/style-divi(original).css','wp-content/themes/Divi-Child/assets/styles/build/style-editor.css'],
+                dest: 'wp-content/themes/Divi-Child/assets/styles/build/style-concat.css',
+              },
+        },//concat
+
+
         cssmin: {
-             minify: {
-                expand: true,
-                cwd: 'wp-content/themes/Divi-Child/assets/styles/build/',
-                src: ['*.css', '!*.min.css'],
-                dest: 'wp-content/themes/Divi-Child/',
-                ext: '.css'
-                }
+          add_banner: {
+            options: {
+              banner: '/*Theme Name: Divi Child   Author: Ken Shoufer   Template: Divi  */'
+            },
+            files: {
+              'wp-content/themes/Divi-Child/style.css': ['wp-content/themes/Divi-Child/assets/styles/build/style-concat.css']
+            }
+          }
         },//cssmin
 
     });
 
-    grunt.registerTask('default', ['concat','sass', 'cssmin']);
+    grunt.registerTask('default', ['sass', 'concat', 'cssmin']);
 
 };

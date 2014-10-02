@@ -11163,6 +11163,15 @@ a {
 }
 /*-------------------[479px]------------------*/
 @media only screen and (max-width: 479px) {
+  body {
+    color: #666;
+  }
+
+  .container {
+    font-size: 1.3em;
+    width: 100%;
+  }
+
   #small-image {
     display: inline;
   }

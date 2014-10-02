@@ -1,0 +1,215 @@
+/*
+Divi Child
+Ken Shoufer
+*/
+.et-social-facebook a:before {
+  content: '\68';
+}
+
+#footer-info, #footer-info a {
+  color: white;
+}
+
+#et-social-icons {
+  text-align: right;
+}
+
+#et-social-icons a {
+  color: white;
+}
+
+.et-social-icon span {
+  display: inline;
+}
+
+a {
+  text-decoration: underline;
+  font-weight: 700;
+}
+
+.et_pb_slide {
+  box-shadow: none;
+  background-color: transparent;
+}
+
+.et_pb_slider .et_pb_slide, .et_pb_section {
+  background-size: contain;
+}
+
+.et_pb_section {
+  background-repeat: repeat;
+  background-size: 132px;
+}
+
+#main-content, .et_pb_section {
+  background-color: transparent !important;
+}
+
+.et_pb_text p {
+  line-height: 1.5;
+  font-size: 25px;
+}
+
+#logo_mobile {
+  display: none;
+}
+
+.et_pb_promo_description {
+  font-size: 30px;
+}
+
+.et_pb_promo_description p {
+  line-height: 2;
+}
+
+.et_pb_contact p input, .et_pb_contact p textarea {
+  background-color: white;
+}
+
+.et-pb-arrow-next, .et-pb-arrow-prev {
+  font-size: 8em;
+}
+
+.main_title {
+  display: none;
+}
+
+#slider1 {
+  width: 100%;
+}
+
+#et_top_search, #small-image {
+  display: none;
+}
+
+.vfb-checkbox, .vfb-radio {
+  -webkit-appearance: checkbox;
+}
+
+.et_pb_slider .et_pb_slide {
+  box-shadow: none;
+}
+
+.et-pb-arrow-prev, .et-pb-arrow-next {
+  background-color: rgba(0, 0, 0, 0.07);
+}
+
+.entry-post-content {
+  background-color: white;
+  padding: 10px;
+}
+
+#soliloquy-container-1009 .soliloquy-next, #soliloquy-container-1009 .soliloquy-prev {
+  display: none !important;
+}
+
+hr.style-dashed {
+  border-width: 0px 0px 4px;
+  border-style: none none dashed;
+  border-color: -moz-use-text-color -moz-use-text-color #CCC;
+  -moz-border-top-colors: none;
+  -moz-border-right-colors: none;
+  -moz-border-bottom-colors: none;
+  -moz-border-left-colors: none;
+  border-image: none;
+  background: none repeat scroll 0% 0% #999;
+}
+
+/*-------------------[981px]------------------*/
+/*end 981px to 1100px*/
+/*-------------------[768px]------------------*/
+@media only screen and (min-width: 768px) and (max-width: 980px) {
+  #main-content {
+    margin-top: 50px !important;
+  }
+}
+/*end 768px to 908px*/
+/*-------------------[480px to 767px]------------------*/
+@media only screen and (min-width: 480px) and (max-width: 767px) {
+  #main-content .container {
+    font-size: 1.3em;
+    width: 90%;
+  }
+
+  #main-header #small-image {
+    display: inline;
+  }
+
+  #logo {
+    display: none;
+  }
+
+  #logo_mobile {
+    display: block;
+    width: 50%;
+  }
+
+  #et_mobile_nav_menu {
+    margin-top: -60px !important;
+  }
+
+  .mobile_menu_bar:before {
+    content: "\61";
+  }
+
+  #main-content {
+    margin-top: 50px !important;
+  }
+
+  .et_pb_column {
+    padding-bottom: 0px;
+  }
+}
+/*end 480px to 767px*/
+/*-------------------[479px]------------------*/
+@media only screen and (max-width: 479px) {
+  #main-content .container {
+    font-size: 1.3em;
+    width: 90%;
+  }
+
+  #small-image {
+    display: inline;
+  }
+
+  #soliloquy-container-1009 {
+    display: none;
+  }
+
+  .et_pb_slide {
+    box-shadow: none !important;
+    background-color: transparent !important;
+  }
+
+  #logo {
+    display: none;
+  }
+
+  #logo_mobile {
+    display: block;
+    width: 50%;
+  }
+
+  #et_mobile_nav_menu {
+    margin-top: -40px !important;
+  }
+
+  .mobile_menu_bar:before {
+    content: "\61";
+  }
+
+  #main-content {
+    margin-top: 50px !important;
+  }
+
+  #footer-info {
+    margin-top: 20px;
+  }
+
+  #et-social-icons a {
+    margin-top: 10px;
+  }
+}
+/****end max-width: 479px****/
+
+/*# sourceMappingURL=style-editor.css.map */
