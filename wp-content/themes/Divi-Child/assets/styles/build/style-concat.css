@@ -3280,6 +3280,13 @@ hr.style-dashed {
   background: none repeat scroll 0% 0% #999;
 }
 
+pre.prettyprint {
+  font-size: 1.2em !important;
+  line-height: 1.2em !important;
+  padding-top: 15px !important;
+  padding-bottom: 15px !important;
+}
+
 /*-------------------[981px]------------------*/
 /*end 981px to 1100px*/
 /*-------------------[768px]------------------*/
